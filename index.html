@@ -2,12 +2,589 @@
 <html lang="es">
 
 <head>
-  <title>Hola</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hugo Olguin · Dev Portfolio</title>
+  <meta name="description"
+    content="Portfolio de Hugo Olguin, estudiante de programación. Proyectos con JavaScript, Python y HTML." />
+  <meta name="author" content="Hugo Olguin" />
+
+  <!-- fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;700&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-  <div id="root">Hola mundo</div>
-  <script type="module" src="/src/main.jsx"></script>
+
+  <!-- navbar -->
+  <nav id="navbar" class="navbar">
+    <span class="navbar__logo">hugoaleolguin<span class="accent">.</span>github.io</span>
+    <ul class="navbar__links">
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- hero -->
+  <section id="inicio" class="hero">
+    <!-- consola animada -->
+    <div class="hero__console">
+      <span class="console__prompt">~/portfolio</span>
+      <span class="console__cursor blink">▍</span>
+    </div>
+
+    <!-- nombre -->
+    <h1 class="hero__title">
+      Hugo Ale <br>
+      <span class="accent">Olguin</span>
+    </h1>
+
+    <p class="hero__subtitle">
+      Estudiante de Desarrollo de Software · Builder de cosas piolas
+    </p>
+
+    <!-- tags de tecnologías -->
+    <div class="hero__tags">
+      <span class="tag">JavaScript</span>
+      <span class="tag">Python</span>
+      <span class="tag">HTML / CSS</span>
+      <span class="tag">C++</span>
+      <span class="tag">GitHub</span>
+    </div>
+
+    <a href="#proyectos" class="btn btn--primary">Ver mis proyectos ↓</a>
+
+    <!-- fondo decorativo -->
+    <div class="hero__bg-code" aria-hidden="true">
+      <pre>
+const hugo = {
+  rol: "estudiante",
+  pasion: "crear cosas",
+  repos: 14, langs: ["js", "python", "html"]
+};
+
+console.log("Bienvenido al portfolio!");
+      </pre>
+    </div>
+  </section>
+
+
+  <!-- sobre mí -->
+  <section id="sobre-mi" class="section about">
+    <div class="section__header">
+      <span class="section__number">01</span>
+      <h2 class="section__title">Sobre mí</h2>
+    </div>
+
+    <div class="about__content">
+      <div class="about__text">
+        <p>
+          Hola, soy <strong>Hugo Alejandro</strong>. Estudio programación y aprendo
+          haciendo —
+          <br> cada proyecto que ves acá lo construí para resolver un problema real o para probar algo nuevo.
+        </p>
+        <p>
+          Me interesa el desarrollo web, la automatización con Python
+          y crear herramientas que la gente pueda usar de verdad.
+          Todavía estoy aprendiendo un montón, pero cada commit
+          me enseña algo nuevo.
+        </p>
+
+        <!-- stats -->
+        <div class="about__stats">
+          <div class="stat">
+            <span class="stat__number">14+</span>
+            <span class="stat__label">Repos públicos</span>
+          </div>
+          <div class="stat">
+            <span class="stat__number">3 años</span>
+            <span class="stat__label">Desde que empecé</span>
+          </div>
+          <div class="stat">
+            <span class="stat__number">JS · Py</span>
+            <span class="stat__label">Lenguajes principales</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- skills -->
+      <div class="about__skills">
+        <h3 class="about__skills-title">Stack que uso</h3>
+        <div class="skills-grid">
+          <div class="skill-item">
+            <svg class="skill-item__logo" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 0l2.545 28.8L16 32l9.455-3.2L28 0H4z" fill="#E44D26" />
+              <path d="M16 29.455l7.636-2.11L25.818 4H16v25.455z" fill="#F16529" />
+              <path
+                d="M16 13.09h-4.364l-.291-3.272H16V6.546H8.073l.073.8.727 8.018H16v-2.273zm0 9.891l-.018.005-3.636-1-.236-2.633H9.818l.455 5.145 5.709 1.588.018-.005v-3.1z"
+                fill="#EBEBEB" />
+              <path
+                d="M15.982 13.09v2.273h4.054l-.382 4.254-3.672 1.005v3.1l5.718-1.586.042-.473.654-7.346.073-.8-.4.045h-6.087zm0-6.544v3.272h8.182l-.073-.8-.727-8H15.98v2.255h4.8l.291 3.273H15.98z"
+                fill="#fff" />
+            </svg>
+            <span class="skill-item__name">HTML / CSS</span>
+          </div>
+          <div class="skill-item">
+            <svg class="skill-item__logo" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+              <rect width="32" height="32" fill="#F7DF1E" />
+              <path
+                d="M20.555 22.91c.495.807 1.14 1.4 2.28 1.4 1.037 0 1.636-.52 1.636-1.233 0-.856-.614-1.16-1.647-1.66l-.565-.244c-1.633-.696-2.717-1.568-2.717-3.41 0-1.697 1.292-2.99 3.313-2.99 1.44 0 2.472.5 3.215 1.812l-1.762 1.13c-.387-.694-.805-.967-1.453-.967-.661 0-1.08.42-1.08.967 0 .676.42.95 1.39 1.37l.566.244c1.922.822 3.01 1.66 3.01 3.54 0 2.03-1.595 3.152-3.74 3.152-2.096 0-3.45-.998-4.11-2.31l1.864-1.08zm-9.636.226c.36.636.688 1.173 1.474 1.173.752 0 1.227-.295 1.227-1.44v-7.8h2.17v7.828c0 2.373-1.39 3.452-3.42 3.452-1.833 0-2.895-.95-3.437-2.093l1.986-1.12z" />
+            </svg>
+            <span class="skill-item__name">JavaScript</span>
+          </div>
+          <div class="skill-item">
+            <svg class="skill-item__logo" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M15.885 2C11.17 2 11.462 4.04 11.462 4.04l.006 2.11h4.506v.633H8.867S6 6.437 6 11.2c0 4.762 2.636 4.595 2.636 4.595h1.573V13.63s-.085-2.636 2.595-2.636h4.474s2.51.04 2.51-2.427V4.57S20.19 2 15.885 2zM13.33 3.64a.82.82 0 110 1.64.82.82 0 010-1.64z"
+                fill="#366A96" />
+              <path
+                d="M16.12 30C20.836 30 20.544 27.96 20.544 27.96l-.006-2.11h-4.506v-.633h7.107S26 25.563 26 20.8c0-4.762-2.636-4.595-2.636-4.595h-1.573v2.165s.085 2.636-2.595 2.636H14.72s-2.51-.04-2.51 2.427v4.997S11.816 30 16.12 30zM18.675 28.36a.82.82 0 110-1.64.82.82 0 010 1.64z"
+                fill="#EFC545" />
+            </svg>
+            <span class="skill-item__name">Python</span>
+          </div>
+          <div class="skill-item">
+            <svg class="skill-item__logo" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16 2L3 9.5v13L16 30l13-7.5v-13L16 2z" fill="#00599C" />
+              <path
+                d="M16 7a9 9 0 100 18A9 9 0 0016 7zm0 2a7 7 0 110 14A7 7 0 0116 9zm-3.2 3.5a4 4 0 104 4 4 4 0 00-4-4z"
+                fill="#fff" />
+              <rect x="20.5" y="14.5" width="1.5" height="5" fill="#fff" />
+              <rect x="19" y="16" width="4.5" height="1.5" fill="#fff" />
+              <rect x="24" y="14.5" width="1.5" height="5" fill="#fff" />
+              <rect x="22.5" y="16" width="4.5" height="1.5" fill="#fff" />
+            </svg>
+            <span class="skill-item__name">C++</span>
+          </div>
+          <div class="skill-item">
+            <svg class="skill-item__logo" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M29.472 14.528l-12-12a1.8 1.8 0 00-2.545 0l-2.546 2.545L15.2 7.88a2.143 2.143 0 012.717 2.74l2.976 2.975a2.143 2.143 0 11-1.272 1.273L16.8 12.04v7.103a2.143 2.143 0 11-1.714-.104V11.93a2.143 2.143 0 01-1.16-2.81L11.13 6.327 2.528 14.927a1.8 1.8 0 000 2.545l12 12a1.8 1.8 0 002.545 0l12.4-12.4a1.8 1.8 0 000-2.544z"
+                fill="#F05032" />
+            </svg>
+            <span class="skill-item__name">Git / GitHub</span>
+          </div>
+          <div class="skill-item">
+            <!-- Logo VS Code -->
+            <svg class="skill-item__logo" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M22.667 4L12 14.107 6.44 9.333 4 10.667v10.666l2.44 1.334L12 17.893 22.667 28l5.333-2V6l-5.333-2zm0 18.24L14.56 16l8.107-6.24v12.48z"
+                fill="#007ACC" />
+            </svg>
+            <span class="skill-item__name">VS Code</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- proyectos -->
+  <section id="proyectos" class="section projects">
+    <div class="section__header">
+      <span class="section__number">02</span>
+      <h2 class="section__title">Proyectos</h2>
+    </div>
+
+    <!-- Fila superior: proyectos destacados (ocupan más espacio) -->
+    <div class="projects__grid projects__grid--featured">
+
+      <!-- ─── Proyecto 1: Scribd Downloader ─── -->
+      <article class="project-card project-card--featured" id="proyecto-scribd">
+        <div class="project-card__image-wrapper" data-slides='[
+            "assets/screenshots/scribd/scribd (1).png",
+            "assets/screenshots/scribd/scribd (2).png",
+            "assets/screenshots/scribd/scribd (3).png"
+          ]'>
+          <img src="assets/screenshots/scribd/scribd (1).png" alt="Captura de Scribd Downloader"
+            class="project-card__image carousel__img" />
+          <div class="carousel__dots" aria-hidden="true">
+            <span class="carousel__dot carousel__dot--active"></span>
+            <span class="carousel__dot"></span>
+            <span class="carousel__dot"></span>
+          </div>
+          <span class="project-card__badge">DESTACADO</span>
+        </div>
+
+        <div class="project-card__body">
+          <div class="project-card__tags">
+            <span class="tag tag--js">JavaScript</span>
+            <span class="tag tag--ext">Extensión</span>
+          </div>
+          <h3 class="project-card__title">Scribd Downloader Premium</h3>
+          <p class="project-card__desc">
+            Extensión de navegador que agrega un panel flotante sobre cualquier
+            documento público de Scribd para descargarlo como PDF.
+            Sin servidores externos, 100% local. Tiene modo de escaneo HQ
+            y descarga del PDF original.
+          </p>
+          <ul class="project-card__features">
+            <li>✓ Dos modos de descarga (HQ Scan / PDF original)</li>
+            <li>✓ Funciona en Chrome y Firefox</li>
+            <li>✓ 6 releases publicados</li>
+          </ul>
+          <div class="project-card__links">
+            <a href="https://github.com/HugoAleOlguin/Scribd-Downloader-Premium" target="_blank" rel="noopener"
+              class="btn btn--secondary">
+              GitHub →
+            </a>
+          </div>
+        </div>
+      </article>
+
+
+      <!-- ─── Proyecto 2: Jueguitos Piola ─── -->
+      <article class="project-card project-card--featured" id="proyecto-jueguitos">
+        <div class="project-card__image-wrapper" data-slides='[
+            "assets/screenshots/jueguitos/jueguitos (1).png",
+            "assets/screenshots/jueguitos/jueguitos (2).png",
+            "assets/screenshots/jueguitos/jueguitos (3).png",
+            "assets/screenshots/jueguitos/jueguitos (4).png",
+            "assets/screenshots/jueguitos/jueguitos (5).png"
+          ]'>
+          <img src="assets/screenshots/jueguitos/jueguitos (1).png" alt="Captura de Jueguitos Piola"
+            class="project-card__image carousel__img" />
+          <div class="carousel__dots" aria-hidden="true">
+            <span class="carousel__dot carousel__dot--active"></span>
+            <span class="carousel__dot"></span>
+            <span class="carousel__dot"></span>
+            <span class="carousel__dot"></span>
+            <span class="carousel__dot"></span>
+          </div>
+          <span class="project-card__badge project-card__badge--live">EN VIVO</span>
+        </div>
+
+        <div class="project-card__body">
+          <div class="project-card__tags">
+            <span class="tag tag--html">HTML</span>
+            <span class="tag tag--js">JavaScript</span>
+            <span class="tag tag--css">CSS</span>
+          </div>
+          <h3 class="project-card__title">Jueguitos Piola</h3>
+          <p class="project-card__desc">
+            Hub personal de juegos hosteado en GitHub Pages. Centraliza links
+            directos para descargar juegos y compartirlos con los pibes.
+            Sin apps, sin cuentas, abrir y listo.
+          </p>
+          <ul class="project-card__features">
+            <li>✓ Links directos de descarga</li>
+            <li>✓ Deploy automático con GitHub Actions</li>
+            <li>✓ HTML / CSS / JS puro, sin frameworks</li>
+          </ul>
+          <div class="project-card__links">
+            <a href="https://hugoaleolguin.github.io/jueguitos-piola/" target="_blank" rel="noopener"
+              class="btn btn--primary">
+              Ver en vivo →
+            </a>
+            <a href="https://github.com/HugoAleOlguin/jueguitos-piola" target="_blank" rel="noopener"
+              class="btn btn--secondary">
+              GitHub →
+            </a>
+          </div>
+        </div>
+      </article>
+
+    </div><!-- /projects__grid--featured -->
+
+    <!-- Fila inferior: proyectos secundarios (grilla de 3) -->
+    <div class="projects__grid projects__grid--secondary">
+
+      <!-- ─── Proyecto 3: Mano Musical ─── -->
+      <article class="project-card" id="proyecto-mano-musical">
+        <!-- Sin capturas todavía, queda placeholder -->
+        <div class="project-card__image-wrapper">
+          <div class="project-card__placeholder" style="display:flex">
+            <div class="placeholder__content">
+              <span class="placeholder__text">Sin captura aún</span>
+              <span class="placeholder__hint">assets/screenshots/mano-musical/</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card__body">
+          <div class="project-card__tags">
+            <span class="tag tag--py">Python</span>
+            <span class="tag tag--cv">CV / MediaPipe</span>
+          </div>
+          <h3 class="project-card__title">Mano Musical</h3>
+          <p class="project-card__desc">
+            Instrumento musical virtual controlado por gestos de la mano
+            capturados desde la webcam. Cada cantidad de dedos
+            levantados toca una nota musical diferente.
+          </p>
+          <ul class="project-card__features">
+            <li>✓ Detección de gestos en tiempo real (MediaPipe)</li>
+            <li>✓ Síntesis de audio dinámica</li>
+            <li>✓ Piano virtual con feedback visual</li>
+          </ul>
+          <div class="project-card__links">
+            <a href="https://github.com/HugoAleOlguin/Mano_Musical" target="_blank" rel="noopener"
+              class="btn btn--secondary">
+              GitHub →
+            </a>
+          </div>
+        </div>
+      </article>
+
+
+      <!-- ─── Proyecto 4: Ruleta Rusa LAN ─── -->
+      <article class="project-card" id="proyecto-ruleta">
+        <div class="project-card__image-wrapper" data-slides='[
+            "assets/screenshots/ruleta/ruleta (1).png",
+            "assets/screenshots/ruleta/ruleta (2).png",
+            "assets/screenshots/ruleta/ruleta (3).png"
+          ]'>
+          <img src="assets/screenshots/ruleta/ruleta (1).png" alt="Captura de Ruleta Rusa LAN"
+            class="project-card__image carousel__img" />
+          <div class="carousel__dots" aria-hidden="true">
+            <span class="carousel__dot carousel__dot--active"></span>
+            <span class="carousel__dot"></span>
+            <span class="carousel__dot"></span>
+          </div>
+        </div>
+
+        <div class="project-card__body">
+          <div class="project-card__tags">
+            <span class="tag tag--py">Python</span>
+            <span class="tag tag--lan">LAN</span>
+          </div>
+          <h3 class="project-card__title">Ruleta Rusa LAN</h3>
+          <p class="project-card__desc">
+            Juego de ruleta rusa multijugador para jugar en red local con los amigos.
+            Proyecto de diversión y aprendizaje de networking básico con Python.
+          </p>
+          <div class="project-card__links">
+            <a href="https://github.com/HugoAleOlguin/Ruleta-Rusa-Lan" target="_blank" rel="noopener"
+              class="btn btn--secondary">
+              GitHub →
+            </a>
+          </div>
+        </div>
+      </article>
+
+
+      <!-- ─── Proyecto 5: Despensa Simple ─── -->
+      <article class="project-card" id="proyecto-despensa">
+        <div class="project-card__image-wrapper" data-slides='[
+            "assets/screenshots/despensa/despensa (1).png",
+            "assets/screenshots/despensa/despensa (2).png",
+            "assets/screenshots/despensa/despensa (3).png",
+            "assets/screenshots/despensa/despensa (4).png"
+          ]'>
+          <img src="assets/screenshots/despensa/despensa (1).png" alt="Captura de Despensa Simple"
+            class="project-card__image carousel__img" />
+          <div class="carousel__dots" aria-hidden="true">
+            <span class="carousel__dot carousel__dot--active"></span>
+            <span class="carousel__dot"></span>
+            <span class="carousel__dot"></span>
+            <span class="carousel__dot"></span>
+          </div>
+        </div>
+
+        <div class="project-card__body">
+          <div class="project-card__tags">
+            <span class="tag tag--js">JavaScript</span>
+            <span class="tag tag--html">HTML</span>
+            <span class="tag tag--crud">CRUD</span>
+          </div>
+          <h3 class="project-card__title">Despensa Simple (El Tato)</h3>
+          <p class="project-card__desc">
+            App web de gestión de despensa. Un proyecto real para organizar
+            el stock de una verdulería / almacén. CRUD completo con JavaScript.
+          </p>
+          <div class="project-card__links">
+            <a href="https://github.com/HugoAleOlguin/Despensa-Simple-El-Tato" target="_blank" rel="noopener"
+              class="btn btn--secondary">
+              GitHub →
+            </a>
+          </div>
+        </div>
+      </article>
+
+
+      <!-- ─── Proyecto 6: Sitio Ortopedia ─── -->
+      <article class="project-card" id="proyecto-ortopedia">
+        <div class="project-card__image-wrapper" data-slides='[
+            "assets/screenshots/ortopedia/ortopedia (1).png",
+            "assets/screenshots/ortopedia/ortopedia (2).png",
+            "assets/screenshots/ortopedia/ortopedia (3).png",
+            "assets/screenshots/ortopedia/ortopedia (4).png"
+          ]'>
+          <img src="assets/screenshots/ortopedia/ortopedia (1).png" alt="Captura de Sitio Ortopedia"
+            class="project-card__image carousel__img" />
+          <div class="carousel__dots" aria-hidden="true">
+            <span class="carousel__dot carousel__dot--active"></span>
+            <span class="carousel__dot"></span>
+            <span class="carousel__dot"></span>
+            <span class="carousel__dot"></span>
+          </div>
+          <span class="project-card__badge project-card__badge--live">EN VIVO</span>
+        </div>
+
+        <div class="project-card__body">
+          <div class="project-card__tags">
+            <span class="tag tag--html">HTML</span>
+            <span class="tag tag--css">CSS</span>
+          </div>
+          <h3 class="project-card__title">Sitio Ortopedia</h3>
+          <p class="project-card__desc">
+            Sitio web para una ortopedia local. Catálogo de productos,
+            sección de contacto y ubicación. El negocio no siguió adelante,
+            pero la página quedó casi completa y funcionando.
+          </p>
+          <ul class="project-card__features">
+            <li>✓ Catálogo de productos con páginas individuales</li>
+            <li>✓ Formulario de contacto y mapa</li>
+            <li>✓ Responsive, hosteado en GitHub Pages</li>
+          </ul>
+          <div class="project-card__links">
+            <a href="https://hugoaleolguin.github.io/Sitio-Otopedia-Backup/" target="_blank" rel="noopener"
+              class="btn btn--primary">
+              Ver en vivo →
+            </a>
+            <a href="https://github.com/HugoAleOlguin/Sitio-Otopedia-Backup" target="_blank" rel="noopener"
+              class="btn btn--secondary">
+              GitHub →
+            </a>
+          </div>
+        </div>
+      </article>
+
+
+      <!-- ─── Proyecto 7: Py Clash Bot ─── -->
+      <article class="project-card" id="proyecto-clashbot">
+        <div class="project-card__image-wrapper" data-slides='[
+            "assets/screenshots/pyclash/pyclash (1).png",
+            "assets/screenshots/pyclash/pyclash (2).png",
+            "assets/screenshots/pyclash/pyclash (3).png"
+          ]'>
+          <img src="assets/screenshots/pyclash/pyclash (1).png" alt="Captura de Py Clash Bot"
+            class="project-card__image carousel__img" />
+          <div class="carousel__dots" aria-hidden="true">
+            <span class="carousel__dot carousel__dot--active"></span>
+            <span class="carousel__dot"></span>
+            <span class="carousel__dot"></span>
+          </div>
+        </div>
+
+        <div class="project-card__body">
+          <div class="project-card__tags">
+            <span class="tag tag--py">Python</span>
+            <span class="tag tag--fork">Fork</span>
+          </div>
+          <h3 class="project-card__title">Py Clash Bot (Español)</h3>
+          <p class="project-card__desc">
+            Fork del proyecto <em>py-clash-bot</em> con traducción completa
+            al español. Bot de automatización de Clash Royale.
+            Mi primera contribución a un proyecto de código abierto en serio.
+          </p>
+          <div class="project-card__links">
+            <a href="https://github.com/HugoAleOlguin/py-clash-bot-spanish" target="_blank" rel="noopener"
+              class="btn btn--secondary">
+              GitHub →
+            </a>
+          </div>
+        </div>
+      </article>
+
+
+      <!-- ─── Proyecto 8: Trailer Pelis ─── -->
+      <article class="project-card" id="proyecto-trailerpelis">
+        <!-- data-slides: lista de imágenes que va a rotar el carrusel -->
+        <div class="project-card__image-wrapper" data-slides='[
+            "assets/screenshots/trailerpelis/trailerpelis-1.png",
+            "assets/screenshots/trailerpelis/trailerpelis-2.png",
+            "assets/screenshots/trailerpelis/trailerpelis-3.png"
+          ]'>
+          <img src="assets/screenshots/trailerpelis/trailerpelis-1.png" alt="Captura de TrailerPelis"
+            class="project-card__image carousel__img" />
+          <!-- Indicadores de punto (cuántas fotos hay) -->
+          <div class="carousel__dots" aria-hidden="true">
+            <span class="carousel__dot carousel__dot--active"></span>
+            <span class="carousel__dot"></span>
+            <span class="carousel__dot"></span>
+          </div>
+          <span class="project-card__badge project-card__badge--live">EN VIVO</span>
+        </div>
+
+        <div class="project-card__body">
+          <div class="project-card__tags">
+            <span class="tag tag--html">HTML</span>
+            <span class="tag tag--fork">Fork</span>
+          </div>
+          <h3 class="project-card__title">TrailerPelis</h3>
+          <p class="project-card__desc">
+            Fork de una web de trailers de películas. Proyecto de estudio
+            para aprender cómo funciona el HTML de un sitio real.
+          </p>
+          <div class="project-card__links">
+            <a href="https://luszczak.github.io/TrailerPelis/" target="_blank" rel="noopener" class="btn btn--primary">
+              Ver en vivo →
+            </a>
+            <a href="https://github.com/HugoAleOlguin/TrailerPelis" target="_blank" rel="noopener"
+              class="btn btn--secondary">
+              GitHub →
+            </a>
+          </div>
+        </div>
+      </article>
+
+    </div><!-- /projects__grid--secondary -->
+  </section>
+
+
+  <!-- contacto -->
+  <section id="contacto" class="section contact">
+    <div class="section__header">
+      <span class="section__number">03</span>
+      <h2 class="section__title">Contacto</h2>
+    </div>
+
+    <div class="contact__content">
+      <p class="contact__text">
+        ¿Tenés algún proyecto? ¿Querés colaborar o simplemente charlar sobre código?
+        Encontrame en GitHub o escribime.
+      </p>
+
+      <div class="contact__links">
+        <a href="https://github.com/HugoAleOlguin" target="_blank" rel="noopener" class="contact__link"
+          id="link-github">
+          <svg class="contact__link-logo" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+          </svg>
+          <span>GitHub</span>
+        </a>
+        <a href="https://www.reddit.com/user/Hugo_Ale_Olguin_" target="_blank" rel="noopener" class="contact__link"
+          id="link-reddit">
+          <svg class="contact__link-logo" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z" />
+          </svg>
+          <span>Reddit</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- footer -->
+  <footer class="footer">
+    <p>
+      <strong>Hugo Olguin</strong> ·
+      <span class="accent">hugoaleolguin.github.io</span>
+    </p>
+    <p class="footer__sub">2024 – 2026</p>
+  </footer>
+
+  <script src="main.js"></script>
 </body>
 
 </html>
