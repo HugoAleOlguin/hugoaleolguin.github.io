@@ -297,14 +297,17 @@ console.log("Bienvenido al portfolio!");
     <div class="projects__grid projects__grid--secondary">
 
       <!-- ─── Proyecto 3: Mano Musical ─── -->
-      <article class="project-card" id="proyecto-mano-musical">
-        <!-- Sin capturas todavía, queda placeholder -->
-        <div class="project-card__image-wrapper">
-          <div class="project-card__placeholder" style="display:flex">
-            <div class="placeholder__content">
-              <span class="placeholder__text">Sin captura aún</span>
-              <span class="placeholder__hint">assets/screenshots/mano-musical/</span>
-            </div>
+      <article class="project-card" id="proyecto-ruleta">
+        <div class="project-card__image-wrapper" data-slides='[
+            "assets/screenshots/mano/mano (1).png",
+            "assets/screenshots/mano/mano (2).png"
+          ]'>
+          <img src="assets/screenshots/mano/mano (1).png" alt="Captura de Ruleta Rusa LAN"
+            class="project-card__image carousel__img" />
+          <div class="carousel__dots" aria-hidden="true">
+            <span class="carousel__dot carousel__dot--active"></span>
+            <span class="carousel__dot"></span>
+            <span class="carousel__dot"></span>
           </div>
         </div>
 
