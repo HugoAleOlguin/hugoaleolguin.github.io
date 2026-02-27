@@ -536,7 +536,7 @@ ul {
 }
 
 .project-card__badge--live {
-  background-color: var(--color-red);
+  background-color: #cc2200;
   color: #fff;
 }
 
