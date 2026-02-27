@@ -9,7 +9,7 @@
   --color-accent: #00ff88;
   --color-accent-glow: rgba(0, 255, 136, 0.12);
   --color-text: #d4d4d4;
-  --color-text-dim: #707070;
+  --color-text-dim: #a0a0a0;
   --color-white: #f0f0f0;
   --color-red: #ff5555;
 
@@ -174,7 +174,7 @@ ul {
   display: inline-block;
   padding: 1px 8px;
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   border: 1px solid var(--color-border);
   border-radius: 2px;
   color: var(--color-text-dim);
@@ -223,7 +223,7 @@ ul {
 
 .tag--fork {
   border-color: #ffffff22;
-  color: #888;
+  color: #a0a0a0;
 }
 
 
@@ -287,13 +287,11 @@ ul {
   transform: translateY(-50%);
   font-family: var(--font-mono);
   font-size: 0.78rem;
-  color: var(--color-border);
+  color: rgba(0, 255, 136, 0.18);
   line-height: 2;
-  pointer-events: none;
   user-select: none;
   white-space: pre;
-  opacity: 0.6;
-  border-left: 2px solid var(--color-border);
+  border-left: 2px solid rgba(0, 255, 136, 0.15);
   padding-left: var(--sp-4);
 }
 
@@ -332,9 +330,9 @@ ul {
 
 .section__number {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   color: var(--color-accent);
-  opacity: 0.7;
+  opacity: 0.85;
 }
 
 .section__title {
@@ -382,14 +380,14 @@ ul {
 }
 
 .stat__label {
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   color: var(--color-text-dim);
   margin-top: 3px;
 }
 
 .about__skills-title {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: var(--color-text-dim);
   margin-bottom: var(--sp-3);
   text-transform: uppercase;
@@ -511,15 +509,15 @@ ul {
 
 .placeholder__text {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   color: var(--color-text-dim);
 }
 
 .placeholder__hint {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   color: var(--color-accent);
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
 .project-card__badge {
@@ -527,9 +525,9 @@ ul {
   top: var(--sp-2);
   right: var(--sp-2);
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  padding: 2px 7px;
+  padding: 2px 8px;
   background-color: var(--color-accent);
   color: #000;
   border-radius: 2px;
@@ -570,9 +568,9 @@ ul {
 }
 
 .project-card__desc {
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   color: var(--color-text-dim);
-  line-height: 1.65;
+  line-height: 1.7;
 }
 
 .project-card__features {
@@ -580,9 +578,9 @@ ul {
 }
 
 .project-card__features li {
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   color: var(--color-text-dim);
-  padding: 1px 0;
+  padding: 2px 0;
 }
 
 .project-card__links {
