@@ -86,6 +86,25 @@ function iniciarCarruseles() {
   });
 }
 
+
+function toggleMenuMovil() {
+  var boton = document.querySelector('.navbar__toggle');
+  var links = document.getElementById('nav-links');
+  if (!boton || !links) return;
+
+  boton.addEventListener('click', function () {
+    var abierto = links.classList.toggle('open');
+    boton.setAttribute('aria-expanded', String(abierto));
+  });
+
+  links.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      links.classList.remove('open');
+      boton.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+
 // Navbar se oscurece un poco al bajar
 function navbarScroll() {
   var navbar = document.getElementById("navbar");
@@ -103,4 +122,5 @@ document.addEventListener("DOMContentLoaded", function () {
   animarConsola();
   iniciarCarruseles();
   navbarScroll();
+  toggleMenuMovil();
 });

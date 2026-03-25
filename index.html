@@ -20,11 +20,13 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#inicio">Saltar al contenido</a>
 
   <!-- navbar -->
-  <nav id="navbar" class="navbar">
+  <nav id="navbar" class="navbar" aria-label="Navegación principal">
     <span class="navbar__logo">hugoaleolguin<span class="accent">.github</span>.io</span>
-    <ul class="navbar__links">
+    <button class="navbar__toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Abrir menú">☰</button>
+    <ul class="navbar__links" id="nav-links">
       <li><a href="#sobre-mi">Sobre mí</a></li>
       <li><a href="#proyectos">Proyectos</a></li>
       <li><a href="#contacto">Contacto</a></li>
@@ -32,6 +34,7 @@
   </nav>
 
 
+  <main id="contenido">
   <!-- hero -->
   <section id="inicio" class="hero">
     <!-- consola animada -->
@@ -47,8 +50,13 @@
     </h1>
 
     <p class="hero__subtitle">
-      Estudiante de Desarrollo de Software ·
+      Estudiante de Desarrollo de Software · construyendo proyectos reales y útiles
     </p>
+
+    <div class="hero__cta">
+      <a href="#proyectos" class="btn btn--primary">Ver mis proyectos ↓</a>
+      <a href="#contacto" class="btn btn--secondary">Contactarme</a>
+    </div>
 
     <!-- tags de tecnologías -->
     <div class="hero__tags">
@@ -59,7 +67,6 @@
       <span class="tag">GitHub</span>
     </div>
 
-    <a href="#proyectos" class="btn btn--primary">Ver mis proyectos ↓</a>
 
     <!-- fondo decorativo -->
     <div class="hero__bg-code" aria-hidden="true">
@@ -576,6 +583,8 @@ console.log("Bienvenido a mi portfolio!");
     </div>
   </section>
 
+
+  </main>
 
   <!-- footer -->
   <footer class="footer">
