@@ -30,7 +30,19 @@ body {
       calc(0.5 * var(--s)) calc(0.5 * var(--s) * 0.577),
     repeating-conic-gradient(from 30deg, var(--c1) 0deg 60deg, var(--c2) 0deg 120deg, var(--c3) 0deg 180deg);
   background-size: var(--s) calc(var(--s) * 0.577);
+  --bg-offset-x: 0px;
+  --bg-offset-y: 0px;
   min-height: 100vh;
+  animation: none;
+  background-position:
+    calc(var(--bg-offset-x) * 0.2) calc(var(--bg-offset-y) * 0.2),
+    calc(var(--bg-offset-x) * -0.25) calc(var(--bg-offset-y) * -0.25);
+}
+
+@keyframes grid-move {
+  0% { background-position: 0 0; }
+  50% { background-position: 40px 32px; }
+  100% { background-position: 0 0; }
 }
 
 a { color: inherit; text-decoration: none; }
