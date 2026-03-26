@@ -117,10 +117,38 @@ function navbarScroll() {
   });
 }
 
+// Parallax suave del fondo al mover el mouse
+function iniciarParallaxFondo() {
+  var targetX = 0;
+  var targetY = 0;
+  var currentX = 0;
+  var currentY = 0;
+  var maxShift = 18; // px
+  var easing = 0.12;
+
+  window.addEventListener('mousemove', function (event) {
+    var x = (event.clientX / window.innerWidth - 0.5) * 2;
+    var y = (event.clientY / window.innerHeight - 0.5) * 2;
+    targetX = x * maxShift;
+    targetY = y * maxShift;
+  });
+
+  function animate() {
+    currentX += (targetX - currentX) * easing;
+    currentY += (targetY - currentY) * easing;
+    document.body.style.setProperty('--bg-offset-x', currentX + 'px');
+    document.body.style.setProperty('--bg-offset-y', currentY + 'px');
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   iniciarAnimacionesDeScroll();
   animarConsola();
   iniciarCarruseles();
   navbarScroll();
+  iniciarParallaxFondo();
   toggleMenuMovil();
 });
