@@ -162,6 +162,8 @@ main { width: min(1160px, 92%); margin: 18px auto 0; }
 .tag--py { color: #79d2ff; }
 .tag--html { color: #ff9f70; }
 .tag--css { color: #a9d0ff; }
+.tag--ai { color: #c084fc; }
+.tag--live { color: #6ee7b7; }
 .tag--ext, .tag--cv, .tag--lan, .tag--crud, .tag--fork { color: var(--text-dim); }
 
 .section { padding: 30px; margin-top: 20px; }
@@ -191,17 +193,22 @@ main { width: min(1160px, 92%); margin: 18px auto 0; }
 .skill-item__logo { width: 22px; height: 22px; }
 .skill-item__name { font-size: .9rem; color: var(--text-dim); }
 
-.projects__grid--featured, .projects__grid--secondary { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.projects__grid--featured { margin-bottom: 16px; }
+.projects__grid--featured, .projects__grid--secondary { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.projects__grid--featured { margin-bottom: 20px; }
 .project-card {
   background: var(--surface-2);
-  border: 1px solid var(--border);
-  border-radius: 12px;
+  border: 1px solid #333d4d;
+  border-radius: 14px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
 }
-.project-card:hover { border-color: #4a5f77; transform: translateY(-2px); transition: .2s ease; }
+.project-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,.5), 0 0 0 1px rgba(65,242,154,.12);
+}
 .project-card__image-wrapper { position: relative; aspect-ratio: 16/9; }
 .project-card__image { width: 100%; height: 100%; object-fit: cover; }
 .project-card__badge {
@@ -210,10 +217,101 @@ main { width: min(1160px, 92%); margin: 18px auto 0; }
   background: var(--accent); color: #03110d;
 }
 .project-card__badge--live { background: var(--danger); color: white; }
-.project-card__body { padding: 14px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
-.project-card__title { font-size: 1.05rem; }
-.project-card__desc, .project-card__features li { color: var(--text-dim); line-height: 1.55; font-size: .9rem; }
-.project-card__links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; }
+.project-card__badge--hackathon {
+  background: linear-gradient(130deg, #f59e0b, #fbbf24);
+  color: #1a0a00;
+  font-size: .72rem;
+  letter-spacing: .03em;
+}
+/* Badge de 37 estrellas — conservado en el HTML del Scribd */
+.project-card__badge--stars {
+  background: linear-gradient(130deg, #1a1200, #2d1f00);
+  border: 1px solid #f59e0b;
+  color: #fbbf24;
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .04em;
+}
+.project-card__body { padding: 18px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+.project-card__title-row { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.project-card__title { font-size: 1.12rem; font-weight: 700; color: var(--text); }
+.project-card__desc { color: var(--text-dim); line-height: 1.65; font-size: .92rem; }
+.project-card__features li { color: var(--text-dim); line-height: 1.7; font-size: .88rem; }
+.project-card__links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; padding-top: 4px; }
+
+/* Tarjeta hero: ocupa todo el ancho de la grilla featured pero misma altura */
+.project-card--hero {
+  grid-column: 1 / -1;
+  flex-direction: row;
+}
+.project-card--hero .project-card__image-wrapper {
+  width: 45%;
+  flex-shrink: 0;
+  aspect-ratio: unset;
+}
+.project-card--hero .project-card__body {
+  flex: 1;
+}
+
+/* Glow dorado animado en el borde de la card de Scribd */
+.project-card--scribd {
+  border-color: rgba(245, 158, 11, 0.35);
+  animation: scribd-glow 3s ease-in-out infinite;
+}
+@keyframes scribd-glow {
+  0%, 100% { box-shadow: 0 0 0 1px rgba(245,158,11,.2), 0 12px 36px rgba(0,0,0,.35); }
+  50%       { box-shadow: 0 0 0 1px rgba(245,158,11,.5), 0 12px 40px rgba(245,158,11,.15); }
+}
+.project-card--scribd:hover {
+  border-color: rgba(245, 158, 11, 0.7) !important;
+  animation: none;
+}
+
+/* Stat de estrellas con contador animado */
+.star-stat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(130deg, rgba(245,158,11,.1), rgba(251,191,36,.06));
+  border: 1px solid rgba(245,158,11,.3);
+  border-radius: 10px;
+  padding: 10px 14px;
+  width: fit-content;
+}
+.star-stat__count {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #fbbf24;
+  min-width: 2ch;
+  text-align: right;
+  line-height: 1;
+}
+.star-stat__label {
+  font-size: .82rem;
+  color: var(--text-dim);
+  line-height: 1.4;
+  max-width: 28ch;
+}
+
+/* Badge inline de hackathon dentro del título */
+.hackathon-badge {
+  display: inline-block;
+  font-size: .72rem;
+  font-weight: 700;
+  background: linear-gradient(130deg, rgba(245,158,11,.15), rgba(251,191,36,.1));
+  border: 1px solid rgba(245,158,11,.4);
+  color: #fbbf24;
+  border-radius: 999px;
+  padding: 3px 10px;
+  white-space: nowrap;
+}
+
+
+
+/* Fade-in de la imagen del carrusel */
+.carousel__img { transition: opacity .35s ease; }
+.carousel__img.is-fading { opacity: 0; }
 
 .carousel__dots {
   position: absolute; left: 50%; bottom: 10px; transform: translateX(-50%);
@@ -246,8 +344,12 @@ main { width: min(1160px, 92%); margin: 18px auto 0; }
 
 @media (max-width: 920px) {
   .hero, .about__content { grid-template-columns: 1fr; }
-  .hero__bg-code { grid-column: 1; grid-row: auto; }
+  /* Oculta el bloque de código decorativo en móvil — rompe el layout */
+  .hero__bg-code { display: none; }
   .projects__grid--featured, .projects__grid--secondary { grid-template-columns: 1fr; }
+  /* En móvil la tarjeta hero vuelve a ser vertical */
+  .project-card--hero { flex-direction: column; }
+  .project-card--hero .project-card__image-wrapper { width: 100%; aspect-ratio: 16/9; }
 }
 
 @media (max-width: 680px) {
