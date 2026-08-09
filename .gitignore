@@ -1,3 +1,7 @@
+# Ignorar carpetas locales de agentes y grafos
 .agents
-.graphify-out
+.agents/
 graphify-out
+graphify-out/
+.graphify-out
+.graphify-out/
