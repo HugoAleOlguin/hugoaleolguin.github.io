@@ -262,9 +262,8 @@
 
     cursor.innerHTML =
       '<svg class="simulated-cursor__icon" viewBox="0 0 23 28" fill="none">' +
-        '<path d="M10.7 15.5L5.7 25.5L0.7 1L21.2 13L10.7 15.5Z" fill="#34d399" stroke="#ffffff" stroke-width="1.5"/>' +
-      '</svg>' +
-      '<span class="simulated-cursor__label" style="background-color: #34d399;">Tú</span>';
+        '<path d="M10.7 15.5L5.7 25.5L0.7 1L21.2 13L10.7 15.5Z" fill="#f43f5e" stroke="#ffffff" stroke-width="1.5"/>' +
+      '</svg>';
 
     document.body.appendChild(cursor);
 
