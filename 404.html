@@ -4,57 +4,57 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>404 · Hugo Olguin</title>
-  <meta name="description" content="Página no encontrada de Hugo Olguin." />
+  <title>404 · Página no encontrada — Hugo Olguin</title>
+  <meta name="description" content="Página no encontrada del portfolio de Hugo Olguin." />
 
+  <!-- Tipografía Inter de Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
     rel="stylesheet" />
+
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
   <a class="skip-link" href="#not-found">Saltar al contenido</a>
 
-  <nav id="navbar" class="navbar" aria-label="Navegación principal">
-    <span class="navbar__logo">hugoaleolguin<span class="accent">.github</span>.io</span>
+  <!-- Top Navbar Minimalista -->
+  <div class="navbar-wrapper">
+    <nav class="navbar" aria-label="Navegación principal">
+      <a href="./#inicio" class="navbar__brand" aria-label="Hugo Olguin Inicio">
+        <span class="navbar__brand-dot"></span>
+        <span>hugoaleolguin</span>
+      </a>
 
-    <button class="navbar__toggle" type="button" aria-expanded="false" aria-controls="nav-links"
-      aria-label="Abrir menú">
-      ☰
-    </button>
+      <div class="navbar__links">
+        <a href="./#sobre-mi" class="navbar__link">Sobre mí</a>
+        <a href="./#proyectos" class="navbar__link">Proyectos</a>
+        <a href="./#contacto" class="navbar__link">Contacto</a>
+      </div>
+    </nav>
+  </div>
 
-    <ul class="navbar__links" id="nav-links">
-      <li><a href="./#inicio">Inicio</a></li>
-      <li><a href="./#sobre-mi">Sobre mí</a></li>
-      <li><a href="./#proyectos">Proyectos</a></li>
-      <li><a href="./#contacto">Contacto</a></li>
-    </ul>
-  </nav>
+  <main id="not-found" style="min-height: calc(100vh - 220px); display: flex; align-items: center; justify-content: center;">
+    <div class="contact-card reveal visible" style="text-align: center; max-width: 580px; width: 100%;">
+      <span class="section__label" style="font-size: 1rem;">Error 404</span>
+      <h1 class="section__title">Página no encontrada</h1>
 
-  <main id="not-found" class="error-page">
-    <section class="error-card fade-in-up visible" aria-labelledby="error-title">
-      <p class="error-code">404</p>
-      <h1 id="error-title" class="error-title">Página no encontrada</h1>
-
-      <p class="error-message">
-        Volvé al portfolio para seguir viendo mis proyectos.
+      <p class="contact-card__text" style="margin: 0 auto;">
+        La página que estás buscando no existe o fue movida.
       </p>
 
-      <div class="hero__cta">
+      <div class="hero__actions" style="justify-content: center; margin-top: 12px;">
         <a href="./" class="btn btn--primary">Volver al inicio</a>
         <a href="./#proyectos" class="btn btn--secondary">Ir a proyectos</a>
       </div>
-    </section>
+    </div>
   </main>
 
-  <footer class="footer">
-    <p>
-      <strong>Hugo Olguin</strong> ·
-      <span class="accent">hugoaleolguin.github.io</span>
-    </p>
+  <footer class="footer width-limit">
+    <p>Hugo Olguin · Software Developer</p>
+    <p>hugoaleolguin.github.io</p>
   </footer>
 
   <script src="main.js"></script>
