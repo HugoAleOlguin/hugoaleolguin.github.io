@@ -17,9 +17,14 @@
     rel="stylesheet" />
 
   <link rel="stylesheet" href="style.css" />
+  <!-- Three.js para renderizado 3D real de alta calidad -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 
 <body>
+  <!-- Barra de progreso de lectura / scroll fija en la parte superior -->
+  <div id="scroll-progress-bar" class="scroll-progress-bar" aria-hidden="true"></div>
+
   <a class="skip-link" href="#inicio">Saltar al contenido</a>
 
   <!-- Floating Dock Navbar Ultra-Limpio -->
@@ -66,33 +71,42 @@
   <main id="contenido">
     <!-- Hero Section (Presentación 100vh Full-Viewport) -->
     <section id="inicio" class="hero reveal">
-      <div class="hero__content">
-        <!-- Destacado Prominente de +100 Estrellas GitHub -->
-        <div class="hero__stars-badge">
-          <svg class="hero__stars-icon" viewBox="0 0 24 24">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-          </svg>
-          <span>+100 Estrellas acumuladas en GitHub</span>
+      <div class="hero__grid">
+        <!-- Columna Izquierda: Presentación principal -->
+        <div class="hero__content">
+          <!-- Destacado Prominente de +100 Estrellas GitHub -->
+          <div class="hero__stars-badge">
+            <svg class="hero__stars-icon" viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+            <span>+100 Estrellas acumuladas en GitHub</span>
+          </div>
+
+          <h1 class="hero__title">
+            Hugo Ale Olguin
+          </h1>
+
+          <p class="hero__subtitle">
+            Estudiante de <em class="text-serif text-emerald">Desarrollo de Software</em> enfocado en construir <em class="text-serif text-purple">herramientas reales</em>, proyectos de código abierto e interfaces web de <em class="text-serif text-amber">alta usabilidad</em>.
+          </p>
+
+          <div class="hero__actions">
+            <a href="#proyectos" class="btn btn--primary">
+              <span>Ver mis proyectos</span>
+              <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a href="#contacto" class="btn btn--secondary">
+              <span>Contactarme</span>
+            </a>
+          </div>
         </div>
 
-        <h1 class="hero__title">
-          Hugo Ale Olguin
-        </h1>
-
-        <p class="hero__subtitle">
-          Estudiante de <em class="text-serif text-emerald">Desarrollo de Software</em> enfocado en construir <em class="text-serif text-purple">herramientas reales</em>, proyectos de código abierto e interfaces web de <em class="text-serif text-amber">alta usabilidad</em>.
-        </p>
-
-        <div class="hero__actions">
-          <a href="#proyectos" class="btn btn--primary">
-            <span>Ver mis proyectos</span>
-            <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-          <a href="#contacto" class="btn btn--secondary">
-            <span>Contactarme</span>
-          </a>
+        <!-- Columna Derecha: Cubo Rubik 3D Autónomo Indestructible (rubik-motion.js) -->
+        <div class="hero__rubik-wrapper">
+          <div class="rubik-aura"></div>
+          <div id="rubik-canvas-container" class="rubik-canvas-container"></div>
         </div>
       </div>
 
@@ -129,18 +143,27 @@
             Me apasiona el desarrollo web <em class="text-serif text-cyan">full-stack</em>, la <em class="text-serif text-purple">Inteligencia Artificial</em> aplicada y el diseño de interfaces limpias que resuelvan necesidades verdaderas.
           </p>
 
-          <!-- Métricas Limpias -->
+          <!-- Métricas Limpias Presentadas en Columna -->
           <div class="about__metrics">
             <div class="metric-card metric-card--gold">
-              <span class="metric__number metric__number--gold" data-target="100">0</span>
+              <div class="metric__header">
+                <svg class="metric__star-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                <span class="metric__number metric__number--gold" data-target="100">0</span>
+              </div>
               <span class="metric__label metric__label--gold">GitHub Stars acumuladas</span>
             </div>
             <div class="metric-card">
-              <span class="metric__number" data-target="10">0</span>
+              <div class="metric__header">
+                <span class="metric__number" data-target="10">0</span>
+              </div>
               <span class="metric__label">Repositorios públicos</span>
             </div>
             <div class="metric-card">
-              <span class="metric__number" data-target="3">0</span>
+              <div class="metric__header">
+                <span class="metric__number" data-target="3">0</span>
+              </div>
               <span class="metric__label">Años programando</span>
             </div>
           </div>
@@ -678,6 +701,7 @@
 
   <script src="main.js"></script>
   <script src="animations.js"></script>
+  <script src="rubik3d.js"></script>
 </body>
 
 </html>

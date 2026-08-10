@@ -501,8 +501,41 @@ function iniciarModalProyectos() {
   });
 }
 
+// ===== Barra de Progreso de Scroll Superior =====
+function iniciarBarraProgresoScroll() {
+  var progressBar = document.getElementById('scroll-progress-bar');
+  if (!progressBar) return;
+
+  function actualizarProgreso() {
+    var scrollTop = window.scrollY || document.documentElement.scrollTop || 0;
+    var docHeight = (document.documentElement.scrollHeight || document.body.scrollHeight) - window.innerHeight;
+    var porcentaje = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = Math.min(100, Math.max(0, porcentaje)) + '%';
+  }
+
+  window.addEventListener('scroll', actualizarProgreso, { passive: true });
+  window.addEventListener('resize', actualizarProgreso, { passive: true });
+  actualizarProgreso();
+}
+
+// ===== Efecto Neón Interactivo que Sigue al Mouse en Badges y Tarjetas =====
+function iniciarEfectoNeonBadges() {
+  var elementos = document.querySelectorAll('.skill-pill, .metric-card, .hero__stars-badge, .contact-button');
+  elementos.forEach(function (el) {
+    el.addEventListener('mousemove', function (e) {
+      var rect = el.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      var y = e.clientY - rect.top;
+      el.style.setProperty('--mouse-x', x.toFixed(1) + 'px');
+      el.style.setProperty('--mouse-y', y.toFixed(1) + 'px');
+    });
+  });
+}
+
 // ===== Inicialización General =====
 document.addEventListener('DOMContentLoaded', function () {
+  iniciarBarraProgresoScroll();
+  iniciarEfectoNeonBadges();
   iniciarScrollRevealYDock();
   iniciarContadores();
   iniciarNavegacionTarjetas();

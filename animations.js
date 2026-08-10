@@ -218,12 +218,12 @@
 
 
   /* ══════════════════════════════════════════════════════════════════
-   * 5. HERO PARALLAX — desplazamiento muy suave del hero al scroll
+   * 5. HERO PARALLAX — desplazamiento y desvanecimiento suave al scroll
    * ══════════════════════════════════════════════════════════════════ */
   (function initParallax() {
     if (prefersReduced) return;
-    var hero = document.querySelector('.hero__content');
-    if (!hero) return;
+    var heroEls = document.querySelectorAll('.hero__content, .hero__rubik-wrapper');
+    if (!heroEls.length) return;
 
     var ticking = false;
     window.addEventListener('scroll', function () {
@@ -231,8 +231,11 @@
         requestAnimationFrame(function () {
           var sy = window.scrollY;
           var offset = sy * 0.18;
-          hero.style.transform = 'translateY(' + offset + 'px)';
-          hero.style.opacity = Math.max(0, 1 - sy / 520) + '';
+          var opacity = Math.max(0, 1 - sy / 520) + '';
+          heroEls.forEach(function (el) {
+            el.style.transform = 'translateY(' + offset + 'px)';
+            el.style.opacity = opacity;
+          });
           ticking = false;
         });
         ticking = true;
@@ -307,4 +310,58 @@
     titles.forEach(function (t) { obs.observe(t); });
   })();
 
+
+  /* ══════════════════════════════════════════════════════════════════
+   * 8. BENTO SPOTLIGHT — seguimiento de haz de luz ambiental en tarjetas
+   * ══════════════════════════════════════════════════════════════════ */
+  (function initBentoSpotlight() {
+    if (prefersReduced) return;
+    var bentoCards = document.querySelectorAll('[data-spotlight]');
+    if (!bentoCards.length) return;
+
+    bentoCards.forEach(function (card) {
+      card.addEventListener('mousemove', function (e) {
+        var rect = card.getBoundingClientRect();
+        var x = e.clientX - rect.left;
+        var y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', x + 'px');
+        card.style.setProperty('--mouse-y', y + 'px');
+      });
+    });
+  })();
+
+
+  /* ══════════════════════════════════════════════════════════════════
+   * 9. BENTO ACCENT PICKER — laboratorio de acentos interactivos
+   * ══════════════════════════════════════════════════════════════════ */
+  (function initBentoAccentPicker() {
+    var buttons = document.querySelectorAll('.accent-btn');
+    var codeVal = document.getElementById('accent-code-val');
+    if (!buttons.length) return;
+
+    var colorMap = {
+      indigo: { main: '#6366f1', light: '#818cf8' },
+      emerald: { main: '#34d399', light: '#6ee7b7' },
+      purple: { main: '#c084fc', light: '#e9d5ff' },
+      amber: { main: '#fbbf24', light: '#fde68a' }
+    };
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        buttons.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        var key = btn.dataset.accent;
+        var config = colorMap[key];
+        if (config) {
+          document.documentElement.style.setProperty('--accent', config.main);
+          document.documentElement.style.setProperty('--accent-light', config.light);
+          if (codeVal) {
+            codeVal.textContent = '--accent: ' + config.main;
+          }
+        }
+      });
+    });
+  })();
+
 })();
+
