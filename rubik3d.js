@@ -339,8 +339,16 @@ function initRubik3D() {
 
   setInterval(triggerAutonomousTurn, 3200);
 
-  /* ─── 8. Loop de Animación Principal (Render & Smooth Drift) ─── */
+  /* ─── 8. Loop de Animación Principal (Render & Smooth Drift con Viewport Observer) ─── */
+  var isHeroVisible = true;
+  var isAnimating = false;
+
   function animate() {
+    if (!isHeroVisible) {
+      isAnimating = false;
+      return;
+    }
+    isAnimating = true;
     requestAnimationFrame(animate);
 
     currentRotX += (targetRotX - currentRotX) * 0.08;
@@ -359,6 +367,14 @@ function initRubik3D() {
 
     renderer.render(scene, camera);
   }
+
+  var heroObserver = new IntersectionObserver(function (entries) {
+    isHeroVisible = entries[0].isIntersecting;
+    if (isHeroVisible && !isAnimating) {
+      animate();
+    }
+  }, { threshold: 0.05 });
+  heroObserver.observe(container);
 
   animate();
 

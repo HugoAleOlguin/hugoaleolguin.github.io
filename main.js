@@ -1,23 +1,5 @@
 // Base de datos de proyectos enriquecida con galerías completas de imágenes
 var PROYECTOS_DATA = {
-  "whatsapp-prime": {
-    title: "WhatsApp Prime — Bot Autónomo & Clon Web",
-    badges: ["Bot Autónomo IA", "Proyecto Privado"],
-    desc: "Clon de WhatsApp Web conectado a un bot de IA autónomo que responde mensajes con mi estilo y tono. Incluye dashboard web en vivo con SSE, anti-detección y recuperación de mensajes borrados.",
-    features: [
-      "Bot Autónomo con IA (Gemini): Simulación de estilo y tono con delays humanos de lectura y escritura.",
-      "Dashboard en Tiempo Real: Interfaz clon con streaming por SSE, escaneo de QR y monitor de actividad.",
-      "Bóveda & Anti-Delete: Captura y visualización de mensajes y estados efímeros eliminados."
-    ],
-    tags: ["TypeScript", "Node.js", "Gemini IA", "WebSockets", "Express"],
-    slides: [
-      "assets/screenshots/whatsapp-prime/whatsapp-prime-1.jpg",
-      "assets/screenshots/whatsapp-prime/whatsapp-prime-2.jpg",
-      "assets/screenshots/whatsapp-prime/whatsapp-prime-3.jpg"
-    ],
-    liveUrl: "",
-    githubUrl: ""
-  },
   scribd: {
     title: "Scribd Downloader Premium",
     badges: ["100+ GitHub Stars", "Browser Extension"],
@@ -29,9 +11,9 @@ var PROYECTOS_DATA = {
     ],
     tags: ["JavaScript", "Browser Extension", "Chrome API", "Firefox WebExt"],
     slides: [
-      "assets/screenshots/scribd/scribd (1).png",
-      "assets/screenshots/scribd/scribd (2).png",
-      "assets/screenshots/scribd/scribd (3).png"
+      "assets/screenshots/scribd/scribd (1).webp",
+      "assets/screenshots/scribd/scribd (2).webp",
+      "assets/screenshots/scribd/scribd (3).webp"
     ],
     liveUrl: "",
     githubUrl: "https://github.com/HugoAleOlguin/Scribd-Downloader-Premium"
@@ -47,9 +29,9 @@ var PROYECTOS_DATA = {
     ],
     tags: ["Inteligencia Artificial", "JavaScript", "Vercel", "TailwindCSS"],
     slides: [
-      "assets/screenshots/talentia/talentia-1.png",
-      "assets/screenshots/talentia/talentia-2.png",
-      "assets/screenshots/talentia/talentia-3.png"
+      "assets/screenshots/talentia/talentia-1.webp",
+      "assets/screenshots/talentia/talentia-2.webp",
+      "assets/screenshots/talentia/talentia-3.webp"
     ],
     liveUrl: "https://my-talentia.vercel.app/talentia",
     githubUrl: ""
@@ -65,11 +47,11 @@ var PROYECTOS_DATA = {
     ],
     tags: ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
     slides: [
-      "assets/screenshots/jueguitos/jueguitos (1).png",
-      "assets/screenshots/jueguitos/jueguitos (2).png",
-      "assets/screenshots/jueguitos/jueguitos (3).png",
-      "assets/screenshots/jueguitos/jueguitos (4).png",
-      "assets/screenshots/jueguitos/jueguitos (5).png"
+      "assets/screenshots/jueguitos/jueguitos (1).webp",
+      "assets/screenshots/jueguitos/jueguitos (2).webp",
+      "assets/screenshots/jueguitos/jueguitos (3).webp",
+      "assets/screenshots/jueguitos/jueguitos (4).webp",
+      "assets/screenshots/jueguitos/jueguitos (5).webp"
     ],
     liveUrl: "https://hugoaleolguin.github.io/jueguitos-piola/",
     githubUrl: "https://github.com/HugoAleOlguin/jueguitos-piola"
@@ -85,8 +67,8 @@ var PROYECTOS_DATA = {
     ],
     tags: ["Python", "MediaPipe", "OpenCV", "PyAudio"],
     slides: [
-      "assets/screenshots/mano/mano (1).png",
-      "assets/screenshots/mano/mano (2).png"
+      "assets/screenshots/mano/mano (1).webp",
+      "assets/screenshots/mano/mano (2).webp"
     ],
     liveUrl: "",
     githubUrl: "https://github.com/HugoAleOlguin/Mano_Musical"
@@ -102,9 +84,9 @@ var PROYECTOS_DATA = {
     ],
     tags: ["Python", "Sockets", "Threading", "JSON"],
     slides: [
-      "assets/screenshots/ruleta/ruleta (1).png",
-      "assets/screenshots/ruleta/ruleta (2).png",
-      "assets/screenshots/ruleta/ruleta (3).png"
+      "assets/screenshots/ruleta/ruleta (1).webp",
+      "assets/screenshots/ruleta/ruleta (2).webp",
+      "assets/screenshots/ruleta/ruleta (3).webp"
     ],
     liveUrl: "",
     githubUrl: "https://github.com/HugoAleOlguin/Ruleta-Rusa-Lan"
@@ -120,10 +102,10 @@ var PROYECTOS_DATA = {
     ],
     tags: ["JavaScript", "HTML5", "CSS3", "LocalStorage"],
     slides: [
-      "assets/screenshots/despensa/despensa (1).png",
-      "assets/screenshots/despensa/despensa (2).png",
-      "assets/screenshots/despensa/despensa (3).png",
-      "assets/screenshots/despensa/despensa (4).png"
+      "assets/screenshots/despensa/despensa (1).webp",
+      "assets/screenshots/despensa/despensa (2).webp",
+      "assets/screenshots/despensa/despensa (3).webp",
+      "assets/screenshots/despensa/despensa (4).webp"
     ],
     liveUrl: "",
     githubUrl: "https://github.com/HugoAleOlguin/Despensa-Simple-El-Tato"
@@ -139,10 +121,10 @@ var PROYECTOS_DATA = {
     ],
     tags: ["HTML5", "CSS3", "JavaScript", "Google Maps API"],
     slides: [
-      "assets/screenshots/ortopedia/ortopedia (1).png",
-      "assets/screenshots/ortopedia/ortopedia (2).png",
-      "assets/screenshots/ortopedia/ortopedia (3).png",
-      "assets/screenshots/ortopedia/ortopedia (4).png"
+      "assets/screenshots/ortopedia/ortopedia (1).webp",
+      "assets/screenshots/ortopedia/ortopedia (2).webp",
+      "assets/screenshots/ortopedia/ortopedia (3).webp",
+      "assets/screenshots/ortopedia/ortopedia (4).webp"
     ],
     liveUrl: "https://hugoaleolguin.github.io/Sitio-Otopedia-Backup/",
     githubUrl: "https://github.com/HugoAleOlguin/Sitio-Otopedia-Backup"
@@ -158,9 +140,9 @@ var PROYECTOS_DATA = {
     ],
     tags: ["Python", "PyAutoGUI", "OpenSource", "Localization"],
     slides: [
-      "assets/screenshots/pyclash/pyclash (1).png",
-      "assets/screenshots/pyclash/pyclash (2).png",
-      "assets/screenshots/pyclash/pyclash (3).png"
+      "assets/screenshots/pyclash/pyclash (1).webp",
+      "assets/screenshots/pyclash/pyclash (2).webp",
+      "assets/screenshots/pyclash/pyclash (3).webp"
     ],
     liveUrl: "",
     githubUrl: "https://github.com/HugoAleOlguin/py-clash-bot-spanish"
@@ -176,9 +158,9 @@ var PROYECTOS_DATA = {
     ],
     tags: ["HTML5", "CSS3", "JavaScript"],
     slides: [
-      "assets/screenshots/trailerpelis/trailerpelis-1.png",
-      "assets/screenshots/trailerpelis/trailerpelis-2.png",
-      "assets/screenshots/talentia/talentia-3.png"
+      "assets/screenshots/trailerpelis/trailerpelis-1.webp",
+      "assets/screenshots/trailerpelis/trailerpelis-2.webp",
+      "assets/screenshots/trailerpelis/trailerpelis-3.webp"
     ],
     liveUrl: "https://luszczak.github.io/TrailerPelis/",
     githubUrl: "https://github.com/HugoAleOlguin/TrailerPelis"

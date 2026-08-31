@@ -22,10 +22,12 @@ function initMotionSystem() {
   var isMobile = window.innerWidth < 768;
 
   /* ══════════════════════════════════════════════════════════════════
-   * 1. SCROLL REVEAL — fade-up con stagger por grupo
+   * 1. SCROLL REVEAL — fade-up con stagger por grupo (sin demorar LCP)
    * ══════════════════════════════════════════════════════════════════ */
   (function initScrollReveal() {
-    // Marcar todos los targets con estado inicial
+    if (prefersReduced) return;
+
+    // Solo targets debajo del fold para no retrasar LCP ni First Paint
     var targets = document.querySelectorAll([
       '.section__header',
       '.section__label',
@@ -37,56 +39,28 @@ function initMotionSystem() {
       '.skills-group',
       '.skill-pill',
       '.project-card',
-      '.hero__stars-badge',
-      '.hero__title',
-      '.hero__subtitle',
-      '.hero__actions',
-      '.hero__scroll-indicator',
       '.contact-card',
       '.hackathon-time-badge',
       '.star-stat-box',
-      '.tag-badge',
+      '.tag-badge'
     ].join(','));
 
     targets.forEach(function (el, i) {
-      if (prefersReduced) return;
       el.style.opacity = '0';
-      el.style.transform = 'translateY(28px)';
-      el.style.transition = 'opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1)';
+      el.style.transform = 'translateY(24px)';
+      el.style.transition = 'opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1), transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)';
       el.dataset.revealIndex = i;
     });
-
-    // Hero aparece al cargar (sin necesidad de scroll)
-    function revealHero() {
-      var heroEls = document.querySelectorAll(
-        '.hero__stars-badge, .hero__title, .hero__subtitle, .hero__actions, .hero__scroll-indicator'
-      );
-      heroEls.forEach(function (el, i) {
-        setTimeout(function () {
-          el.style.opacity = '1';
-          el.style.transform = 'translateY(0)';
-        }, 120 + i * 90);
-      });
-    }
-
-    if (prefersReduced) {
-      targets.forEach(function (el) {
-        el.style.opacity = '1';
-        el.style.transform = 'none';
-      });
-      return;
-    }
 
     // Stagger por grupos hermanos
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
         var el = entry.target;
-        // Calcular delay basado en la posición del sibling
         var parent = el.parentElement;
         var siblings = parent ? Array.from(parent.children) : [el];
         var idx = siblings.indexOf(el);
-        var delay = Math.min(idx * 70, 400);
+        var delay = Math.min(idx * 50, 300);
         setTimeout(function () {
           el.style.opacity = '1';
           el.style.transform = 'translateY(0)';
@@ -94,20 +68,13 @@ function initMotionSystem() {
         observer.unobserve(el);
       });
     }, {
-      threshold: 0.12,
-      rootMargin: '0px 0px -40px 0px',
+      threshold: 0.1,
+      rootMargin: '0px 0px -30px 0px'
     });
 
     targets.forEach(function (el) {
       observer.observe(el);
     });
-
-    // Hero en carga
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', revealHero);
-    } else {
-      setTimeout(revealHero, 80);
-    }
   })();
 
 
