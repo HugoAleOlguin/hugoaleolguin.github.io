@@ -403,11 +403,23 @@ function loadAndInitRubik3D() {
   }
 }
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', function () {
-    setTimeout(loadAndInitRubik3D, 50);
-  });
+var rubikLoaded = false;
+function triggerRubikLoad() {
+  if (rubikLoaded) return;
+  rubikLoaded = true;
+  loadAndInitRubik3D();
+}
+
+// Cargar al primer movimiento del usuario o cuando el hilo principal esté en reposo (idle)
+['scroll', 'mousemove', 'touchstart', 'pointerdown'].forEach(function (evt) {
+  window.addEventListener(evt, triggerRubikLoad, { passive: true, once: true });
+});
+
+if ('requestIdleCallback' in window) {
+  window.requestIdleCallback(function () {
+    setTimeout(triggerRubikLoad, 600);
+  }, { timeout: 1800 });
 } else {
-  setTimeout(loadAndInitRubik3D, 50);
+  setTimeout(triggerRubikLoad, 1000);
 }
 
