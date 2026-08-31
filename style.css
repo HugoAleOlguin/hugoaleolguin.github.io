@@ -1467,23 +1467,26 @@ main {
 /* Layer 1: Tipografía Arquitectónica Gigante Directamente Detrás de la Foto */
 .contact-backdrop-text {
   position: absolute;
-  top: 36%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: clamp(3.8rem, 13.5vw, 9.6rem);
+  top: 35%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: clamp(2.4rem, 8.5vw, 6.8rem);
   font-weight: 900;
   font-family: 'Inter', -apple-system, sans-serif;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.02em;
   text-transform: uppercase;
   white-space: nowrap;
-  -webkit-text-stroke: 1.8px rgba(255, 255, 255, 0.1);
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.12);
   color: transparent;
   z-index: 1;
   pointer-events: none;
   user-select: none;
   line-height: 1;
-  width: 100%;
-  text-align: center;
 }
 
 .contact-avatar-wrapper {

@@ -586,42 +586,6 @@ function iniciarFiltrosYVerMasProyectos() {
   applyVisibility();
 }
 
-// ===== 5. Contacto Prime: Copiar Email Interactivo =====
-function iniciarContactoPrime() {
-  var copyBtn = document.getElementById('btn-copy-email');
-  var badge = document.getElementById('email-badge-status');
-  var email = 'hugoolguin777@gmail.com';
-
-  if (copyBtn && badge) {
-    copyBtn.addEventListener('click', function () {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(email).then(mostrarCopiado);
-      } else {
-        var textArea = document.createElement('textarea');
-        textArea.value = email;
-        document.body.appendChild(textArea);
-        textArea.select();
-        try {
-          document.execCommand('copy');
-          mostrarCopiado();
-        } catch (err) {
-          window.location.href = 'mailto:' + email;
-        }
-        document.body.removeChild(textArea);
-      }
-    });
-
-    function mostrarCopiado() {
-      badge.textContent = '¡Copiado! ✓';
-      badge.classList.add('contact-card-btn__badge--copied');
-      setTimeout(function () {
-        badge.textContent = 'Copiar';
-        badge.classList.remove('contact-card-btn__badge--copied');
-      }, 2400);
-    }
-  }
-}
-
 // ===== Inicialización General =====
 document.addEventListener('DOMContentLoaded', function () {
   iniciarBarraProgresoScroll();
@@ -631,5 +595,4 @@ document.addEventListener('DOMContentLoaded', function () {
   iniciarNavegacionTarjetas();
   iniciarModalProyectos();
   iniciarFiltrosYVerMasProyectos();
-  iniciarContactoPrime();
 });
