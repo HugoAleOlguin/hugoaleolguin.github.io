@@ -1424,50 +1424,26 @@ main {
   box-sizing: border-box;
 }
 
-/* Layer 1: Tipografía Arquitectónica Gigante Detrás de la Foto */
-.contact-backdrop-text {
-  position: absolute;
-  top: 60px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: clamp(3.2rem, 11.5vw, 8.8rem);
-  font-weight: 900;
-  font-family: 'Inter', -apple-system, sans-serif;
-  letter-spacing: -0.04em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.07);
-  color: transparent;
-  z-index: 1;
-  pointer-events: none;
-  user-select: none;
-  line-height: 1;
-  width: 100%;
-  max-width: 100%;
-  overflow: hidden;
-  text-align: center;
-}
-
 /* Halo de Iluminación Ambiental Atmosférica */
 .contact-ambient-glow {
   position: absolute;
   top: 120px;
   left: 50%;
   transform: translateX(-50%);
-  width: min(650px, 92vw);
-  height: 520px;
+  width: min(700px, 94vw);
+  height: 540px;
   background: radial-gradient(
     circle,
-    rgba(99, 102, 241, 0.2) 0%,
-    rgba(168, 85, 247, 0.1) 45%,
+    rgba(99, 102, 241, 0.22) 0%,
+    rgba(168, 85, 247, 0.12) 45%,
     transparent 75%
   );
-  filter: blur(55px);
+  filter: blur(60px);
   z-index: 1;
   pointer-events: none;
 }
 
-/* Header de Contacto y Status Row */
+/* Header de Contacto */
 .contact-header-wrap {
   position: relative;
   z-index: 3;
@@ -1476,35 +1452,104 @@ main {
   width: 100%;
 }
 
-.contact-status-row {
+/* Layer 2: Escenario Central (Foto Grande + Texto Detrás + Badges Flotantes) */
+.contact-avatar-stage {
+  position: relative;
+  z-index: 2;
   display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 12px;
-  margin-top: 14px;
-  flex-wrap: wrap;
+  align-items: flex-end;
+  width: 100%;
+  max-width: 780px;
+  margin: 10px auto 28px;
 }
 
-.contact-status-pill {
+/* Layer 1: Tipografía Arquitectónica Gigante Directamente Detrás de la Foto */
+.contact-backdrop-text {
+  position: absolute;
+  top: 36%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(3.8rem, 13.5vw, 9.6rem);
+  font-weight: 900;
+  font-family: 'Inter', -apple-system, sans-serif;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  -webkit-text-stroke: 1.8px rgba(255, 255, 255, 0.1);
+  color: transparent;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+  width: 100%;
+  text-align: center;
+}
+
+.contact-avatar-wrapper {
+  position: relative;
+  width: min(540px, 92vw);
+  height: auto;
+  display: flex;
+  justify-content: center;
+  z-index: 2;
+}
+
+.contact-avatar-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 25px 55px rgba(0, 0, 0, 0.95));
+  pointer-events: none;
+  user-select: none;
+}
+
+.contact-avatar-fade {
+  position: absolute;
+  bottom: 0;
+  left: -5%;
+  right: -5%;
+  height: 30%;
+  background: linear-gradient(to top, var(--bg) 18%, rgba(5, 6, 8, 0.85) 55%, transparent 100%);
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Badges Flotantes Cinemáticos al Costado de la Foto */
+.contact-float-badge {
+  position: absolute;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 16px;
+  padding: 8px 16px;
   border-radius: var(--radius-full);
-  background: rgba(15, 16, 21, 0.88);
+  background: rgba(15, 16, 21, 0.9);
   border: 1px solid var(--border);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   font-size: 0.82rem;
   font-weight: 600;
-  color: var(--text-muted);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.7);
+  z-index: 4;
+  white-space: nowrap;
+  user-select: none;
 }
 
-.contact-status-pill--active {
+.contact-float-badge--status {
+  top: 28%;
+  left: -10px;
   border-color: rgba(52, 211, 153, 0.45);
   color: #34d399;
-  background: rgba(52, 211, 153, 0.08);
+  animation: float-badge-left 6s ease-in-out infinite alternate;
+}
+
+.contact-float-badge--location {
+  bottom: 22%;
+  right: -10px;
+  border-color: rgba(255, 255, 255, 0.18);
+  color: var(--text);
+  animation: float-badge-right 7s ease-in-out infinite alternate;
 }
 
 .status-pulse-dot {
@@ -1521,51 +1566,22 @@ main {
   50% { transform: scale(1.35); opacity: 0.6; }
 }
 
+@keyframes float-badge-left {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(-6px, -10px); }
+  100% { transform: translate(6px, 6px); }
+}
+
+@keyframes float-badge-right {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(6px, -8px); }
+  100% { transform: translate(-6px, 6px); }
+}
+
 .contact-badge-icon {
   width: 15px;
   height: 15px;
   color: var(--accent-cyan);
-}
-
-/* Layer 2: Escenario Fotográfico Central (Grande, Estático y Protagónico) */
-.contact-avatar-stage {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  width: 100%;
-  max-width: 600px;
-  margin: 5px auto 24px;
-}
-
-.contact-avatar-wrapper {
-  position: relative;
-  width: min(440px, 88vw);
-  height: auto;
-  display: flex;
-  justify-content: center;
-}
-
-.contact-avatar-img {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  display: block;
-  filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.9));
-  pointer-events: none;
-  user-select: none;
-}
-
-.contact-avatar-fade {
-  position: absolute;
-  bottom: 0;
-  left: -5%;
-  right: -5%;
-  height: 30%;
-  background: linear-gradient(to top, var(--bg) 18%, rgba(5, 6, 8, 0.85) 55%, transparent 100%);
-  pointer-events: none;
-  z-index: 3;
 }
 
 /* Layer 3: Contenido y Tarjetas de Contacto */
@@ -1573,7 +1589,7 @@ main {
   position: relative;
   z-index: 3;
   width: 100%;
-  max-width: 780px;
+  max-width: 920px;
   margin: 0 auto;
 }
 
@@ -1588,17 +1604,19 @@ main {
 /* Grilla Bento de Tarjetas de Contacto */
 .contact-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
   width: 100%;
-  margin-bottom: 40px;
+  max-width: 920px;
+  margin: 0 auto 40px;
 }
 
 .contact-card-btn {
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 14px 18px;
+  padding: 16px 20px;
+  min-height: 72px;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
@@ -1608,6 +1626,8 @@ main {
   position: relative;
   overflow: hidden;
   text-align: left;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .contact-card-btn:hover {
@@ -1618,8 +1638,8 @@ main {
 }
 
 .contact-card-btn__icon-box {
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   border-radius: var(--radius-sm);
   background: rgba(255, 255, 255, 0.04);
   display: flex;
@@ -1665,15 +1685,16 @@ main {
   gap: 2px;
   flex: 1;
   min-width: 0;
+  overflow: hidden;
 }
 
 .contact-card-btn__platform {
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   font-family: 'JetBrains Mono', monospace;
   font-weight: 600;
   color: var(--text-dim);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
 }
 
 .contact-card-btn__handle {
@@ -1700,9 +1721,9 @@ main {
 
 .contact-card-btn__badge {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   font-weight: 700;
-  padding: 4px 10px;
+  padding: 5px 12px;
   border-radius: var(--radius-full);
   background: rgba(99, 102, 241, 0.15);
   border: 1px solid rgba(99, 102, 241, 0.4);
@@ -1906,8 +1927,8 @@ main {
     padding: 60px 0 25px;
   }
   .contact-backdrop-text {
-    font-size: clamp(2rem, 9.5vw, 4.2rem);
-    top: 30px;
+    font-size: clamp(2.4rem, 11vw, 4.6rem);
+    top: 35%;
   }
   .contact-ambient-glow {
     top: 80px;
@@ -1917,24 +1938,42 @@ main {
   .contact-header-wrap {
     margin-bottom: 16px;
   }
-  .contact-status-row {
-    gap: 8px;
-    margin-top: 10px;
-  }
-  .contact-status-pill {
-    font-size: 0.74rem;
-    padding: 5px 12px;
-  }
   .contact-avatar-stage {
-    margin: 5px auto 18px;
+    margin: 5px auto 20px;
+    width: 100%;
   }
   .contact-avatar-wrapper {
-    width: min(320px, 85vw);
+    width: min(350px, 90vw);
+  }
+  .contact-float-badge {
+    font-size: 0.72rem;
+    padding: 6px 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.7);
+  }
+  .contact-float-badge--status {
+    top: 18%;
+    left: 0px;
+  }
+  .contact-float-badge--location {
+    bottom: 16%;
+    right: 0px;
   }
   .contact-cards-grid {
     grid-template-columns: 1fr;
-    gap: 10px;
-    margin-bottom: 26px;
+    gap: 12px;
+    margin-bottom: 28px;
+    width: 100%;
+  }
+  .contact-card-btn {
+    padding: 14px 18px;
+    min-height: 64px;
+  }
+  .contact-card-btn__handle {
+    font-size: 0.85rem;
+  }
+  .contact-card-btn__badge {
+    font-size: 0.72rem;
+    padding: 4px 10px;
   }
   .contact-lead-text {
     font-size: 0.94rem;

@@ -636,46 +636,50 @@
     <!-- Contacto Section Prime (Layout Arquitectónico con Foto Central & Tipografía en Capas) -->
     <section id="contacto" class="section section--contact-prime reveal">
       
-      <!-- Fondo de Tipografía Gigante en Capas (Layer 1 - Detrás de la Foto) -->
-      <div class="contact-backdrop-text" aria-hidden="true">
-        <span>HUGO OLGUIN</span>
-      </div>
-
       <!-- Halo de Iluminación Ambiental Atmosférica -->
       <div class="contact-ambient-glow" aria-hidden="true"></div>
 
-      <!-- Header de Sección y Status -->
+      <!-- Header de Sección -->
       <div class="contact-header-wrap">
         <span class="section__label">03 / Contacto</span>
         <h2 class="section__title">Trabajemos juntos</h2>
-        <div class="contact-status-row">
-          <span class="contact-status-pill contact-status-pill--active">
-            <span class="status-pulse-dot"></span>
-            <span>Disponible para proyectos</span>
-          </span>
-          <span class="contact-status-pill">
-            <svg class="contact-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-              <circle cx="12" cy="10" r="3"></circle>
-            </svg>
-            <span>Mendoza, Argentina</span>
-          </span>
-        </div>
       </div>
 
-      <!-- Escena Central: Foto Recortada en Primer Plano (Grande, Estática y Central) -->
+      <!-- Escena Central: Foto Grande con Texto Detrás y Badges Flotantes a los Costados -->
       <div class="contact-avatar-stage">
+        
+        <!-- Texto Gigante en Capas (Layer 1 - Directamente Detrás de la Foto) -->
+        <div class="contact-backdrop-text" aria-hidden="true">
+          <span>HUGO OLGUIN</span>
+        </div>
+
+        <!-- Badge Flotante Izquierdo (Cartelito Flotante) -->
+        <div class="contact-float-badge contact-float-badge--status">
+          <span class="status-pulse-dot"></span>
+          <span>Disponible para proyectos</span>
+        </div>
+
+        <!-- Foto Avatar Principal (Layer 2 - Estática, Grande y Protagónica) -->
         <div class="contact-avatar-wrapper">
           <img 
             src="assets/img/yo.webp" 
             alt="Hugo Ale Olguin" 
             class="contact-avatar-img" 
-            width="750" 
-            height="850" 
+            width="800" 
+            height="900" 
             loading="lazy" 
             decoding="async" 
           />
           <div class="contact-avatar-fade" aria-hidden="true"></div>
+        </div>
+
+        <!-- Badge Flotante Derecho (Cartelito Flotante) -->
+        <div class="contact-float-badge contact-float-badge--location">
+          <svg class="contact-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <span>Mendoza, Argentina</span>
         </div>
       </div>
 
