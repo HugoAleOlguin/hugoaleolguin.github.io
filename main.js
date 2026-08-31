@@ -1,5 +1,23 @@
 // Base de datos de proyectos enriquecida con galerías completas de imágenes
 var PROYECTOS_DATA = {
+  "whatsapp-prime": {
+    title: "WhatsApp Prime — Bot Autónomo & Clon Web",
+    badges: ["Bot Autónomo IA", "Proyecto Privado"],
+    desc: "Clon de WhatsApp Web conectado a un bot de IA autónomo que responde mensajes con mi estilo y tono. Incluye dashboard web en vivo con SSE, anti-detección y recuperación de mensajes borrados.",
+    features: [
+      "Bot Autónomo con IA (Gemini): Simulación de estilo y tono con delays humanos de lectura y escritura.",
+      "Dashboard en Tiempo Real: Interfaz clon con streaming por SSE, escaneo de QR y monitor de actividad.",
+      "Bóveda & Anti-Delete: Captura y visualización de mensajes y estados efímeros eliminados."
+    ],
+    tags: ["TypeScript", "Node.js", "Gemini IA", "WebSockets", "Express"],
+    slides: [
+      "assets/screenshots/whatsapp-prime/whatsapp-prime-1.jpg",
+      "assets/screenshots/whatsapp-prime/whatsapp-prime-2.jpg",
+      "assets/screenshots/whatsapp-prime/whatsapp-prime-3.jpg"
+    ],
+    liveUrl: "",
+    githubUrl: ""
+  },
   scribd: {
     title: "Scribd Downloader Premium",
     badges: ["100+ GitHub Stars", "Browser Extension"],
@@ -311,46 +329,7 @@ function iniciarNavegacionTarjetas() {
   });
 }
 
-// ===== 4. Inclinación 3D Optimizada =====
-function iniciarInclinacion3D() {
-  var tarjetas = document.querySelectorAll('.project-card');
-
-  tarjetas.forEach(function (tarjeta) {
-    var ticking = false;
-    var mouseX = 0;
-    var mouseY = 0;
-
-    tarjeta.addEventListener('mousemove', function (e) {
-      var rect = tarjeta.getBoundingClientRect();
-      mouseX = e.clientX - rect.left;
-      mouseY = e.clientY - rect.top;
-
-      if (!ticking) {
-        window.requestAnimationFrame(function () {
-          var centerX = rect.width / 2;
-          var centerY = rect.height / 2;
-          var rotateX = ((mouseY - centerY) / centerY) * -2.4;
-          var rotateY = ((mouseX - centerX) / centerX) * 2.4;
-
-          tarjeta.style.transform =
-            'perspective(1000px) rotateX(' +
-            rotateX.toFixed(2) +
-            'deg) rotateY(' +
-            rotateY.toFixed(2) +
-            'deg) translateY(-3px)';
-          ticking = false;
-        });
-        ticking = true;
-      }
-    });
-
-    tarjeta.addEventListener('mouseleave', function () {
-      tarjeta.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
-    });
-  });
-}
-
-// ===== 5. Sistema de Modal Motion Black =====
+// ===== 4. Sistema de Modal Motion Black =====
 function iniciarModalProyectos() {
   var modalOverlay = document.getElementById('project-modal');
   var closeBtn = document.getElementById('modal-close-btn');
@@ -366,6 +345,7 @@ function iniciarModalProyectos() {
   var modalTags = document.getElementById('modal-tags');
   var modalBtnLive = document.getElementById('modal-btn-live');
   var modalBtnGithub = document.getElementById('modal-btn-github');
+  var modalPrivateNote = document.getElementById('modal-private-note');
 
   if (!modalOverlay) return;
 
@@ -416,6 +396,7 @@ function iniciarModalProyectos() {
       span.className = 'tag-badge';
       if (badge.includes('100+')) span.className += ' project-card__tag-pill--stars';
       if (badge.includes('Hackathon')) span.className += ' project-card__tag-pill--hackathon';
+      if (badge.includes('Prime') || badge.includes('Flagship')) span.className += ' project-card__tag-pill--prime';
       span.textContent = badge;
       modalBadges.appendChild(span);
     });
@@ -438,7 +419,7 @@ function iniciarModalProyectos() {
       modalTags.appendChild(span);
     });
 
-    // Buttons libres de Emojis
+    // Buttons y Avisos
     if (data.liveUrl) {
       modalBtnLive.style.display = 'inline-flex';
       modalBtnLive.href = data.liveUrl;
@@ -451,6 +432,14 @@ function iniciarModalProyectos() {
       modalBtnGithub.href = data.githubUrl;
     } else {
       modalBtnGithub.style.display = 'none';
+    }
+
+    if (modalPrivateNote) {
+      if (!data.liveUrl && !data.githubUrl) {
+        modalPrivateNote.style.display = 'inline-flex';
+      } else {
+        modalPrivateNote.style.display = 'none';
+      }
     }
 
     modalOverlay.classList.add('active');
@@ -488,6 +477,7 @@ function iniciarModalProyectos() {
   });
 
   if (closeBtn) closeBtn.addEventListener('click', cerrarModal);
+  if (modalPrivateNote) modalPrivateNote.addEventListener('click', cerrarModal);
 
   modalOverlay.addEventListener('click', function (e) {
     if (e.target === modalOverlay) cerrarModal();
@@ -539,6 +529,5 @@ document.addEventListener('DOMContentLoaded', function () {
   iniciarScrollRevealYDock();
   iniciarContadores();
   iniciarNavegacionTarjetas();
-  iniciarInclinacion3D();
   iniciarModalProyectos();
 });

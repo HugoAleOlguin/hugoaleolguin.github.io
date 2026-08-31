@@ -14,7 +14,7 @@
  * respeta prefers-reduced-motion
  */
 
-(function MotionSystem() {
+function initMotionSystem() {
   'use strict';
 
   /* ─── Accessibility guard ──────────────────────────────────────────── */
@@ -152,17 +152,17 @@
 
 
   /* ══════════════════════════════════════════════════════════════════
-   * 3. TILT CARD — perspectiva 3D suave en project-cards (desktop only)
+   * 3. TILT CARD — perspectiva 3D ultra-sutil en project-cards (desktop only)
    * ══════════════════════════════════════════════════════════════════ */
   (function initTilt() {
     if (isMobile || prefersReduced) return;
 
     var cards = document.querySelectorAll('.project-card');
-    var MAX_TILT = 6; // grados máximos
-    var SCALE = 1.025;
+    var MAX_TILT = 2; // grados máximos muy sutiles y elegantes
+    var SCALE = 1.006;
 
     cards.forEach(function (card) {
-      card.style.transition = 'transform 0.1s ease, box-shadow 0.3s ease';
+      card.style.transition = 'transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease';
       card.style.willChange = 'transform';
 
       card.addEventListener('mousemove', function (e) {
@@ -174,18 +174,12 @@
         var rotX = -dy * MAX_TILT;
         var rotY = dx * MAX_TILT;
         card.style.transform =
-          'perspective(900px) rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg) scale(' + SCALE + ')';
-        card.style.boxShadow =
-          '0 32px 64px -16px rgba(0,0,0,0.7), 0 0 40px rgba(99,102,241,0.15)';
+          'perspective(1200px) rotateX(' + rotX.toFixed(2) + 'deg) rotateY(' + rotY.toFixed(2) + 'deg) scale(' + SCALE + ') translateY(-2px)';
       });
 
       card.addEventListener('mouseleave', function () {
-        card.style.transition = 'transform 0.55s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s ease';
-        card.style.transform = 'perspective(900px) rotateX(0) rotateY(0) scale(1)';
-        card.style.boxShadow = '';
-        setTimeout(function () {
-          card.style.transition = 'transform 0.1s ease, box-shadow 0.3s ease';
-        }, 550);
+        card.style.transition = 'transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease';
+        card.style.transform = 'perspective(1200px) rotateX(0) rotateY(0) scale(1) translateY(0)';
       });
     });
   })();
@@ -363,5 +357,11 @@
     });
   })();
 
-})();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initMotionSystem);
+} else {
+  initMotionSystem();
+}
 

@@ -10,7 +10,7 @@
  *  - Giros autónomos continuos suavizados cada ~3.2s.
  */
 
-(function InitRubik3D() {
+function initRubik3D() {
   'use strict';
 
   var container = document.getElementById('rubik-canvas-container');
@@ -371,6 +371,11 @@
     camera.updateProjectionMatrix();
     renderer.setSize(w, h);
   });
+}
 
-})();
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initRubik3D);
+} else {
+  initRubik3D();
+}
 
