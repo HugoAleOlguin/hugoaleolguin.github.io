@@ -8,7 +8,7 @@
   
   --text: #f3f4f6;
   --text-muted: #a1a1aa;
-  --text-dim: #71717a;
+  --text-dim: #9ca3af;
   
   --border: rgba(255, 255, 255, 0.08);
   --border-hover: rgba(255, 255, 255, 0.2);
@@ -220,8 +220,7 @@ ul { list-style: none; }
 .simulated-cursor__label {
   font-size: 0.78rem;
   font-weight: 700;
-  color: #ffffff;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 2px 4px rgba(0, 0, 0, 0.9);
+  color: #050608;
   padding: 4px 12px;
   border-radius: var(--radius-full);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.7);
@@ -476,7 +475,7 @@ main {
   gap: 6px;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.75rem;
-  color: var(--text-dim);
+  color: var(--text-muted);
   text-decoration: none;
   animation: bounce-indicator 2s infinite;
 }
