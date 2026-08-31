@@ -262,10 +262,28 @@
         <h2 class="section__title">Proyectos destacados</h2>
       </div>
 
+      <!-- Filtros Rápidos de Proyectos -->
+      <div class="projects-filters" role="tablist" aria-label="Filtrar proyectos">
+        <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">
+          <span>Todos</span>
+          <span class="filter-count">9</span>
+        </button>
+        <button class="filter-btn" data-filter="destacados" role="tab" aria-selected="false">
+          <span>⭐ Destacados</span>
+          <span class="filter-count">4</span>
+        </button>
+        <button class="filter-btn" data-filter="web-ia" role="tab" aria-selected="false">
+          <span>🌐 Web &amp; IA</span>
+        </button>
+        <button class="filter-btn" data-filter="python-tools" role="tab" aria-selected="false">
+          <span>⚡ Python &amp; Tools</span>
+        </button>
+      </div>
+
       <div class="projects-grid">
 
         <!-- Hero Project #1: Scribd Downloader Premium -->
-        <article class="project-card project-card--hero project-card--scribd" id="proyecto-scribd" data-project-id="scribd">
+        <article class="project-card project-card--hero project-card--scribd" id="proyecto-scribd" data-project-id="scribd" data-category="destacados web-ia python-tools">
           <div class="project-card__preview" data-slides='[
             "assets/screenshots/scribd/scribd (1).webp",
             "assets/screenshots/scribd/scribd (2).webp",
@@ -312,7 +330,7 @@
         </article>
 
         <!-- Hero Project #2: Talentia Hackathon -->
-        <article class="project-card project-card--hero" id="proyecto-talentia" data-project-id="talentia">
+        <article class="project-card project-card--hero" id="proyecto-talentia" data-project-id="talentia" data-category="destacados web-ia">
           <div class="project-card__preview" data-slides='[
             "assets/screenshots/talentia/talentia-1.webp",
             "assets/screenshots/talentia/talentia-2.webp",
@@ -363,7 +381,7 @@
       <div class="projects-secondary-grid">
 
         <!-- Proyecto: Jueguitos Piola -->
-        <article class="project-card" id="proyecto-jueguitos" data-project-id="jueguitos">
+        <article class="project-card" id="proyecto-jueguitos" data-project-id="jueguitos" data-category="destacados web-ia">
           <div class="project-card__preview" data-slides='[
             "assets/screenshots/jueguitos/jueguitos (1).webp",
             "assets/screenshots/jueguitos/jueguitos (2).webp",
@@ -401,7 +419,7 @@
         </article>
 
         <!-- Proyecto: Mano Musical -->
-        <article class="project-card" id="proyecto-mano" data-project-id="mano">
+        <article class="project-card" id="proyecto-mano" data-project-id="mano" data-category="destacados python-tools">
           <div class="project-card__preview" data-slides='[
             "assets/screenshots/mano/mano (1).webp",
             "assets/screenshots/mano/mano (2).webp"
@@ -432,7 +450,7 @@
         </article>
 
         <!-- Proyecto: Ruleta Rusa LAN -->
-        <article class="project-card" id="proyecto-ruleta" data-project-id="ruleta">
+        <article class="project-card" id="proyecto-ruleta" data-project-id="ruleta" data-category="python-tools web-ia">
           <div class="project-card__preview" data-slides='[
             "assets/screenshots/ruleta/ruleta (1).webp",
             "assets/screenshots/ruleta/ruleta (2).webp",
@@ -465,7 +483,7 @@
         </article>
 
         <!-- Proyecto: Despensa Simple -->
-        <article class="project-card" id="proyecto-despensa" data-project-id="despensa">
+        <article class="project-card" id="proyecto-despensa" data-project-id="despensa" data-category="web-ia">
           <div class="project-card__preview" data-slides='[
             "assets/screenshots/despensa/despensa (1).webp",
             "assets/screenshots/despensa/despensa (2).webp",
@@ -500,7 +518,7 @@
         </article>
 
         <!-- Proyecto: Sitio Ortopedia Backup -->
-        <article class="project-card" id="proyecto-ortopedia" data-project-id="ortopedia">
+        <article class="project-card" id="proyecto-ortopedia" data-project-id="ortopedia" data-category="web-ia">
           <div class="project-card__preview" data-slides='[
             "assets/screenshots/ortopedia/ortopedia (1).webp",
             "assets/screenshots/ortopedia/ortopedia (2).webp",
@@ -536,7 +554,7 @@
         </article>
 
         <!-- Proyecto: Py Clash Bot Spanish -->
-        <article class="project-card" id="proyecto-clashbot" data-project-id="clashbot">
+        <article class="project-card" id="proyecto-clashbot" data-project-id="clashbot" data-category="python-tools">
           <div class="project-card__preview" data-slides='[
             "assets/screenshots/pyclash/pyclash (1).webp",
             "assets/screenshots/pyclash/pyclash (2).webp",
@@ -569,7 +587,7 @@
         </article>
 
         <!-- Proyecto: TrailerPelis -->
-        <article class="project-card" id="proyecto-trailerpelis" data-project-id="trailerpelis">
+        <article class="project-card" id="proyecto-trailerpelis" data-project-id="trailerpelis" data-category="web-ia">
           <div class="project-card__preview" data-slides='[
             "assets/screenshots/trailerpelis/trailerpelis-1.webp",
             "assets/screenshots/trailerpelis/trailerpelis-2.webp",
@@ -602,6 +620,16 @@
           </div>
         </article>
 
+      </div>
+
+      <!-- Botón Mostrar Más Proyectos en Mobile -->
+      <div class="projects-show-more-wrapper">
+        <button class="btn-show-more" id="btn-show-more-projects" aria-expanded="false">
+          <span class="btn-show-more__text">Ver todos los proyectos (+5)</span>
+          <svg class="btn-show-more__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M6 9l6 6 6-6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
       </div>
     </section>
 
