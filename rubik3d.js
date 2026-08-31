@@ -389,9 +389,25 @@ function initRubik3D() {
   });
 }
 
+function loadAndInitRubik3D() {
+  if (typeof THREE === 'undefined') {
+    var script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+    script.async = true;
+    script.onload = function () {
+      initRubik3D();
+    };
+    document.head.appendChild(script);
+  } else {
+    initRubik3D();
+  }
+}
+
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initRubik3D);
+  document.addEventListener('DOMContentLoaded', function () {
+    setTimeout(loadAndInitRubik3D, 50);
+  });
 } else {
-  initRubik3D();
+  setTimeout(loadAndInitRubik3D, 50);
 }
 
