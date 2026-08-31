@@ -1412,78 +1412,332 @@ main {
   font-weight: 600;
 }
 
-/* ===== Sección Contacto (100vh Full Viewport) ===== */
-.section--contact-full {
-  min-height: 100vh;
-  min-height: 100dvh;
+/* ===== Sección Contacto Prime (Escenografía Arquitectónica y Fotografía Central) ===== */
+.section--contact-prime {
+  position: relative;
+  overflow: hidden;
+  padding: 85px 0 35px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: clamp(60px, 8vh, 90px) 0 clamp(20px, 3vh, 35px);
+  align-items: center;
+  text-align: center;
   box-sizing: border-box;
 }
 
-@media (min-width: 993px) and (min-height: 600px) {
-  .section--contact-full {
-    height: 100vh;
-    height: 100dvh;
-  }
+/* Layer 1: Tipografía Arquitectónica Gigante Detrás de la Foto */
+.contact-backdrop-text {
+  position: absolute;
+  top: 45px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: clamp(3.8rem, 13.5vw, 10.5rem);
+  font-weight: 900;
+  font-family: 'Inter', -apple-system, sans-serif;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.08);
+  color: transparent;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
 }
 
-.contact-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 48px;
+/* Halo de Iluminación Ambiental Atmosférica */
+.contact-ambient-glow {
+  position: absolute;
+  top: 140px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(600px, 90vw);
+  height: 480px;
+  background: radial-gradient(
+    circle,
+    rgba(99, 102, 241, 0.22) 0%,
+    rgba(168, 85, 247, 0.12) 40%,
+    transparent 75%
+  );
+  filter: blur(50px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Layer 2: Escenario Fotográfico Central */
+.contact-hero-stage {
+  position: relative;
+  z-index: 2;
   display: flex;
-  flex-direction: column;
-  gap: 24px;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  max-width: 580px;
+  margin: 10px auto 20px;
 }
 
-.contact-card__text {
-  font-size: 1.08rem;
-  color: var(--text-muted);
-  max-width: 54ch;
-  line-height: 1.8;
-}
-
-.contact-links {
+.contact-avatar-wrapper {
+  position: relative;
+  width: clamp(230px, 42vw, 360px);
+  height: auto;
   display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
+  justify-content: center;
+  will-change: transform;
 }
 
-.contact-button {
+.contact-avatar-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.85));
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.contact-avatar-wrapper:hover .contact-avatar-img {
+  transform: scale(1.03) translateY(-4px);
+}
+
+.contact-avatar-fade {
+  position: absolute;
+  bottom: 0;
+  left: -5%;
+  right: -5%;
+  height: 28%;
+  background: linear-gradient(to top, var(--bg) 15%, rgba(5, 6, 8, 0.8) 50%, transparent 100%);
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Badges Flotantes Cinemáticos */
+.contact-float-badge {
+  position: absolute;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 14px 22px;
-  background: rgba(255, 255, 255, 0.03);
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  background: rgba(15, 16, 21, 0.88);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-size: 0.82rem;
+  font-weight: 600;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65);
+  z-index: 4;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.contact-float-badge--status {
+  top: 25%;
+  left: 0;
+  border-color: rgba(52, 211, 153, 0.4);
+  color: #34d399;
+  animation: float-badge-left 6s ease-in-out infinite alternate;
+}
+
+.contact-float-badge--location {
+  bottom: 22%;
+  right: 0;
+  border-color: rgba(255, 255, 255, 0.16);
+  color: var(--text);
+  animation: float-badge-right 7s ease-in-out infinite alternate;
+}
+
+.status-pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #34d399;
+  box-shadow: 0 0 10px #34d399;
+  animation: pulse-dot 2s ease infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}
+
+@keyframes float-badge-left {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(-8px, -12px); }
+  100% { transform: translate(6px, 8px); }
+}
+
+@keyframes float-badge-right {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(8px, -10px); }
+  100% { transform: translate(-6px, 6px); }
+}
+
+.contact-badge-icon {
+  width: 15px;
+  height: 15px;
+  color: var(--accent-cyan);
+}
+
+/* Layer 3: Contenido y Tarjetas de Contacto */
+.contact-content-box {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.section__header--center {
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+.contact-lead-text {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  max-width: 52ch;
+  margin: 0 auto 28px;
+}
+
+/* Grilla Bento de Tarjetas de Contacto */
+.contact-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.contact-card-btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  font-size: 0.94rem;
-  font-weight: 600;
   color: var(--text);
-  transition: all 0.2s ease;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+  text-align: left;
 }
-.contact-button:hover {
-  background: rgba(255, 255, 255, 0.08);
+
+.contact-card-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
   border-color: var(--border-hover);
   transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 12px rgba(99, 102, 241, 0.15);
 }
-.contact-button__icon {
+
+.contact-card-btn__icon-box {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-card-btn__icon-box svg {
   width: 20px;
   height: 20px;
 }
 
-.footer {
-  padding: 32px 0 0;
-  text-align: center;
-  font-size: 0.85rem;
-  color: var(--text-dim);
-  border-top: none;
+.contact-card-btn--github:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.contact-card-btn--reddit:hover {
+  border-color: rgba(255, 87, 0, 0.5);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 14px rgba(255, 87, 0, 0.2);
+}
+.contact-card-btn--reddit .contact-card-btn__icon-box svg {
+  color: #ff5700;
+}
+
+.contact-card-btn--email {
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  background: rgba(99, 102, 241, 0.04);
+  cursor: pointer;
+  width: 100%;
+}
+.contact-card-btn--email:hover {
+  border-color: var(--accent-light);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 16px rgba(99, 102, 241, 0.25);
+}
+.contact-card-btn--email .contact-card-btn__icon-box svg {
+  color: var(--accent-light);
+}
+
+.contact-card-btn__content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.contact-card-btn__platform {
+  font-size: 0.74rem;
   font-family: 'JetBrains Mono', monospace;
-  margin-top: 24px;
+  font-weight: 600;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.contact-card-btn__handle {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.contact-card-btn__arrow {
+  width: 18px;
+  height: 18px;
+  color: var(--text-dim);
+  transition: transform 0.2s ease, color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.contact-card-btn:hover .contact-card-btn__arrow {
+  transform: translate(2px, -2px);
+  color: var(--text);
+}
+
+.contact-card-btn__badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: rgba(99, 102, 241, 0.15);
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  color: var(--accent-light);
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.contact-card-btn__badge--copied {
+  background: rgba(52, 211, 153, 0.2) !important;
+  border-color: rgba(52, 211, 153, 0.6) !important;
+  color: #34d399 !important;
+}
+
+.footer--prime {
+  padding: 24px 0 0;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  border-top: 1px solid var(--border);
+  font-family: 'JetBrains Mono', monospace;
+  width: 100%;
 }
 
 /* ===== Scroll Reveal Animations ===== */
@@ -1658,6 +1912,52 @@ main {
   }
   .projects-show-more-wrapper {
     display: flex;
+  }
+
+  /* Contacto Prime Mobile */
+  .section--contact-prime {
+    padding: 60px 0 25px;
+  }
+  .contact-backdrop-text {
+    font-size: clamp(2.4rem, 11vw, 4.5rem);
+    top: 20px;
+  }
+  .contact-ambient-glow {
+    top: 70px;
+    width: 280px;
+    height: 280px;
+  }
+  .contact-hero-stage {
+    max-width: 100%;
+    margin: 5px auto 16px;
+    position: relative;
+  }
+  .contact-avatar-wrapper {
+    width: clamp(190px, 58vw, 250px);
+  }
+  .contact-float-badge {
+    position: absolute;
+    font-size: 0.68rem;
+    padding: 5px 10px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.7);
+  }
+  .contact-float-badge--status {
+    top: 15%;
+    left: -8px;
+  }
+  .contact-float-badge--location {
+    bottom: 12%;
+    right: -8px;
+  }
+  .contact-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 26px;
+  }
+  .contact-lead-text {
+    font-size: 0.94rem;
+    line-height: 1.65;
+    margin-bottom: 20px;
   }
 }
 
