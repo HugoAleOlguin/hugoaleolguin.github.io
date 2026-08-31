@@ -390,6 +390,7 @@ function initRubik3D() {
 }
 
 function loadAndInitRubik3D() {
+  if (window.innerWidth < 768) return; // En móviles se usa el layout Hero limpio sin 3D
   if (typeof THREE === 'undefined') {
     var script = document.createElement('script');
     script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
@@ -405,15 +406,21 @@ function loadAndInitRubik3D() {
 
 var rubikLoaded = false;
 function triggerRubikLoad() {
-  if (rubikLoaded) return;
+  if (rubikLoaded || window.innerWidth < 768) return;
   rubikLoaded = true;
   loadAndInitRubik3D();
 }
 
-// Cargar al primer movimiento del usuario o cuando el hilo principal esté en reposo (idle)
+// Cargar al primer movimiento del usuario o cuando el hilo principal esté en reposo (idle) en desktop/tablet
 ['scroll', 'mousemove', 'touchstart', 'pointerdown'].forEach(function (evt) {
   window.addEventListener(evt, triggerRubikLoad, { passive: true, once: true });
 });
+
+window.addEventListener('resize', function () {
+  if (window.innerWidth >= 768 && !rubikLoaded) {
+    triggerRubikLoad();
+  }
+}, { passive: true });
 
 if ('requestIdleCallback' in window) {
   window.requestIdleCallback(function () {
