@@ -586,7 +586,7 @@ function iniciarFiltrosYVerMasProyectos() {
   applyVisibility();
 }
 
-// ===== 5. Contacto Prime: Copiar Email y Parallax Atmosférico =====
+// ===== 5. Contacto Prime: Copiar Email Interactivo =====
 function iniciarContactoPrime() {
   var copyBtn = document.getElementById('btn-copy-email');
   var badge = document.getElementById('email-badge-status');
@@ -619,22 +619,6 @@ function iniciarContactoPrime() {
         badge.classList.remove('contact-card-btn__badge--copied');
       }, 2400);
     }
-  }
-
-  // Parallax suave con el mouse sobre el avatar en desktop
-  var avatarWrapper = document.querySelector('.contact-avatar-wrapper');
-  var contactSection = document.getElementById('contacto');
-  if (avatarWrapper && contactSection && window.innerWidth >= 992) {
-    contactSection.addEventListener('mousemove', function (e) {
-      var rect = contactSection.getBoundingClientRect();
-      var x = (e.clientX - rect.left) / rect.width - 0.5;
-      var y = (e.clientY - rect.top) / rect.height - 0.5;
-      avatarWrapper.style.transform = 'translate(' + (x * 16).toFixed(1) + 'px, ' + (y * 12).toFixed(1) + 'px)';
-    });
-
-    contactSection.addEventListener('mouseleave', function () {
-      avatarWrapper.style.transform = 'translate(0px, 0px)';
-    });
   }
 }
 
