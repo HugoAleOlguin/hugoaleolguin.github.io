@@ -26,6 +26,99 @@
   <!-- Barra de progreso de lectura / scroll fija en la parte superior -->
   <div id="scroll-progress-bar" class="scroll-progress-bar" aria-hidden="true"></div>
 
+  <!-- Fondo Topográfico de Ondas en Capas (Paper-Cut Style Background) -->
+  <div class="topographic-waves-bg" aria-hidden="true">
+    <svg class="topographic-waves-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- Filtros de Sombra para Profundidad Realista Paper-Cut -->
+        <filter id="topo-shadow-sm" x="-30%" y="-30%" width="160%" height="160%">
+          <feDropShadow dx="-4" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.85" />
+        </filter>
+        <filter id="topo-shadow-md" x="-30%" y="-30%" width="160%" height="160%">
+          <feDropShadow dx="-6" dy="14" stdDeviation="18" flood-color="#000000" flood-opacity="0.9" />
+        </filter>
+        <filter id="topo-shadow-lg" x="-30%" y="-30%" width="160%" height="160%">
+          <feDropShadow dx="-9" dy="20" stdDeviation="26" flood-color="#000000" flood-opacity="0.95" />
+        </filter>
+
+        <!-- Degradados Azulados Ultra Oscuros y Casi Imperceptibles (Whisper-Dark Matte) -->
+        <linearGradient id="topo-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#020306" />
+          <stop offset="100%" stop-color="#030408" />
+        </linearGradient>
+        <linearGradient id="topo-grad-2" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#03050b" />
+          <stop offset="100%" stop-color="#05070e" />
+        </linearGradient>
+        <linearGradient id="topo-grad-3" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#050710" />
+          <stop offset="100%" stop-color="#060914" />
+        </linearGradient>
+        <linearGradient id="topo-grad-4" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#060a15" />
+          <stop offset="100%" stop-color="#080c1b" />
+        </linearGradient>
+        <linearGradient id="topo-grad-5" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#080d1c" />
+          <stop offset="100%" stop-color="#0b1122" />
+        </linearGradient>
+        <linearGradient id="topo-grad-6" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#0b1124" />
+          <stop offset="100%" stop-color="#0e152b" />
+        </linearGradient>
+        <linearGradient id="topo-grad-7" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#0e162d" />
+          <stop offset="100%" stop-color="#121b36" />
+        </linearGradient>
+        <linearGradient id="topo-grad-8" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#121c38" />
+          <stop offset="100%" stop-color="#172242" />
+        </linearGradient>
+        <linearGradient id="topo-grad-9" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#162345" />
+          <stop offset="100%" stop-color="#1c2950" />
+        </linearGradient>
+      </defs>
+
+      <!-- Fondo Base Profundo -->
+      <rect width="1440" height="900" fill="url(#topo-grad-1)" />
+
+      <!-- Capas de Ondas Topográficas Orgánicas en Cascada Diagonales -->
+      <g class="wave-layer wave-layer--1">
+        <path filter="url(#topo-shadow-sm)" fill="url(#topo-grad-2)" d="M -50,-50 L 1500,-50 L 1500,950 L 650,950 C 720,820 680,680 580,620 C 460,550 490,420 380,340 C 260,250 280,110 160,50 C 80,10 -10,30 -50,-50 Z" />
+      </g>
+
+      <g class="wave-layer wave-layer--2">
+        <path filter="url(#topo-shadow-md)" fill="url(#topo-grad-3)" d="M -50,-50 L 1500,-50 L 1500,950 L 850,950 C 930,800 880,650 760,590 C 620,520 660,380 540,300 C 410,210 430,70 300,10 C 220,-25 100,-10 -50,-50 Z" />
+      </g>
+
+      <g class="wave-layer wave-layer--3">
+        <path filter="url(#topo-shadow-md)" fill="url(#topo-grad-4)" d="M -50,-50 L 1500,-50 L 1500,950 L 1050,950 C 1120,780 1060,610 930,550 C 780,480 820,330 690,260 C 550,180 570,40 430,-20 C 350,-50 200,-30 -50,-50 Z" />
+      </g>
+
+      <g class="wave-layer wave-layer--4">
+        <path filter="url(#topo-shadow-lg)" fill="url(#topo-grad-5)" d="M -50,-50 L 1500,-50 L 1500,850 C 1380,750 1260,560 1110,510 C 950,450 980,290 840,220 C 690,140 700,-5 560,-50 Z" />
+      </g>
+
+      <g class="wave-layer wave-layer--5">
+        <path filter="url(#topo-shadow-lg)" fill="url(#topo-grad-6)" d="M -50,-50 L 1500,-50 L 1500,680 C 1390,580 1280,390 1130,340 C 970,280 980,120 840,60 C 710,5 680,-30 650,-50 Z" />
+      </g>
+
+      <g class="wave-layer wave-layer--2">
+        <path filter="url(#topo-shadow-lg)" fill="url(#topo-grad-7)" d="M -50,-50 L 1500,-50 L 1500,500 C 1410,400 1310,220 1160,180 C 1010,130 990,-10 880,-50 Z" />
+      </g>
+
+      <g class="wave-layer wave-layer--3">
+        <path filter="url(#topo-shadow-lg)" fill="url(#topo-grad-8)" d="M 850,-50 L 1500,-50 L 1500,320 C 1430,220 1350,70 1210,30 C 1090,-5 1020,-35 980,-50 Z" />
+      </g>
+
+      <g class="wave-layer wave-layer--1">
+        <path filter="url(#topo-shadow-md)" fill="url(#topo-grad-9)" d="M 1120,-50 L 1500,-50 L 1500,160 C 1450,80 1390,-10 1260,-40 Z" />
+      </g>
+    </svg>
+    <div class="topographic-waves-overlay"></div>
+  </div>
+
   <a class="skip-link" href="#inicio">Saltar al contenido</a>
 
   <!-- Floating Dock Navbar Ultra-Limpio -->
@@ -260,24 +353,6 @@
       <div class="section__header">
         <span class="section__label">02 / Portafolio</span>
         <h2 class="section__title">Proyectos destacados</h2>
-      </div>
-
-      <!-- Filtros Rápidos de Proyectos -->
-      <div class="projects-filters" role="tablist" aria-label="Filtrar proyectos">
-        <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">
-          <span>Todos</span>
-          <span class="filter-count">9</span>
-        </button>
-        <button class="filter-btn" data-filter="destacados" role="tab" aria-selected="false">
-          <span>⭐ Destacados</span>
-          <span class="filter-count">4</span>
-        </button>
-        <button class="filter-btn" data-filter="web-ia" role="tab" aria-selected="false">
-          <span>🌐 Web &amp; IA</span>
-        </button>
-        <button class="filter-btn" data-filter="python-tools" role="tab" aria-selected="false">
-          <span>⚡ Python &amp; Tools</span>
-        </button>
       </div>
 
       <div class="projects-grid">

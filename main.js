@@ -504,40 +504,30 @@ function iniciarEfectoNeonBadges() {
   });
 }
 
-// ===== Filtros de Proyectos y Mostrar Más en Mobile =====
-function iniciarFiltrosYVerMasProyectos() {
-  var filterButtons = document.querySelectorAll('.filter-btn');
+// ===== Mostrar Más Proyectos en Mobile =====
+function iniciarVerMasProyectos() {
   var projectCards = document.querySelectorAll('.project-card');
   var showMoreBtn = document.getElementById('btn-show-more-projects');
   var isExpanded = false;
-  var currentFilter = 'all';
 
   function applyVisibility() {
     var isMobile = window.innerWidth < 768;
     var visibleCount = 0;
 
     projectCards.forEach(function (card) {
-      var categories = (card.getAttribute('data-category') || '').split(' ');
-      var matchesFilter = currentFilter === 'all' || categories.indexOf(currentFilter) !== -1;
+      card.style.display = '';
+      visibleCount++;
 
-      if (!matchesFilter) {
-        card.style.display = 'none';
-        card.classList.remove('project-card--hidden-mobile');
+      // En mobile, colapsar a partir del 5to proyecto si no está expandido
+      if (isMobile && !isExpanded && visibleCount > 4) {
+        card.classList.add('project-card--hidden-mobile');
       } else {
-        card.style.display = '';
-        visibleCount++;
-
-        // En mobile con filtro "all", colapsar a partir del 5to proyecto si no está expandido
-        if (isMobile && currentFilter === 'all' && !isExpanded && visibleCount > 4) {
-          card.classList.add('project-card--hidden-mobile');
-        } else {
-          card.classList.remove('project-card--hidden-mobile');
-        }
+        card.classList.remove('project-card--hidden-mobile');
       }
     });
 
     if (showMoreBtn) {
-      if (isMobile && currentFilter === 'all' && visibleCount > 4) {
+      if (isMobile && visibleCount > 4) {
         showMoreBtn.style.display = 'inline-flex';
         var textEl = showMoreBtn.querySelector('.btn-show-more__text');
         var iconEl = showMoreBtn.querySelector('.btn-show-more__icon');
@@ -553,20 +543,6 @@ function iniciarFiltrosYVerMasProyectos() {
       }
     }
   }
-
-  filterButtons.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      filterButtons.forEach(function (b) {
-        b.classList.remove('active');
-        b.setAttribute('aria-selected', 'false');
-      });
-      btn.classList.add('active');
-      btn.setAttribute('aria-selected', 'true');
-      currentFilter = btn.getAttribute('data-filter');
-      isExpanded = false;
-      applyVisibility();
-    });
-  });
 
   if (showMoreBtn) {
     showMoreBtn.addEventListener('click', function () {
@@ -594,5 +570,5 @@ document.addEventListener('DOMContentLoaded', function () {
   iniciarContadores();
   iniciarNavegacionTarjetas();
   iniciarModalProyectos();
-  iniciarFiltrosYVerMasProyectos();
+  iniciarVerMasProyectos();
 });
