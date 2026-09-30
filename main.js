@@ -311,7 +311,65 @@ function iniciarNavegacionTarjetas() {
   });
 }
 
-// ===== 4. Sistema de Modal Motion Black =====
+// Mapeo temático dinámico para resplandor y metadatos del modal Studio Stage
+var MODAL_THEMES = {
+  scribd: {
+    accent: '#f59e0b',
+    accentLight: '#fbbf24',
+    glow: 'rgba(245, 158, 11, 0.35)',
+    slug: 'scribd-premium://chrome-ext'
+  },
+  talentia: {
+    accent: '#a855f7',
+    accentLight: '#c084fc',
+    glow: 'rgba(168, 85, 247, 0.35)',
+    slug: 'talentia-ai://hackathon-mendoza'
+  },
+  jueguitos: {
+    accent: '#06b6d4',
+    accentLight: '#22d3ee',
+    glow: 'rgba(6, 182, 212, 0.35)',
+    slug: 'jueguitos-piola://catalog-browser'
+  },
+  mano: {
+    accent: '#10b981',
+    accentLight: '#34d399',
+    glow: 'rgba(16, 185, 129, 0.35)',
+    slug: 'cv-hand-synth://realtime-audio'
+  },
+  ruleta: {
+    accent: '#3b82f6',
+    accentLight: '#60a5fa',
+    glow: 'rgba(59, 130, 246, 0.35)',
+    slug: 'lan-network://socket-multiplayer'
+  },
+  despensa: {
+    accent: '#10b981',
+    accentLight: '#34d399',
+    glow: 'rgba(16, 185, 129, 0.35)',
+    slug: 'el-tato://pos-retail-system'
+  },
+  ortopedia: {
+    accent: '#38bdf8',
+    accentLight: '#7dd3fc',
+    glow: 'rgba(56, 189, 248, 0.35)',
+    slug: 'ortopedia-backup://corporate-web'
+  },
+  clashbot: {
+    accent: '#f43f5e',
+    accentLight: '#fb7185',
+    glow: 'rgba(244, 63, 94, 0.35)',
+    slug: 'py-clash-bot://spanish-edition'
+  },
+  trailerpelis: {
+    accent: '#f43f5e',
+    accentLight: '#fb7185',
+    glow: 'rgba(244, 63, 94, 0.35)',
+    slug: 'trailer-pelis://stream-cinema'
+  }
+};
+
+// ===== 4. Sistema de Modal Immersive Studio Stage (Anti-Flicker & Zero Blank-Flash) =====
 function iniciarModalProyectos() {
   var modalOverlay = document.getElementById('project-modal');
   var closeBtn = document.getElementById('modal-close-btn');
@@ -328,21 +386,49 @@ function iniciarModalProyectos() {
   var modalBtnLive = document.getElementById('modal-btn-live');
   var modalBtnGithub = document.getElementById('modal-btn-github');
   var modalPrivateNote = document.getElementById('modal-private-note');
+  var modalWindowSlug = document.getElementById('modal-window-slug');
 
   if (!modalOverlay) return;
 
   var currentSlides = [];
   var currentSlideIndex = 0;
+  var imageCache = {};
 
+  // Precarga asíncrona de todas las capturas del proyecto para evitar parpadeos
+  function precargarSlides(slides) {
+    if (!slides || !slides.length) return;
+    slides.forEach(function (src) {
+      if (!imageCache[src]) {
+        var img = new Image();
+        img.src = src;
+        imageCache[src] = img;
+      }
+    });
+  }
+
+  // Renderizado suave y fluido de la imagen activa
   function renderizarFoto(index) {
     if (!currentSlides || currentSlides.length === 0) return;
     currentSlideIndex = (index + currentSlides.length) % currentSlides.length;
+    var targetSrc = currentSlides[currentSlideIndex];
 
-    modalImg.style.opacity = '0.3';
-    setTimeout(function () {
-      modalImg.src = currentSlides[currentSlideIndex];
-      modalImg.style.opacity = '1';
-    }, 100);
+    var imgObj = imageCache[targetSrc] || new Image();
+    imgObj.src = targetSrc;
+    imageCache[targetSrc] = imgObj;
+
+    function aplicarCambio() {
+      modalImg.style.opacity = '0';
+      setTimeout(function () {
+        modalImg.src = targetSrc;
+        modalImg.style.opacity = '1';
+      }, 60);
+    }
+
+    if (imgObj.complete) {
+      aplicarCambio();
+    } else {
+      imgObj.onload = aplicarCambio;
+    }
 
     if (imgCounter) {
       imgCounter.textContent = (currentSlideIndex + 1) + ' / ' + currentSlides.length;
@@ -353,6 +439,8 @@ function iniciarModalProyectos() {
       currentSlides.forEach(function (_, i) {
         var dot = document.createElement('span');
         dot.className = 'carousel__dot' + (i === currentSlideIndex ? ' carousel__dot--active' : '');
+        dot.setAttribute('role', 'button');
+        dot.setAttribute('aria-label', 'Ver imagen ' + (i + 1));
         dot.addEventListener('click', function () { renderizarFoto(i); });
         modalDots.appendChild(dot);
       });
@@ -366,12 +454,33 @@ function iniciarModalProyectos() {
     currentSlides = data.slides || [data.image];
     currentSlideIndex = 0;
 
+    // Precargar inmediatamente todas las diapositivas
+    precargarSlides(currentSlides);
+
+    // Configurar tema de color reactivo y slug de ventana del proyecto
+    var theme = MODAL_THEMES[id] || {
+      accent: '#6366f1',
+      accentLight: '#818cf8',
+      glow: 'rgba(99, 102, 241, 0.35)',
+      slug: (id || 'app') + '://preview-stage'
+    };
+
+    modalOverlay.style.setProperty('--modal-accent', theme.accent);
+    modalOverlay.style.setProperty('--modal-accent-light', theme.accentLight);
+    modalOverlay.style.setProperty('--modal-glow', theme.glow);
+
+    if (modalWindowSlug) {
+      modalWindowSlug.textContent = theme.slug;
+    }
+
+    modalImg.src = currentSlides[0];
+    modalImg.style.opacity = '1';
     renderizarFoto(0);
 
     modalTitle.textContent = data.title;
     modalDesc.textContent = data.desc;
 
-    // Badges libres de Emojis
+    // Badges con micro-diseño
     modalBadges.innerHTML = '';
     data.badges.forEach(function (badge) {
       var span = document.createElement('span');
@@ -383,16 +492,16 @@ function iniciarModalProyectos() {
       modalBadges.appendChild(span);
     });
 
-    // Features libres de Emojis (usando guion sobrio)
+    // Highlights & Funcionalidades
     modalFeatures.innerHTML = '';
     data.features.forEach(function (feat) {
       var div = document.createElement('div');
       div.className = 'modal-feature-item';
-      div.innerHTML = '<span class="modal-feature-bullet">-</span><span>' + feat + '</span>';
+      div.innerHTML = '<span class="modal-feature-bullet">✦</span><span>' + feat + '</span>';
       modalFeatures.appendChild(div);
     });
 
-    // Tags
+    // Tags de Stack
     modalTags.innerHTML = '';
     data.tags.forEach(function (tag) {
       var span = document.createElement('span');
@@ -401,7 +510,7 @@ function iniciarModalProyectos() {
       modalTags.appendChild(span);
     });
 
-    // Buttons y Avisos
+    // Botones CTA
     if (data.liveUrl) {
       modalBtnLive.style.display = 'inline-flex';
       modalBtnLive.href = data.liveUrl;
@@ -425,12 +534,24 @@ function iniciarModalProyectos() {
     }
 
     modalOverlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    bloquearScrollFondo(true);
   }
 
   function cerrarModal() {
     modalOverlay.classList.remove('active');
-    document.body.style.overflow = '';
+    bloquearScrollFondo(false);
+  }
+
+  function bloquearScrollFondo(bloquear) {
+    if (bloquear) {
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+      document.body.style.touchAction = 'none';
+    } else {
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+      document.body.style.touchAction = '';
+    }
   }
 
   // Navegación de galería del modal

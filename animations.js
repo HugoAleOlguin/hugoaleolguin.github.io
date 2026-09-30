@@ -205,48 +205,7 @@ function initMotionSystem() {
   })();
 
 
-  /* ══════════════════════════════════════════════════════════════════
-   * 6. CURSOR PERSONALIZADO — SVG de cursor con etiqueta "Tú" (desktop)
-   * ══════════════════════════════════════════════════════════════════ */
-  (function initCustomCursor() {
-    if (isMobile || prefersReduced) return;
 
-    // Crear el puntero del usuario con el mismo formato que los cursores simulados
-    var cursor = document.createElement('div');
-    cursor.id = 'custom-cursor';
-    cursor.className = 'simulated-cursor';
-    cursor.style.position = 'fixed';
-    cursor.style.top = '0';
-    cursor.style.left = '0';
-    cursor.style.zIndex = '99999';
-    cursor.style.pointerEvents = 'none';
-    cursor.style.willChange = 'transform';
-    cursor.style.opacity = '0';
-    cursor.style.transition = 'opacity 0.2s ease, transform 0.04s linear';
-
-    cursor.innerHTML =
-      '<svg class="simulated-cursor__icon" viewBox="0 0 23 28" fill="none">' +
-        '<path d="M10.7 15.5L5.7 25.5L0.7 1L21.2 13L10.7 15.5Z" fill="#f43f5e" stroke="#ffffff" stroke-width="1.5"/>' +
-      '</svg>';
-
-    document.body.appendChild(cursor);
-
-    var isVisible = false;
-
-    document.addEventListener('mousemove', function (e) {
-      if (!isVisible) {
-        cursor.style.opacity = '1';
-        isVisible = true;
-      }
-      // Ajustar posición para que la punta del cursor coincida exactamente con las coordenadas del mouse
-      cursor.style.transform = 'translate(' + e.clientX + 'px, ' + e.clientY + 'px)';
-    });
-
-    document.addEventListener('mouseleave', function () {
-      cursor.style.opacity = '0';
-      isVisible = false;
-    });
-  })();
 
 
   /* ══════════════════════════════════════════════════════════════════
