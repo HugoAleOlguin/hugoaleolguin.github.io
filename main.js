@@ -213,47 +213,9 @@ function iniciarScrollRevealYDock() {
   manejarScroll();
 }
 
-// ===== 2. Animación de Contadores Numéricos =====
-function iniciarContadores() {
-  var contadores = document.querySelectorAll('[data-target]');
-  var observados = new Set();
-
-  var observer = new IntersectionObserver(
-    function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting && !observados.has(entry.target)) {
-          observados.add(entry.target);
-          animarContador(entry.target);
-        }
-      });
-    },
-    { threshold: 0.4 }
-  );
-
-  contadores.forEach(function (contador) {
-    observer.observe(contador);
-  });
-}
-
-function animarContador(el) {
-  var objetivo = parseInt(el.getAttribute('data-target'), 10);
-  if (isNaN(objetivo)) return;
-
-  var duracion = 1200;
-  var inicio = 0;
-  var pasoTiempo = 20;
-  var incremento = objetivo / (duracion / pasoTiempo);
-
-  var timer = setInterval(function () {
-    inicio += incremento;
-    if (inicio >= objetivo) {
-      el.textContent = objetivo;
-      clearInterval(timer);
-    } else {
-      el.textContent = Math.floor(inicio);
-    }
-  }, pasoTiempo);
-}
+// ===== 2. Gestión de Contadores Numéricos =====
+// Nota: La animación con curve easing rAF suave se delega exclusivamente a animations.js
+// para evitar condiciones de carrera entre runtimes.
 
 // ===== 3. Navegación Manual por Flechas (‹ y ›) en Tarjetas =====
 function iniciarNavegacionTarjetas() {
@@ -406,6 +368,8 @@ function iniciarModalProyectos() {
     });
   }
 
+  var lastFocusedElement = null;
+
   // Renderizado suave y fluido de la imagen activa
   function renderizarFoto(index) {
     if (!currentSlides || currentSlides.length === 0) return;
@@ -420,9 +384,16 @@ function iniciarModalProyectos() {
       modalImg.style.opacity = '0';
       setTimeout(function () {
         modalImg.src = targetSrc;
+        var currentProjectData = PROYECTOS_DATA[modalOverlay.dataset.currentProjectId];
+        var projectTitle = currentProjectData ? currentProjectData.title : 'Proyecto';
+        modalImg.alt = projectTitle + ' - Captura ' + (currentSlideIndex + 1) + ' de ' + currentSlides.length;
         modalImg.style.opacity = '1';
       }, 60);
     }
+
+    imgObj.onerror = function () {
+      modalImg.style.opacity = '1';
+    };
 
     if (imgObj.complete) {
       aplicarCambio();
@@ -440,8 +411,15 @@ function iniciarModalProyectos() {
         var dot = document.createElement('span');
         dot.className = 'carousel__dot' + (i === currentSlideIndex ? ' carousel__dot--active' : '');
         dot.setAttribute('role', 'button');
+        dot.setAttribute('tabindex', '0');
         dot.setAttribute('aria-label', 'Ver imagen ' + (i + 1));
         dot.addEventListener('click', function () { renderizarFoto(i); });
+        dot.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            renderizarFoto(i);
+          }
+        });
         modalDots.appendChild(dot);
       });
     }
@@ -450,6 +428,9 @@ function iniciarModalProyectos() {
   function abrirModal(id) {
     var data = PROYECTOS_DATA[id];
     if (!data) return;
+
+    lastFocusedElement = document.activeElement;
+    modalOverlay.dataset.currentProjectId = id;
 
     currentSlides = data.slides || [data.image];
     currentSlideIndex = 0;
@@ -492,12 +473,18 @@ function iniciarModalProyectos() {
       modalBadges.appendChild(span);
     });
 
-    // Highlights & Funcionalidades
+    // Highlights & Funcionalidades (DOM seguro contra XSS)
     modalFeatures.innerHTML = '';
     data.features.forEach(function (feat) {
       var div = document.createElement('div');
       div.className = 'modal-feature-item';
-      div.innerHTML = '<span class="modal-feature-bullet">✦</span><span>' + feat + '</span>';
+      var bullet = document.createElement('span');
+      bullet.className = 'modal-feature-bullet';
+      bullet.textContent = '✦';
+      var text = document.createElement('span');
+      text.textContent = feat;
+      div.appendChild(bullet);
+      div.appendChild(text);
       modalFeatures.appendChild(div);
     });
 
@@ -535,11 +522,19 @@ function iniciarModalProyectos() {
 
     modalOverlay.classList.add('active');
     bloquearScrollFondo(true);
+
+    // Mover el foco al botón de cerrar dentro del modal (Accesibilidad)
+    setTimeout(function () {
+      if (closeBtn) closeBtn.focus();
+    }, 50);
   }
 
   function cerrarModal() {
     modalOverlay.classList.remove('active');
     bloquearScrollFondo(false);
+    if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+      lastFocusedElement.focus();
+    }
   }
 
   function bloquearScrollFondo(bloquear) {
@@ -588,9 +583,38 @@ function iniciarModalProyectos() {
 
   document.addEventListener('keydown', function (e) {
     if (!modalOverlay.classList.contains('active')) return;
-    if (e.key === 'Escape') cerrarModal();
-    if (e.key === 'ArrowLeft') renderizarFoto(currentSlideIndex - 1);
-    if (e.key === 'ArrowRight') renderizarFoto(currentSlideIndex + 1);
+    if (e.key === 'Escape') {
+      cerrarModal();
+      return;
+    }
+    if (e.key === 'ArrowLeft') {
+      renderizarFoto(currentSlideIndex - 1);
+      return;
+    }
+    if (e.key === 'ArrowRight') {
+      renderizarFoto(currentSlideIndex + 1);
+      return;
+    }
+    if (e.key === 'Tab') {
+      var focusables = modalOverlay.querySelectorAll('button:not([disabled]), [href], [tabindex]:not([tabindex="-1"])');
+      var visibleFocusables = Array.prototype.filter.call(focusables, function (el) {
+        return el.offsetParent !== null;
+      });
+      if (visibleFocusables.length === 0) return;
+      var first = visibleFocusables[0];
+      var last = visibleFocusables[visibleFocusables.length - 1];
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    }
   });
 }
 
@@ -668,6 +692,7 @@ function iniciarVerMasProyectos() {
   if (showMoreBtn) {
     showMoreBtn.addEventListener('click', function () {
       isExpanded = !isExpanded;
+      showMoreBtn.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
       applyVisibility();
       if (!isExpanded) {
         var sec = document.getElementById('proyectos');
@@ -683,13 +708,40 @@ function iniciarVerMasProyectos() {
   applyVisibility();
 }
 
+// ===== Botón de Contacto por Email con Copiado Seguro =====
+function iniciarBotonEmail() {
+  var emailBtn = document.getElementById('link-email');
+  var feedback = document.getElementById('email-feedback');
+  if (!emailBtn) return;
+
+  emailBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+    var user = emailBtn.getAttribute('data-user') || 'hugod.ies9012';
+    var domain = emailBtn.getAttribute('data-domain') || 'gmail.com';
+    var email = user + '@' + domain;
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(email).then(function () {
+        if (feedback) {
+          feedback.style.opacity = '1';
+          setTimeout(function () { feedback.style.opacity = '0'; }, 2200);
+        }
+      }).catch(function () {
+        window.location.href = 'mailto:' + email;
+      });
+    } else {
+      window.location.href = 'mailto:' + email;
+    }
+  });
+}
+
 // ===== Inicialización General =====
 document.addEventListener('DOMContentLoaded', function () {
   iniciarBarraProgresoScroll();
   iniciarEfectoNeonBadges();
   iniciarScrollRevealYDock();
-  iniciarContadores();
   iniciarNavegacionTarjetas();
   iniciarModalProyectos();
   iniciarVerMasProyectos();
+  iniciarBotonEmail();
 });

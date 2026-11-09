@@ -39,7 +39,7 @@ function initMotionSystem() {
       '.skills-group',
       '.skill-pill',
       '.project-card',
-      '.contact-card',
+      '.contact-card-btn',
       '.hackathon-time-badge',
       '.star-stat-box',
       '.tag-badge'
@@ -228,59 +228,6 @@ function initMotionSystem() {
     }, { threshold: 0.4 });
 
     titles.forEach(function (t) { obs.observe(t); });
-  })();
-
-
-  /* ══════════════════════════════════════════════════════════════════
-   * 8. BENTO SPOTLIGHT — seguimiento de haz de luz ambiental en tarjetas
-   * ══════════════════════════════════════════════════════════════════ */
-  (function initBentoSpotlight() {
-    if (prefersReduced) return;
-    var bentoCards = document.querySelectorAll('[data-spotlight]');
-    if (!bentoCards.length) return;
-
-    bentoCards.forEach(function (card) {
-      card.addEventListener('mousemove', function (e) {
-        var rect = card.getBoundingClientRect();
-        var x = e.clientX - rect.left;
-        var y = e.clientY - rect.top;
-        card.style.setProperty('--mouse-x', x + 'px');
-        card.style.setProperty('--mouse-y', y + 'px');
-      });
-    });
-  })();
-
-
-  /* ══════════════════════════════════════════════════════════════════
-   * 9. BENTO ACCENT PICKER — laboratorio de acentos interactivos
-   * ══════════════════════════════════════════════════════════════════ */
-  (function initBentoAccentPicker() {
-    var buttons = document.querySelectorAll('.accent-btn');
-    var codeVal = document.getElementById('accent-code-val');
-    if (!buttons.length) return;
-
-    var colorMap = {
-      indigo: { main: '#6366f1', light: '#818cf8' },
-      emerald: { main: '#34d399', light: '#6ee7b7' },
-      purple: { main: '#c084fc', light: '#e9d5ff' },
-      amber: { main: '#fbbf24', light: '#fde68a' }
-    };
-
-    buttons.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        buttons.forEach(function (b) { b.classList.remove('active'); });
-        btn.classList.add('active');
-        var key = btn.dataset.accent;
-        var config = colorMap[key];
-        if (config) {
-          document.documentElement.style.setProperty('--accent', config.main);
-          document.documentElement.style.setProperty('--accent-light', config.light);
-          if (codeVal) {
-            codeVal.textContent = '--accent: ' + config.main;
-          }
-        }
-      });
-    });
   })();
 
 }

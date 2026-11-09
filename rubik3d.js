@@ -32,11 +32,20 @@ function initRubik3D() {
   camera.position.set(4.8, 3.9, 5.5);
   camera.lookAt(0, 0, 0);
 
-  var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  var renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
+  } catch (err) {
+    console.warn('WebGL no disponible o aceleración por hardware desactivada:', err);
+    container.innerHTML = '<div class="rubik-fallback-placeholder" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:#64748b;font-size:0.9rem;"></div>';
+    return;
+  }
+
   renderer.setSize(width, height);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.domElement.style.touchAction = 'none';
+  renderer.domElement.style.userSelect = 'none';
+  renderer.domElement.style.webkitUserSelect = 'none';
   container.appendChild(renderer.domElement);
 
   /* ─── 2. Iluminación Sobria ─── */
@@ -70,7 +79,21 @@ function initRubik3D() {
     var h = 256 - margin * 2;
 
     ctx.beginPath();
-    ctx.roundRect(margin, margin, w, h, radius);
+    if (typeof ctx.roundRect === 'function') {
+      ctx.roundRect(margin, margin, w, h, radius);
+    } else {
+      // Fallback universal con curvas cuadráticas para compatibilidad con Safari < 15.4 y Firefox < 112
+      ctx.moveTo(margin + radius, margin);
+      ctx.lineTo(margin + w - radius, margin);
+      ctx.quadraticCurveTo(margin + w, margin, margin + w, margin + radius);
+      ctx.lineTo(margin + w, margin + h - radius);
+      ctx.quadraticCurveTo(margin + w, margin + h, margin + w - radius, margin + h);
+      ctx.lineTo(margin + radius, margin + h);
+      ctx.quadraticCurveTo(margin, margin + h, margin, margin + h - radius);
+      ctx.lineTo(margin, margin + radius);
+      ctx.quadraticCurveTo(margin, margin, margin + radius, margin);
+      ctx.closePath();
+    }
     ctx.fill();
 
     // Borde sutil de definición
@@ -323,7 +346,20 @@ function initRubik3D() {
   // Realizar mezcla inicial de 25 movimientos en 0ms para cargar perfecto
   instantScramble(25);
 
-  // Giro autónomo periódico suave
+  // Giro autónomo periódico suave controlado por visibilidad
+  var autoTurnTimer = null;
+  function startAutoTurn() {
+    if (autoTurnTimer) return;
+    autoTurnTimer = setInterval(triggerAutonomousTurn, 3200);
+  }
+
+  function stopAutoTurn() {
+    if (autoTurnTimer) {
+      clearInterval(autoTurnTimer);
+      autoTurnTimer = null;
+    }
+  }
+
   function triggerAutonomousTurn() {
     if (isRotatingSlice || isDragging) return;
     var axes = ['x', 'y', 'z'];
@@ -337,11 +373,13 @@ function initRubik3D() {
     rotateSlice(randomAxis, randomSlice, randomAngle, 550);
   }
 
-  setInterval(triggerAutonomousTurn, 3200);
+  startAutoTurn();
 
-  /* ─── 8. Loop de Animación Principal (Render & Smooth Drift con Viewport Observer) ─── */
+  /* ─── 8. Loop de Animación Principal con Delta-Time y Page Visibility ─── */
   var isHeroVisible = true;
   var isAnimating = false;
+  var animFrameId = null;
+  var clock = new THREE.Clock();
 
   function animate() {
     if (!isHeroVisible) {
@@ -349,17 +387,20 @@ function initRubik3D() {
       return;
     }
     isAnimating = true;
-    requestAnimationFrame(animate);
+    animFrameId = requestAnimationFrame(animate);
 
-    currentRotX += (targetRotX - currentRotX) * 0.08;
-    currentRotY += (targetRotY - currentRotY) * 0.08;
+    var delta = Math.min(clock.getDelta(), 0.1);
+    var factor = delta * 60; // Normalizado a 1.0 a 60 FPS
+
+    currentRotX += (targetRotX - currentRotX) * (1 - Math.pow(1 - 0.08, Math.max(0.1, factor)));
+    currentRotY += (targetRotY - currentRotY) * (1 - Math.pow(1 - 0.08, Math.max(0.1, factor)));
 
     rubikGroup.rotation.x = currentRotX;
     rubikGroup.rotation.y = currentRotY;
 
-    idleTimer += 0.016;
+    idleTimer += delta;
     if (!isDragging) {
-      targetRotY += 0.0015;
+      targetRotY += 0.0015 * factor;
       rubikGroup.position.y = Math.sin(idleTimer * 1.4) * 0.08;
     } else {
       rubikGroup.position.y = 0;
@@ -370,23 +411,61 @@ function initRubik3D() {
 
   var heroObserver = new IntersectionObserver(function (entries) {
     isHeroVisible = entries[0].isIntersecting;
-    if (isHeroVisible && !isAnimating) {
-      animate();
+    if (isHeroVisible) {
+      startAutoTurn();
+      if (!isAnimating) {
+        clock.getDelta(); // reset delta step
+        animate();
+      }
+    } else {
+      stopAutoTurn();
     }
   }, { threshold: 0.05 });
   heroObserver.observe(container);
 
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) {
+      isHeroVisible = false;
+      stopAutoTurn();
+    } else if (container.getBoundingClientRect().bottom > 0 && container.getBoundingClientRect().top < window.innerHeight) {
+      isHeroVisible = true;
+      startAutoTurn();
+      if (!isAnimating) {
+        clock.getDelta();
+        animate();
+      }
+    }
+  });
+
+  // Manejo de pérdida y restauración de contexto WebGL
+  renderer.domElement.addEventListener('webglcontextlost', function (e) {
+    e.preventDefault();
+    isHeroVisible = false;
+    stopAutoTurn();
+    if (animFrameId) cancelAnimationFrame(animFrameId);
+  }, false);
+
+  renderer.domElement.addEventListener('webglcontextrestored', function () {
+    initRubik3D();
+  }, false);
+
   animate();
 
-  /* ─── 9. Responsive Resize ─── */
+  /* ─── 9. Responsive Resize con Debounce RAF ─── */
+  var resizeRafId = null;
   window.addEventListener('resize', function () {
-    if (!container) return;
-    var w = container.clientWidth;
-    var h = container.clientHeight;
-    camera.aspect = w / h;
-    camera.updateProjectionMatrix();
-    renderer.setSize(w, h);
-  });
+    if (!container || !renderer || !camera) return;
+    if (resizeRafId) cancelAnimationFrame(resizeRafId);
+    resizeRafId = requestAnimationFrame(function () {
+      var w = container.clientWidth;
+      var h = container.clientHeight;
+      if (w > 0 && h > 0) {
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+        renderer.setSize(w, h);
+      }
+    });
+  }, { passive: true });
 }
 
 function loadAndInitRubik3D() {
@@ -394,7 +473,16 @@ function loadAndInitRubik3D() {
   if (typeof THREE === 'undefined') {
     var script = document.createElement('script');
     script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+    script.integrity = 'sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDhU/SXYNT06+fPLWB3biHiG287gQKgznQIpyiQbnetg==';
+    script.crossOrigin = 'anonymous';
     script.async = true;
+    script.onerror = function () {
+      console.warn('Fallo al cargar Three.js desde CDN.');
+      var container = document.getElementById('rubik-canvas-container');
+      if (container) {
+        container.innerHTML = '<div class="rubik-fallback-placeholder" style="width:100%;height:100%;"></div>';
+      }
+    };
     script.onload = function () {
       initRubik3D();
     };
