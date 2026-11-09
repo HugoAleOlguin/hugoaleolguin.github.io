@@ -472,19 +472,25 @@ function loadAndInitRubik3D() {
   if (window.innerWidth < 768) return; // En móviles se usa el layout Hero limpio sin 3D
   if (typeof THREE === 'undefined') {
     var script = document.createElement('script');
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
-    script.integrity = 'sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDhU/SXYNT06+fPLWB3biHiG287gQKgznQIpyiQbnetg==';
-    script.crossOrigin = 'anonymous';
+    script.src = 'assets/vendor/three.min.js';
     script.async = true;
-    script.onerror = function () {
-      console.warn('Fallo al cargar Three.js desde CDN.');
-      var container = document.getElementById('rubik-canvas-container');
-      if (container) {
-        container.innerHTML = '<div class="rubik-fallback-placeholder" style="width:100%;height:100%;"></div>';
-      }
-    };
     script.onload = function () {
       initRubik3D();
+    };
+    script.onerror = function () {
+      // Fallback secundario a CDN oficial con hash criptográfico verificado exacto
+      var cdnScript = document.createElement('script');
+      cdnScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+      cdnScript.integrity = 'sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ==';
+      cdnScript.crossOrigin = 'anonymous';
+      cdnScript.async = true;
+      cdnScript.onload = function () {
+        initRubik3D();
+      };
+      cdnScript.onerror = function () {
+        console.warn('No se pudo inicializar Three.js.');
+      };
+      document.head.appendChild(cdnScript);
     };
     document.head.appendChild(script);
   } else {
