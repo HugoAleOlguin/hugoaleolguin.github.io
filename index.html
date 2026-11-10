@@ -130,7 +130,7 @@
 
   <a class="skip-link" href="#inicio">Saltar al contenido</a>
 
-  <!-- Floating Dock Navbar Ultra-Limpio -->
+  <!-- Floating Dock Navbar Ultra-Limpio con 5 Secciones y Descarga de CV -->
   <div class="dock-wrapper">
     <nav class="dock" aria-label="Navegación principal">
       <!-- Inicio -->
@@ -149,6 +149,15 @@
           <circle cx="12" cy="7" r="4" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         <span>Sobre mí</span>
+      </a>
+
+      <!-- Experiencia (Sistemas en Producción) -->
+      <a href="#experiencia" class="dock__link" data-section="experiencia">
+        <svg class="dock__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <rect x="2" y="7" width="20" height="14" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Experiencia</span>
       </a>
 
       <!-- Proyectos -->
@@ -172,185 +181,461 @@
   </div>
 
   <main id="contenido">
-    <!-- Hero Section (Presentación 100vh Full-Viewport) -->
+    <!-- Hero Section: Orgánico, Fachero y Desordenadamente Ordenado -->
     <section id="inicio" class="hero reveal">
       <div class="hero__grid">
-        <!-- Columna Izquierda: Presentación principal -->
+        <!-- Columna Izquierda: Identidad y Declaración Técnica -->
         <div class="hero__content">
-          <!-- Destacado Prominente de +100 Estrellas GitHub -->
-          <div class="hero__stars-badge">
-            <svg class="hero__stars-icon" viewBox="0 0 24 24">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-            </svg>
-            <span>+100 Estrellas acumuladas en GitHub</span>
+          <!-- Metadata Editorial Minimalista -->
+          <div class="hero__meta">
+            <span class="hero__meta-location">Mendoza, Argentina</span>
+            <span class="hero__meta-sep">/</span>
+            <span class="hero__meta-status">Disponible para proyectos</span>
+            <span class="hero__meta-sep">/</span>
+            <a href="https://github.com/HugoAleOlguin" target="_blank" rel="noopener noreferrer" class="hero__meta-stars" aria-label="Ver perfil de GitHub con más de 100 estrellas">
+              <svg class="hero__meta-star-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+              <span>100+ GitHub Stars</span>
+            </a>
           </div>
 
           <h1 class="hero__title">
-            Hugo Ale Olguin
+            Hugo Alejandro Olguín
           </h1>
 
+          <div class="hero__role-badge">
+            <span class="hero__role-text">Desarrollador de Software e Integraciones</span>
+          </div>
+
           <p class="hero__subtitle">
-            Estudiante de <em class="text-serif text-emerald">Desarrollo de Software</em> enfocado en construir <em class="text-serif text-purple">herramientas reales</em>, proyectos de código abierto e interfaces web de <em class="text-serif text-amber">alta usabilidad</em>.
+            Construyo software comercial, sistemas de alta disponibilidad y herramientas web conectadas con APIs e Inteligencia Artificial en entornos de producción real.
           </p>
 
+          <!-- Stack Principal: Micro-Tags Limpios y Elegantes -->
+          <div class="hero__stack-chips" aria-label="Tecnologías principales">
+            <span class="stack-chip">JavaScript / React</span>
+            <span class="stack-chip">Python</span>
+            <span class="stack-chip">APIs REST</span>
+            <span class="stack-chip">Cloudflare / Vercel</span>
+            <span class="stack-chip">SQLite</span>
+          </div>
+
+          <!-- Botones Cortos y de Alta Conversión -->
           <div class="hero__actions">
-            <a href="#proyectos" class="btn btn--primary">
-              <span>Ver mis proyectos</span>
-              <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <a href="#experiencia" class="btn btn--primary btn--compact">
+              <span>Experiencia</span>
+              <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
                 <path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </a>
-            <a href="#contacto" class="btn btn--secondary">
-              <span>Contactarme</span>
+
+            <a href="cv_hugo_olguin_v2.pdf" download="CV_Hugo_Alejandro_Olguin.pdf" target="_blank" rel="noopener noreferrer" class="btn btn--cv btn--compact" aria-label="Descargar CV en formato PDF">
+              <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              <span>CV (PDF)</span>
+            </a>
+
+            <a href="#contacto" class="btn btn--secondary btn--compact">
+              <span>Contacto</span>
             </a>
           </div>
         </div>
 
-        <!-- Columna Derecha: Cubo Rubik 3D Autónomo Indestructible (rubik-motion.js) -->
+        <!-- Columna Derecha: Cubo Rubik 3D Autónomo Limpio -->
         <div class="hero__rubik-wrapper">
-          <div class="rubik-aura"></div>
           <div id="rubik-canvas-container" class="rubik-canvas-container"></div>
         </div>
       </div>
 
-      <!-- Indicador animado de scroll (con aria-label alineado a WCAG 2.5.3) -->
+      <!-- Indicador animado de scroll -->
       <a href="#sobre-mi" class="hero__scroll-indicator" aria-label="Deslizar hacia abajo a la sección sobre mí">
         <span>Deslizar</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
           <path d="M12 5v14M19 12l-7 7-7-7"/>
         </svg>
       </a>
     </section>
 
-    <!-- Sobre Mí Section (Pantalla Completa 100vh) -->
-    <section id="sobre-mi" class="section section--about-full reveal">
+    <!-- 01 / Perfil — Sobre mí: Perfil, Métricas & Stack -->
+    <section id="sobre-mi" class="section section--about-bento reveal">
       <div class="section__header">
-        <span class="section__label">01 / Perfil</span>
+        <span class="section__label">01 // PERFIL TÉCNICO</span>
         <h2 class="section__title">Sobre mí</h2>
+        <p class="section__subtitle">
+          Desarrollo de software enfocado en herramientas útiles, sistemas comerciales e integraciones de producción.
+        </p>
       </div>
 
-      <div class="about-grid">
-        <div class="about__text">
-          <p>
-            Hola, soy <strong>Hugo Alejandro</strong>. Estudio <em class="text-serif text-emerald">desarrollo de software</em> y aprendo construyendo aplicaciones útiles y herramientas de código abierto.
-          </p>
-          <p>
-            Me apasiona el desarrollo web <em class="text-serif text-cyan">full-stack</em>, la <em class="text-serif text-purple">Inteligencia Artificial</em> aplicada y el diseño de interfaces limpias que resuelvan necesidades verdaderas.
-          </p>
+      <!-- Bento Grid de Alta Precisión: Sólido, Sin Luces, Directo -->
+      <div class="about-bento">
 
-          <!-- Métricas Limpias Presentadas en Columna -->
-          <div class="about__metrics">
-            <div class="metric-card metric-card--gold">
-              <div class="metric__header">
-                <svg class="metric__star-icon" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                </svg>
-                <span class="metric__number metric__number--gold" data-target="100">0</span>
-              </div>
-              <span class="metric__label metric__label--gold">GitHub Stars acumuladas</span>
-            </div>
-            <div class="metric-card">
-              <div class="metric__header">
-                <span class="metric__number" data-target="10">0</span>
-              </div>
-              <span class="metric__label">Repositorios públicos</span>
-            </div>
-            <div class="metric-card">
-              <div class="metric__header">
-                <span class="metric__number" data-target="3">0</span>
-              </div>
-              <span class="metric__label">Años programando</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Skills Card Estructurado en Categorías Lógicas -->
-        <div class="skills-card">
-          <h3 class="skills-card__title">Stack &amp; Tecnologías Principales</h3>
-
-          <!-- Categoría 1: Frontend & Web -->
-          <div class="skills-group">
-            <span class="skills-group__label">Frontend &amp; Web</span>
-            <div class="skills-group__list">
-              <div class="skill-pill">
-                <img src="assets/icons/javascript.svg" alt="JavaScript" class="skill-pill__icon" width="20" height="20" loading="lazy" />
-                <span class="skill-pill__name">JavaScript</span>
-              </div>
-              <div class="skill-pill">
-                <img src="assets/icons/react.svg" alt="React" class="skill-pill__icon" width="20" height="20" loading="lazy" />
-                <span class="skill-pill__name">React</span>
-              </div>
-              <div class="skill-pill">
-                <img src="assets/icons/html5.svg" alt="HTML5" class="skill-pill__icon" width="20" height="20" loading="lazy" />
-                <span class="skill-pill__name">HTML5</span>
-              </div>
-              <div class="skill-pill">
-                <img src="assets/icons/css3.svg" alt="CSS3" class="skill-pill__icon" width="20" height="20" loading="lazy" />
-                <span class="skill-pill__name">CSS3</span>
-              </div>
-            </div>
+        <!-- Card 1: Perfil Directo (Sin IA, sin chamuyo) -->
+        <article class="bento-card bento-card--statement">
+          <div class="bento-card__meta-bar">
+            <span class="bento-mono-tag">SYS // PERFIL</span>
+            <span class="bento-mono-loc">MENDOZA, ARGENTINA</span>
           </div>
 
-          <!-- Categoría 2: Backend & Bases de Datos -->
-          <div class="skills-group">
-            <span class="skills-group__label">Backend &amp; Bases de Datos</span>
-            <div class="skills-group__list">
-              <div class="skill-pill">
-                <img src="assets/icons/python.svg" alt="Python" class="skill-pill__icon" width="20" height="20" loading="lazy" />
-                <span class="skill-pill__name">Python</span>
+          <div class="bento-card__statement-body">
+            <h3 class="bento-card__headline">
+              Software funcional, sistemas comerciales y herramientas orientadas a resolver problemas reales.
+            </h3>
+
+            <p class="bento-card__lead">
+              Trabajo con JavaScript, Python y bases de datos relacionales. Cubro el ciclo completo: desde interfaces web y APIs de backend hasta la puesta en marcha de servicios locales y en la nube.
+            </p>
+          </div>
+
+          <div class="bento-focus-tags">
+            <span class="bento-focus-tag">Full-Stack</span>
+            <span class="bento-focus-tag">Sistemas en Producción</span>
+            <span class="bento-focus-tag">APIs &amp; Microservicios</span>
+            <span class="bento-focus-tag">Open Source</span>
+          </div>
+        </article>
+
+        <!-- Card 2: Métricas Clave (Sobresalientes, sin frases de pensamiento) -->
+        <article class="bento-card bento-card--proof">
+          <div class="bento-card__meta-bar">
+            <span class="bento-mono-tag">METRICS // PRODUCCIÓN</span>
+            <span class="bento-mono-loc">DATOS DUROS</span>
+          </div>
+
+          <div class="bento-metrics-container">
+            <!-- Métrica 1: GitHub Stars -->
+            <a href="https://github.com/HugoAleOlguin" target="_blank" rel="noopener noreferrer" class="bento-stat-card bento-stat-card--primary" aria-label="Ver perfil de GitHub con más de 100 estrellas">
+              <div class="bento-stat-card__top">
+                <span class="bento-stat-card__num" data-target="100">100</span>
+                <span class="bento-stat-card__plus">+</span>
+                <span class="bento-stat-card__code-label">STARS</span>
               </div>
-              <div class="skill-pill">
-                <img src="assets/icons/cplusplus.svg" alt="C++" class="skill-pill__icon" width="20" height="20" loading="lazy" />
-                <span class="skill-pill__name">C++</span>
+              <h4 class="bento-stat-card__label">Estrellas en GitHub</h4>
+              <p class="bento-stat-card__sub">Herramientas open source activas y adoptadas</p>
+              <span class="bento-stat-card__link">github.com/HugoAleOlguin ↗</span>
+            </a>
+
+            <!-- Fila de 2 Métricas Complementarias -->
+            <div class="bento-stat-row">
+              <div class="bento-stat-card">
+                <div class="bento-stat-card__top">
+                  <span class="bento-stat-card__num" data-target="4">4</span>
+                  <span class="bento-stat-card__plus">+</span>
+                  <span class="bento-stat-card__code-label">AÑOS</span>
+                </div>
+                <h4 class="bento-stat-card__label">Años de código</h4>
+                <p class="bento-stat-card__sub">Desarrollo continuo</p>
               </div>
-              <div class="skill-pill">
-                <img src="assets/icons/mysql.svg" alt="MySQL" class="skill-pill__icon" width="20" height="20" loading="lazy" />
-                <span class="skill-pill__name">MySQL</span>
-              </div>
-              <div class="skill-pill">
-                <img src="assets/icons/firebase.svg" alt="Firebase" class="skill-pill__icon" width="20" height="20" loading="lazy" />
-                <span class="skill-pill__name">Firebase</span>
+
+              <div class="bento-stat-card">
+                <div class="bento-stat-card__top">
+                  <span class="bento-stat-card__num" data-target="2">2</span>
+                  <span class="bento-stat-card__plus"></span>
+                  <span class="bento-stat-card__code-label">SISTEMAS</span>
+                </div>
+                <h4 class="bento-stat-card__label">En producción</h4>
+                <p class="bento-stat-card__sub">La Yunta · El Tato</p>
               </div>
             </div>
           </div>
+        </article>
 
-          <!-- Categoría 3: Herramientas & Cloud -->
-          <div class="skills-group">
-            <span class="skills-group__label">Herramientas &amp; Cloud</span>
-            <div class="skills-group__list">
-              <div class="skill-pill">
-                <img src="assets/icons/git.svg" alt="Git" class="skill-pill__icon" width="20" height="20" loading="lazy" />
-                <span class="skill-pill__name">Git</span>
+        <!-- Card 3: Stack & Herramientas por Capas -->
+        <article class="bento-card bento-card--versatility">
+          <div class="bento-card__meta-bar">
+            <span class="bento-mono-tag">STACK // ARQUITECTURA TÉCNICA</span>
+            <span class="bento-mono-loc">18 TECNOLOGÍAS ACTIVAS</span>
+          </div>
+
+          <div class="bento-versatility-header">
+            <h3 class="bento-card__title">Tecnologías y herramientas</h3>
+            <p class="bento-card__desc">Stack probado en proyectos reales, librerías open-source y software comercial en uso:</p>
+          </div>
+
+          <div class="bento-tech-columns">
+            <!-- Capa 1: Frontend & Navegador -->
+            <div class="bento-tech-col">
+              <div class="bento-tech-col__header">
+                <span class="bento-layer-badge">CAPA 01</span>
+                <div>
+                  <h4 class="bento-tech-col__title">Frontend &amp; Navegador</h4>
+                  <span class="bento-tech-col__subtitle">Interfaces web reactivas y extensiones</span>
+                </div>
               </div>
-              <div class="skill-pill">
-                <img src="assets/icons/vercel.svg" alt="Vercel" class="skill-pill__icon" width="20" height="20" loading="lazy" />
-                <span class="skill-pill__name">Vercel</span>
+              <div class="bento-tech-chips">
+                <span class="bento-chip">
+                  <img src="assets/icons/react.svg" alt="" width="16" height="16" loading="lazy" />
+                  React 19
+                </span>
+                <span class="bento-chip">
+                  <img src="assets/icons/javascript.svg" alt="" width="16" height="16" loading="lazy" />
+                  JavaScript (ES6+)
+                </span>
+                <span class="bento-chip">
+                  <img src="assets/icons/extensions.svg" alt="" width="16" height="16" loading="lazy" />
+                  Web Extensions
+                </span>
+                <span class="bento-chip">
+                  <img src="assets/icons/html5.svg" alt="" width="16" height="16" loading="lazy" />
+                  HTML5
+                </span>
+                <span class="bento-chip">
+                  <img src="assets/icons/css3.svg" alt="" width="16" height="16" loading="lazy" />
+                  CSS3 Moderno
+                </span>
+                <span class="bento-chip">
+                  <img src="assets/icons/figma.svg" alt="" width="16" height="16" loading="lazy" />
+                  Figma
+                </span>
               </div>
-              <div class="skill-pill">
-                <img src="assets/icons/cloudflare.svg" alt="Cloudflare" class="skill-pill__icon" width="20" height="20" loading="lazy" />
-                <span class="skill-pill__name">Cloudflare</span>
+            </div>
+
+            <!-- Capa 2: Backend & Datos -->
+            <div class="bento-tech-col">
+              <div class="bento-tech-col__header">
+                <span class="bento-layer-badge">CAPA 02</span>
+                <div>
+                  <h4 class="bento-tech-col__title">Backend &amp; Datos</h4>
+                  <span class="bento-tech-col__subtitle">Servidores, APIs y persistencia relacional</span>
+                </div>
               </div>
-              <div class="skill-pill">
-                <img src="assets/icons/figma.svg" alt="Figma" class="skill-pill__icon" width="20" height="20" loading="lazy" />
-                <span class="skill-pill__name">Figma</span>
+              <div class="bento-tech-chips">
+                <span class="bento-chip">
+                  <img src="assets/icons/python.svg" alt="" width="16" height="16" loading="lazy" />
+                  Python
+                </span>
+                <span class="bento-chip">
+                  <img src="assets/icons/nodejs.svg" alt="" width="16" height="16" loading="lazy" />
+                  Node.js / Express
+                </span>
+                <span class="bento-chip">
+                  <img src="assets/icons/sqlite.svg" alt="" width="16" height="16" loading="lazy" />
+                  SQLite (WAL)
+                </span>
+                <span class="bento-chip">
+                  <img src="assets/icons/mysql.svg" alt="" width="16" height="16" loading="lazy" />
+                  MySQL
+                </span>
+                <span class="bento-chip">
+                  <img src="assets/icons/api.svg" alt="" width="16" height="16" loading="lazy" />
+                  APIs REST
+                </span>
+                <span class="bento-chip">
+                  <img src="assets/icons/firebase.svg" alt="" width="16" height="16" loading="lazy" />
+                  Firebase
+                </span>
+              </div>
+            </div>
+
+            <!-- Capa 3: Nube, Sistema & IA -->
+            <div class="bento-tech-col">
+              <div class="bento-tech-col__header">
+                <span class="bento-layer-badge">CAPA 03</span>
+                <div>
+                  <h4 class="bento-tech-col__title">Infraestructura, Nube &amp; IA</h4>
+                  <span class="bento-tech-col__subtitle">Túneles, despliegues y servicios locales</span>
+                </div>
+              </div>
+              <div class="bento-tech-chips">
+                <span class="bento-chip">
+                  <img src="assets/icons/cloudflare.svg" alt="" width="16" height="16" loading="lazy" />
+                  Cloudflare
+                </span>
+                <span class="bento-chip">
+                  <img src="assets/icons/vercel.svg" alt="" width="16" height="16" loading="lazy" />
+                  Vercel
+                </span>
+                <span class="bento-chip">
+                  <img src="assets/icons/git.svg" alt="" width="16" height="16" loading="lazy" />
+                  Git / GitHub
+                </span>
+                <span class="bento-chip">
+                  <img src="assets/icons/windows.svg" alt="" width="16" height="16" loading="lazy" />
+                  Windows (NSSM)
+                </span>
+                <span class="bento-chip">
+                  <img src="assets/icons/terminal.svg" alt="" width="16" height="16" loading="lazy" />
+                  Linux / Terminal
+                </span>
+                <span class="bento-chip">
+                  <img src="assets/icons/ai.svg" alt="" width="16" height="16" loading="lazy" />
+                  IA Aplicada
+                </span>
               </div>
             </div>
           </div>
+        </article>
 
-        </div>
       </div>
     </section>
 
-    <!-- Proyectos Section -->
+    <!-- 02 / Experiencia en Producción: Timeline Estructural de Ingeniería -->
+    <section id="experiencia" class="section section--experience-industrial reveal">
+      <div class="section__header">
+        <span class="section__label">02 // TRAYECTORIA OPERATIVA</span>
+        <h2 class="section__title">Experiencia Real</h2>
+        <p class="section__subtitle">
+          Sistemas en producción comercial y soporte de infraestructura IT. Para certificaciones y referencias formales, consultá mi currículum.
+        </p>
+      </div>
+
+      <!-- Timeline de Alta Precisión Estructural -->
+      <div class="experience-timeline">
+
+        <!-- Hito 1: Supermercados Mayoristas La Yunta -->
+        <article class="timeline-entry">
+          <div class="timeline-entry__rail">
+            <span class="timeline-entry__dot"></span>
+            <span class="timeline-entry__line"></span>
+          </div>
+
+          <div class="timeline-entry__card">
+            <div class="timeline-entry__header">
+              <div class="timeline-entry__identity">
+                <span class="timeline-tag timeline-tag--active">OPERATIVO CONTINUO</span>
+                <h3 class="timeline-entry__title">Pasantía en Tecnología e IT</h3>
+                <div class="timeline-entry__org">
+                  <span class="timeline-entry__company">Supermercados Mayoristas La Yunta</span>
+                  <span class="timeline-sep">·</span>
+                  <span class="timeline-entry__badge">170 horas certificadas</span>
+                </div>
+              </div>
+              <div class="timeline-entry__time">
+                <span class="timeline-date">07/2026 — 09/2026</span>
+                <span class="timeline-loc">Sucursal Comercial</span>
+              </div>
+            </div>
+
+            <!-- 3 Módulos de Impacto -->
+            <div class="timeline-modules">
+              <div class="timeline-mod">
+                <div class="timeline-mod__header">
+                  <span class="timeline-mod__idx">01</span>
+                  <h4 class="timeline-mod__title">Verificador de Pasillo (VE2)</h4>
+                </div>
+                <p class="timeline-mod__desc">Desarrollo y despliegue del verificador web + APK Android con escaneo continuo láser EAN-13 para consulta ágil de precios de clientes y reposición de góndolas en sucursal.</p>
+              </div>
+
+              <div class="timeline-mod">
+                <div class="timeline-mod__header">
+                  <span class="timeline-mod__idx">02</span>
+                  <h4 class="timeline-mod__title">Soporte Técnico a Cajas POS &amp; Periféricos</h4>
+                </div>
+                <p class="timeline-mod__desc">Diagnóstico y mantenimiento preventivo en terminales de cobro, impresoras fiscales/térmicas, balanzas comerciales y asistencia remota a sucursales por AnyDesk.</p>
+              </div>
+
+              <div class="timeline-mod">
+                <div class="timeline-mod__header">
+                  <span class="timeline-mod__idx">03</span>
+                  <h4 class="timeline-mod__title">Gestión de Catálogos &amp; Contingencia Offline</h4>
+                </div>
+                <p class="timeline-mod__desc">Mantenimiento de bases de datos de artículos y configuración de túneles Cloudflare para garantizar operatividad sin interrupción ante cortes de red.</p>
+              </div>
+            </div>
+
+            <div class="timeline-entry__footer">
+              <span class="timeline-chip"><img src="assets/icons/nodejs.svg" alt="" width="14" height="14" /> Node.js / Express</span>
+              <span class="timeline-chip"><img src="assets/icons/cloudflare.svg" alt="" width="14" height="14" /> Cloudflare Tunnels</span>
+              <span class="timeline-chip"><img src="assets/icons/windows.svg" alt="" width="14" height="14" /> Windows NSSM</span>
+              <span class="timeline-chip"><img src="assets/icons/terminal.svg" alt="" width="14" height="14" /> Cajas POS &amp; Balanzas</span>
+              <span class="timeline-chip"><img src="assets/icons/api.svg" alt="" width="14" height="14" /> PWA / Android APK</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Hito 2: El Tato Software -->
+        <article class="timeline-entry">
+          <div class="timeline-entry__rail">
+            <span class="timeline-entry__dot"></span>
+          </div>
+
+          <div class="timeline-entry__card">
+            <div class="timeline-entry__header">
+              <div class="timeline-entry__identity">
+                <span class="timeline-tag timeline-tag--active">DESARROLLO 2026 · EN USO ACTIVO</span>
+                <h3 class="timeline-entry__title">Software Comercial e Impresión Remota</h3>
+                <div class="timeline-entry__org">
+                  <span class="timeline-entry__company">El Tato Software</span>
+                  <span class="timeline-sep">·</span>
+                  <span class="timeline-entry__badge">Comercio Minorista</span>
+                </div>
+              </div>
+              <div class="timeline-entry__time">
+                <span class="timeline-date">2026 — Actualidad</span>
+                <span class="timeline-loc">Uso Diario en Mostrador</span>
+              </div>
+            </div>
+
+            <!-- 3 Módulos de Impacto -->
+            <div class="timeline-modules">
+              <div class="timeline-mod">
+                <div class="timeline-mod__header">
+                  <span class="timeline-mod__idx">01</span>
+                  <h4 class="timeline-mod__title">Gestión Integral de Caja &amp; Stock</h4>
+                </div>
+                <p class="timeline-mod__desc">Desarrollé la aplicación operativa del comercio familiar en React 19 + Express 5 + SQLite WAL para arqueo diario, consulta instantánea de artículos y cálculo dinámico de márgenes con IVA.</p>
+              </div>
+
+              <div class="timeline-mod">
+                <div class="timeline-mod__header">
+                  <span class="timeline-mod__idx">02</span>
+                  <h4 class="timeline-mod__title">Microservicio de Impresión Remota IP</h4>
+                </div>
+                <p class="timeline-mod__desc">Creé un servicio autónomo en segundo plano para despachar comprobantes y remitos a la impresora Epson EcoTank del local desde cualquier red exterior sin cables ni VPN.</p>
+              </div>
+
+              <div class="timeline-mod">
+                <div class="timeline-mod__header">
+                  <span class="timeline-mod__idx">03</span>
+                  <h4 class="timeline-mod__title">Producción Real en Mostrador</h4>
+                </div>
+                <p class="timeline-mod__desc">Sistema adoptado al 100% y en uso operativo diario en el mostrador del negocio, eliminando descuadres de caja y agilizando la atención al cliente.</p>
+              </div>
+            </div>
+
+            <div class="timeline-entry__footer">
+              <span class="timeline-chip"><img src="assets/icons/react.svg" alt="" width="14" height="14" /> React 19</span>
+              <span class="timeline-chip"><img src="assets/icons/sqlite.svg" alt="" width="14" height="14" /> SQLite (WAL)</span>
+              <span class="timeline-chip"><img src="assets/icons/nodejs.svg" alt="" width="14" height="14" /> Node.js / Express 5</span>
+              <span class="timeline-chip"><img src="assets/icons/terminal.svg" alt="" width="14" height="14" /> Impresión IP Remota</span>
+              <span class="timeline-chip"><img src="assets/icons/css3.svg" alt="" width="14" height="14" /> Tailwind 4</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Banner de Descarga de CV Oficial -->
+      <div class="experience-cv-banner">
+        <div class="experience-cv-banner__text">
+          <h4 class="experience-cv-banner__title">¿Buscás el historial técnico detallado y referencias?</h4>
+          <p class="experience-cv-banner__desc">Encontrá el desglose formal de responsabilidades, arquitectura y métricas en mi currículum oficial en PDF.</p>
+        </div>
+        <a href="cv_hugo_olguin_v2.pdf" download="CV_Hugo_Alejandro_Olguin.pdf" class="btn btn--primary btn--compact" target="_blank" rel="noopener noreferrer">
+          <span>Descargar CV (PDF)</span>
+          <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M12 3v13m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- 03 / Proyectos Destacados (Curaduría de Mayor Impacto) -->
     <section id="proyectos" class="section reveal">
       <div class="section__header">
-        <span class="section__label">02 / Portafolio</span>
-        <h2 class="section__title">Proyectos destacados</h2>
+        <span class="section__label">03 / Portafolio</span>
+        <h2 class="section__title">Proyectos Destacados</h2>
+        <p class="section__subtitle">
+          Herramientas con tracción comprobada de usuarios, código abierto premiado por la comunidad y desarrollos intensivos de alta complejidad técnica.
+        </p>
       </div>
 
       <div class="projects-grid">
 
-        <!-- Hero Project #1: Scribd Downloader Premium -->
+        <!-- Hero Project #1: Scribd Downloader Premium (Open Source Flagship) -->
         <article class="project-card project-card--hero project-card--scribd" id="proyecto-scribd" data-project-id="scribd" data-category="destacados web-ia python-tools">
           <div class="project-card__preview" data-slides='[
             "assets/screenshots/scribd/scribd (1).webp",
@@ -365,30 +650,31 @@
               <span class="carousel__dot"></span>
               <span class="carousel__dot"></span>
             </div>
-            <span class="project-card__tag-pill project-card__tag-pill--stars">100+ GitHub Stars</span>
+            <span class="project-card__tag-pill project-card__tag-pill--stars">199 ⭐ GitHub Stars</span>
           </div>
 
           <div class="project-card__body">
             <div class="project-card__tags">
               <span class="tag-badge">JavaScript</span>
-              <span class="tag-badge">Browser Extension</span>
-              <span class="tag-badge">Chrome &amp; Firefox</span>
+              <span class="tag-badge">Chrome MV3 &amp; Firefox MV2</span>
+              <span class="tag-badge">Smart Stitching</span>
+              <span class="tag-badge">Cloudflare Bypass</span>
             </div>
 
             <h3 class="project-card__title">Scribd Downloader Premium</h3>
 
             <div class="star-stat-box">
-              <span class="star-stat-box__count" data-target="100">0</span>
-              <span class="star-stat-box__label">Estrellas en GitHub — solución útil de gran impacto</span>
+              <span class="star-stat-box__count" data-target="199">199</span>
+              <span class="star-stat-box__label">Estrellas en GitHub · 27 Forks internacionales</span>
             </div>
 
             <p class="project-card__desc">
-              Extensión que inyecta un panel flotante elegante sobre documentos públicos de Scribd para descargarlos directamente como PDF en alta resolución. 100% ejecutable localmente sin servidores de terceros.
+              Extensión multiplataforma que inyecta un panel flotante nativo para respaldar y descargar documentos de Scribd en PDF de alta fidelidad. Cuenta con doble motor de extracción (recomposición de imágenes del servidor con Smart Stitching y Canvas secundario) sin intermediarios ni servidores externos.
             </p>
 
             <div class="project-card__footer">
               <button class="btn btn--primary">
-                <span>Ver detalles y demo</span>
+                <span>Ver detalles y código</span>
                 <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                   <path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
@@ -397,8 +683,186 @@
           </div>
         </article>
 
-        <!-- Hero Project #2: Talentia Hackathon -->
-        <article class="project-card project-card--hero" id="proyecto-talentia" data-project-id="talentia" data-category="destacados web-ia">
+        <!-- Hero Project #2: El Tato — Precios, Stock & Impresión Remota -->
+        <article class="project-card project-card--hero project-card--despensa" id="proyecto-despensa" data-project-id="despensa" data-category="destacados web-ia">
+          <div class="project-card__preview" data-slides='[
+            "assets/screenshots/eltato-precios/4.webp",
+            "assets/screenshots/eltato-precios/5.webp",
+            "assets/screenshots/eltato-precios/6.webp"
+          ]'>
+            <img src="assets/screenshots/eltato-precios/4.webp" alt="El Tato — Software Comercial e Impresión" class="project-card__image carousel__img" width="800" height="450" decoding="async" />
+            <button class="card-nav-btn card-nav-btn--prev" aria-label="Anterior foto">‹</button>
+            <button class="card-nav-btn card-nav-btn--next" aria-label="Siguiente foto">›</button>
+            <div class="carousel__dots" aria-hidden="true">
+              <span class="carousel__dot carousel__dot--active"></span>
+              <span class="carousel__dot"></span>
+              <span class="carousel__dot"></span>
+            </div>
+            <span class="project-card__tag-pill project-card__tag-pill--hackathon">Código Privado · Comercial</span>
+          </div>
+
+          <div class="project-card__body">
+            <div class="project-card__tags">
+              <span class="tag-badge">React 19</span>
+              <span class="tag-badge">Node.js / Express 5</span>
+              <span class="tag-badge">SQLite WAL</span>
+              <span class="tag-badge">Impresión IP</span>
+            </div>
+
+            <h3 class="project-card__title">El Tato — Precios, Stock &amp; Impresión Remota</h3>
+
+            <div class="star-stat-box">
+              <span class="star-stat-box__label">Comercio Minorista · Sistema en mostrador + Impresión Wi-Fi</span>
+            </div>
+
+            <p class="project-card__desc">
+              Plataforma comercial de mostrador con arqueo diario, control de stock y cálculo de márgenes con IVA. Incluye verificador PWA/APK con escaneo láser continuo (&lt;5ms) y microservicio autónomo en segundo plano para despacho silencioso de comprobantes e impresión remota por IP.
+            </p>
+
+            <div class="project-card__footer">
+              <button class="btn btn--primary">
+                <span>Ver arquitectura y módulos</span>
+                <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Hero Project #3: Telegram Drive Desktop Cloud Storage -->
+        <article class="project-card project-card--hero project-card--telegramdrive" id="proyecto-telegramdrive" data-project-id="telegramdrive" data-category="destacados web-ia">
+          <div class="project-card__preview" data-slides='[
+            "assets/screenshots/telegramdrive/1.webp",
+            "assets/screenshots/telegramdrive/2.webp",
+            "assets/screenshots/telegramdrive/3.webp"
+          ]'>
+            <img src="assets/screenshots/telegramdrive/1.webp" alt="Telegram Drive Desktop App" class="project-card__image carousel__img" width="800" height="450" decoding="async" />
+            <button class="card-nav-btn card-nav-btn--prev" aria-label="Anterior foto">‹</button>
+            <button class="card-nav-btn card-nav-btn--next" aria-label="Siguiente foto">›</button>
+            <div class="carousel__dots" aria-hidden="true">
+              <span class="carousel__dot carousel__dot--active"></span>
+              <span class="carousel__dot"></span>
+              <span class="carousel__dot"></span>
+            </div>
+            <span class="project-card__tag-pill project-card__tag-pill--stars">v1.5.1 Publicada</span>
+          </div>
+
+          <div class="project-card__body">
+            <div class="project-card__tags">
+              <span class="tag-badge">Rust</span>
+              <span class="tag-badge">Tauri v2</span>
+              <span class="tag-badge">React 19</span>
+              <span class="tag-badge">SHA-256</span>
+            </div>
+
+            <h3 class="project-card__title">Telegram Drive — Cloud Desktop App</h3>
+
+            <div class="star-stat-box">
+              <span class="star-stat-box__label">v1.5.1 Publicada · Nube Ilimitada y Privada</span>
+            </div>
+
+            <p class="project-card__desc">
+              Aplicación de escritorio para Windows compilada en Rust y Tauri v2 que convierte los Mensajes Guardados de Telegram en un disco rígido ilimitado en la nube. Fragmentación en bloques con hash SHA-256 e interfaz tipo Google Drive.
+            </p>
+
+            <div class="project-card__footer">
+              <button class="btn btn--primary">
+                <span>Ver detalles y release</span>
+                <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Hero Project #4: Dino-Online-1v1 (P2P Real-Time) -->
+        <article class="project-card project-card--hero project-card--dino" id="proyecto-dino" data-project-id="dino" data-category="destacados web-ia">
+          <div class="project-card__preview" data-slides='[
+            "assets/screenshots/dino/7.webp",
+            "assets/screenshots/dino/8.webp"
+          ]'>
+            <img src="assets/screenshots/dino/7.webp" alt="Dino Online 1v1 P2P" class="project-card__image carousel__img" width="800" height="450" decoding="async" />
+            <button class="card-nav-btn card-nav-btn--prev" aria-label="Anterior foto">‹</button>
+            <button class="card-nav-btn card-nav-btn--next" aria-label="Siguiente foto">›</button>
+            <div class="carousel__dots" aria-hidden="true">
+              <span class="carousel__dot carousel__dot--active"></span>
+              <span class="carousel__dot"></span>
+            </div>
+            <span class="project-card__tag-pill project-card__tag-pill--active">WebRTC P2P · 0ms Lag</span>
+          </div>
+
+          <div class="project-card__body">
+            <div class="project-card__tags">
+              <span class="tag-badge">TypeScript</span>
+              <span class="tag-badge">WebRTC / PeerJS</span>
+              <span class="tag-badge">HTML5 Canvas</span>
+              <span class="tag-badge">P2P Networking</span>
+            </div>
+
+            <h3 class="project-card__title">Dino-Online-1v1 (P2P Real-Time)</h3>
+
+            <div class="star-stat-box">
+              <span class="star-stat-box__label">WebRTC Peer-to-Peer · Duelos Deterministas Sin Servidor</span>
+            </div>
+
+            <p class="project-card__desc">
+              Duelos online multijugador competitivos 1v1 y hasta 4 jugadores con 0ms de lag local mediante WebRTC directo. Sincronización determinista de obstáculos por semilla compartida y blindaje contra exploits y suplantación de paquetes.
+            </p>
+
+            <div class="project-card__footer">
+              <button class="btn btn--primary">
+                <span>Ver detalles y código</span>
+                <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+            <!-- Proyectos Secundarios Curados -->
+      <div class="projects-secondary-grid">
+
+        <!-- Proyecto: WhatsApp Web Ghost Client & Clon IA -->
+        <article class="project-card" id="proyecto-whatpiola" data-project-id="whatpiola" data-category="destacados web-ia">
+          <div class="project-card__preview" data-slides='[
+            "assets/screenshots/whatpiola/1.webp",
+            "assets/screenshots/whatpiola/2.webp",
+            "assets/screenshots/whatpiola/3.webp"
+          ]'>
+            <img src="assets/screenshots/whatpiola/1.webp" alt="WhatsApp Web Ghost Client y Clon IA" class="project-card__image carousel__img" width="800" height="450" loading="lazy" decoding="async" />
+            <button class="card-nav-btn card-nav-btn--prev" aria-label="Anterior foto">‹</button>
+            <button class="card-nav-btn card-nav-btn--next" aria-label="Siguiente foto">›</button>
+            <div class="carousel__dots" aria-hidden="true">
+              <span class="carousel__dot carousel__dot--active"></span>
+              <span class="carousel__dot"></span>
+              <span class="carousel__dot"></span>
+            </div>
+            <span class="project-card__tag-pill project-card__tag-pill--hackathon">Código Privado · AI</span>
+          </div>
+
+          <div class="project-card__body">
+            <div class="project-card__tags">
+              <span class="tag-badge">TypeScript</span>
+              <span class="tag-badge">Gemini 2.5</span>
+              <span class="tag-badge">Ghost Privacy</span>
+            </div>
+            <h3 class="project-card__title">WhatsApp Ghost &amp; Clon IA</h3>
+            <p class="project-card__desc">
+              Cliente web desacoplado y bot autónomo con IA que emula tono humano con pausas, dashboard en tiempo real y lectura fantasma sin emitir doble tilde azul ni visto en estados.
+            </p>
+            <div class="project-card__footer">
+              <button class="btn btn--secondary">Ver detalles →</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Proyecto: TalentIA Hackathon -->
+        <article class="project-card" id="proyecto-talentia" data-project-id="talentia" data-category="destacados web-ia">
           <div class="project-card__preview" data-slides='[
             "assets/screenshots/talentia/talentia-1.webp",
             "assets/screenshots/talentia/talentia-2.webp",
@@ -412,73 +876,18 @@
               <span class="carousel__dot"></span>
               <span class="carousel__dot"></span>
             </div>
-            <span class="project-card__tag-pill project-card__tag-pill--hackathon">HACKATHON MENDOZA</span>
+            <span class="project-card__tag-pill project-card__tag-pill--hackathon">&lt;24hs Hackathon</span>
           </div>
 
           <div class="project-card__body">
             <div class="project-card__tags">
               <span class="tag-badge">Inteligencia Artificial</span>
-              <span class="tag-badge">JavaScript</span>
+              <span class="tag-badge">LLaMA 3 API</span>
               <span class="tag-badge">Vercel</span>
             </div>
-
-            <h3 class="project-card__title">Talentia — Chatbot de entrevistas con IA</h3>
-
-            <div class="hackathon-time-badge">
-              Hackathon Mendoza 2026 · Creado en &lt;24hs
-            </div>
-
+            <h3 class="project-card__title">TalentIA — Chatbot Entrevistador IA</h3>
             <p class="project-card__desc">
-              Simulador conversacional que genera entrevistas laborales personalizadas en tiempo real según el perfil del usuario y proporciona un reporte detallado al finalizar. Desarrollado en menos de 24 horas.
-            </p>
-
-            <div class="project-card__footer">
-              <button class="btn btn--primary">
-                <span>Ver detalles y app</span>
-                <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </button>
-            </div>
-          </div>
-        </article>
-
-      </div>
-
-      <!-- Proyectos Secundarios (Grilla 2x2) -->
-      <div class="projects-secondary-grid">
-
-        <!-- Proyecto: Jueguitos Piola -->
-        <article class="project-card" id="proyecto-jueguitos" data-project-id="jueguitos" data-category="destacados web-ia">
-          <div class="project-card__preview" data-slides='[
-            "assets/screenshots/jueguitos/jueguitos (1).webp",
-            "assets/screenshots/jueguitos/jueguitos (2).webp",
-            "assets/screenshots/jueguitos/jueguitos (3).webp",
-            "assets/screenshots/jueguitos/jueguitos (4).webp",
-            "assets/screenshots/jueguitos/jueguitos (5).webp"
-          ]'>
-            <img src="assets/screenshots/jueguitos/jueguitos (1).webp" alt="Jueguitos Piola" class="project-card__image carousel__img" width="800" height="450" loading="lazy" decoding="async" />
-            <button class="card-nav-btn card-nav-btn--prev" aria-label="Anterior foto">‹</button>
-            <button class="card-nav-btn card-nav-btn--next" aria-label="Siguiente foto">›</button>
-            <div class="carousel__dots" aria-hidden="true">
-              <span class="carousel__dot carousel__dot--active"></span>
-              <span class="carousel__dot"></span>
-              <span class="carousel__dot"></span>
-              <span class="carousel__dot"></span>
-              <span class="carousel__dot"></span>
-            </div>
-            <span class="project-card__tag-pill">En vivo</span>
-          </div>
-
-          <div class="project-card__body">
-            <div class="project-card__tags">
-              <span class="tag-badge">HTML</span>
-              <span class="tag-badge">JavaScript</span>
-              <span class="tag-badge">CSS</span>
-            </div>
-            <h3 class="project-card__title">Jueguitos Piola</h3>
-            <p class="project-card__desc">
-              Hub personal de descarga directa de juegos para PC hosteado en GitHub Pages. Sin cuentas ni aplicaciones intermedias.
+              Simulador conversacional que genera entrevistas laborales personalizadas en tiempo real según el perfil del usuario. Desarrollado en un sprint continuo de menos de 24 horas en el Hackathon Mendoza 2026.
             </p>
             <div class="project-card__footer">
               <button class="btn btn--secondary">Ver detalles →</button>
@@ -486,134 +895,32 @@
           </div>
         </article>
 
-        <!-- Proyecto: Mano Musical -->
+        <!-- Proyecto: Mano Robótica Biónica & Visión Computacional -->
         <article class="project-card" id="proyecto-mano" data-project-id="mano" data-category="destacados python-tools">
           <div class="project-card__preview" data-slides='[
             "assets/screenshots/mano/mano (1).webp",
             "assets/screenshots/mano/mano (2).webp"
           ]'>
-            <img src="assets/screenshots/mano/mano (1).webp" alt="Mano Musical" class="project-card__image carousel__img" width="800" height="450" loading="lazy" decoding="async" />
+            <img src="assets/screenshots/mano/mano (1).webp" alt="Mano Robótica y Visión Computacional" class="project-card__image carousel__img" width="800" height="450" loading="lazy" decoding="async" />
             <button class="card-nav-btn card-nav-btn--prev" aria-label="Anterior foto">‹</button>
             <button class="card-nav-btn card-nav-btn--next" aria-label="Siguiente foto">›</button>
             <div class="carousel__dots" aria-hidden="true">
               <span class="carousel__dot carousel__dot--active"></span>
               <span class="carousel__dot"></span>
             </div>
+            <span class="project-card__tag-pill">Hardware &amp; IA</span>
           </div>
 
           <div class="project-card__body">
             <div class="project-card__tags">
               <span class="tag-badge">Python</span>
+              <span class="tag-badge">Arduino (C++)</span>
               <span class="tag-badge">MediaPipe</span>
               <span class="tag-badge">OpenCV</span>
             </div>
-            <h3 class="project-card__title">Mano Musical</h3>
+            <h3 class="project-card__title">Mano Robótica &amp; Visión Computacional</h3>
             <p class="project-card__desc">
-              Sintetizador de audio interactivo controlado por gestos de la mano detectados en tiempo real con OpenCV y MediaPipe.
-            </p>
-            <div class="project-card__footer">
-              <button class="btn btn--secondary">Ver detalles →</button>
-            </div>
-          </div>
-        </article>
-
-        <!-- Proyecto: Ruleta Rusa LAN -->
-        <article class="project-card" id="proyecto-ruleta" data-project-id="ruleta" data-category="python-tools web-ia">
-          <div class="project-card__preview" data-slides='[
-            "assets/screenshots/ruleta/ruleta (1).webp",
-            "assets/screenshots/ruleta/ruleta (2).webp",
-            "assets/screenshots/ruleta/ruleta (3).webp"
-          ]'>
-            <img src="assets/screenshots/ruleta/ruleta (1).webp" alt="Ruleta Rusa LAN" class="project-card__image carousel__img" width="800" height="450" loading="lazy" decoding="async" />
-            <button class="card-nav-btn card-nav-btn--prev" aria-label="Anterior foto">‹</button>
-            <button class="card-nav-btn card-nav-btn--next" aria-label="Siguiente foto">›</button>
-            <div class="carousel__dots" aria-hidden="true">
-              <span class="carousel__dot carousel__dot--active"></span>
-              <span class="carousel__dot"></span>
-              <span class="carousel__dot"></span>
-            </div>
-          </div>
-
-          <div class="project-card__body">
-            <div class="project-card__tags">
-              <span class="tag-badge">Python</span>
-              <span class="tag-badge">Sockets</span>
-              <span class="tag-badge">LAN Networking</span>
-            </div>
-            <h3 class="project-card__title">Ruleta Rusa LAN</h3>
-            <p class="project-card__desc">
-              Juego multijugador para redes locales desarrollado para aprender arquitectura cliente-servidor en Python.
-            </p>
-            <div class="project-card__footer">
-              <button class="btn btn--secondary">Ver detalles →</button>
-            </div>
-          </div>
-        </article>
-
-        <!-- Proyecto: Despensa Simple -->
-        <article class="project-card" id="proyecto-despensa" data-project-id="despensa" data-category="web-ia">
-          <div class="project-card__preview" data-slides='[
-            "assets/screenshots/despensa/despensa (1).webp",
-            "assets/screenshots/despensa/despensa (2).webp",
-            "assets/screenshots/despensa/despensa (3).webp",
-            "assets/screenshots/despensa/despensa (4).webp"
-          ]'>
-            <img src="assets/screenshots/despensa/despensa (1).webp" alt="Despensa Simple" class="project-card__image carousel__img" width="800" height="450" loading="lazy" decoding="async" />
-            <button class="card-nav-btn card-nav-btn--prev" aria-label="Anterior foto">‹</button>
-            <button class="card-nav-btn card-nav-btn--next" aria-label="Siguiente foto">›</button>
-            <div class="carousel__dots" aria-hidden="true">
-              <span class="carousel__dot carousel__dot--active"></span>
-              <span class="carousel__dot"></span>
-              <span class="carousel__dot"></span>
-              <span class="carousel__dot"></span>
-            </div>
-          </div>
-
-          <div class="project-card__body">
-            <div class="project-card__tags">
-              <span class="tag-badge">JavaScript</span>
-              <span class="tag-badge">HTML / CSS</span>
-              <span class="tag-badge">CRUD App</span>
-            </div>
-            <h3 class="project-card__title">Despensa Simple (El Tato)</h3>
-            <p class="project-card__desc">
-              Aplicación de gestión de inventario CRUD para comercios locales construida con JavaScript vanilla.
-            </p>
-            <div class="project-card__footer">
-              <button class="btn btn--secondary">Ver detalles →</button>
-            </div>
-          </div>
-        </article>
-
-        <!-- Proyecto: Sitio Ortopedia Backup -->
-        <article class="project-card" id="proyecto-ortopedia" data-project-id="ortopedia" data-category="web-ia">
-          <div class="project-card__preview" data-slides='[
-            "assets/screenshots/ortopedia/ortopedia (1).webp",
-            "assets/screenshots/ortopedia/ortopedia (2).webp",
-            "assets/screenshots/ortopedia/ortopedia (3).webp",
-            "assets/screenshots/ortopedia/ortopedia (4).webp"
-          ]'>
-            <img src="assets/screenshots/ortopedia/ortopedia (1).webp" alt="Sitio Ortopedia" class="project-card__image carousel__img" width="800" height="450" loading="lazy" decoding="async" />
-            <button class="card-nav-btn card-nav-btn--prev" aria-label="Anterior foto">‹</button>
-            <button class="card-nav-btn card-nav-btn--next" aria-label="Siguiente foto">›</button>
-            <div class="carousel__dots" aria-hidden="true">
-              <span class="carousel__dot carousel__dot--active"></span>
-              <span class="carousel__dot"></span>
-              <span class="carousel__dot"></span>
-              <span class="carousel__dot"></span>
-            </div>
-            <span class="project-card__tag-pill">En vivo</span>
-          </div>
-
-          <div class="project-card__body">
-            <div class="project-card__tags">
-              <span class="tag-badge">HTML</span>
-              <span class="tag-badge">CSS</span>
-              <span class="tag-badge">Web Corporativa</span>
-            </div>
-            <h3 class="project-card__title">Sitio Ortopedia Backup</h3>
-            <p class="project-card__desc">
-              Página web comercial con catálogo de productos, sección de ubicación y formulario de contacto.
+              Seguimiento gestual en tiempo real con MediaPipe/OpenCV y control de servomotores en Arduino (C++), traduciendo cinemática de dedos en síntesis acústica y telemetría interactiva con baja latencia.
             </p>
             <div class="project-card__footer">
               <button class="btn btn--secondary">Ver detalles →</button>
@@ -646,7 +953,7 @@
             </div>
             <h3 class="project-card__title">Py Clash Bot (Español)</h3>
             <p class="project-card__desc">
-              Fork open-source con la traducción e integración en español completa de py-clash-bot.
+              Fork open-source con la traducción e integración en español completa de py-clash-bot, automatizando rutinas y optimizando resolución para emuladores Android.
             </p>
             <div class="project-card__footer">
               <button class="btn btn--secondary">Ver detalles →</button>
@@ -654,18 +961,55 @@
           </div>
         </article>
 
-        <!-- Proyecto: TrailerPelis -->
-        <article class="project-card" id="proyecto-trailerpelis" data-project-id="trailerpelis" data-category="web-ia">
+        <!-- Proyecto: Ruleta Rusa LAN -->
+        <article class="project-card" id="proyecto-ruleta" data-project-id="ruleta" data-category="python-tools web-ia">
           <div class="project-card__preview" data-slides='[
-            "assets/screenshots/trailerpelis/trailerpelis-1.webp",
-            "assets/screenshots/trailerpelis/trailerpelis-2.webp",
-            "assets/screenshots/trailerpelis/trailerpelis-3.webp"
+            "assets/screenshots/ruleta/ruleta (1).webp",
+            "assets/screenshots/ruleta/ruleta (2).webp",
+            "assets/screenshots/ruleta/ruleta (3).webp"
           ]'>
-            <img src="assets/screenshots/trailerpelis/trailerpelis-1.webp" alt="TrailerPelis" class="project-card__image carousel__img" width="800" height="450" loading="lazy" decoding="async" />
+            <img src="assets/screenshots/ruleta/ruleta (1).webp" alt="Ruleta Rusa LAN" class="project-card__image carousel__img" width="800" height="450" loading="lazy" decoding="async" />
             <button class="card-nav-btn card-nav-btn--prev" aria-label="Anterior foto">‹</button>
             <button class="card-nav-btn card-nav-btn--next" aria-label="Siguiente foto">›</button>
             <div class="carousel__dots" aria-hidden="true">
               <span class="carousel__dot carousel__dot--active"></span>
+              <span class="carousel__dot"></span>
+              <span class="carousel__dot"></span>
+            </div>
+          </div>
+
+          <div class="project-card__body">
+            <div class="project-card__tags">
+              <span class="tag-badge">Python</span>
+              <span class="tag-badge">Sockets TCP</span>
+              <span class="tag-badge">Multithreading</span>
+            </div>
+            <h3 class="project-card__title">Ruleta Rusa LAN (Sockets)</h3>
+            <p class="project-card__desc">
+              Juego multijugador para redes locales con arquitectura cliente-servidor multihilo y sincronización en tiempo real vía sockets, con castigo de apagado forzado del sistema en caso de derrota.
+            </p>
+            <div class="project-card__footer">
+              <button class="btn btn--secondary">Ver detalles →</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Proyecto: Jueguitos Piola -->
+        <article class="project-card" id="proyecto-jueguitos" data-project-id="jueguitos" data-category="destacados web-ia">
+          <div class="project-card__preview" data-slides='[
+            "assets/screenshots/jueguitos/jueguitos (1).webp",
+            "assets/screenshots/jueguitos/jueguitos (2).webp",
+            "assets/screenshots/jueguitos/jueguitos (3).webp",
+            "assets/screenshots/jueguitos/jueguitos (4).webp",
+            "assets/screenshots/jueguitos/jueguitos (5).webp"
+          ]'>
+            <img src="assets/screenshots/jueguitos/jueguitos (1).webp" alt="Jueguitos Piola" class="project-card__image carousel__img" width="800" height="450" loading="lazy" decoding="async" />
+            <button class="card-nav-btn card-nav-btn--prev" aria-label="Anterior foto">‹</button>
+            <button class="card-nav-btn card-nav-btn--next" aria-label="Siguiente foto">›</button>
+            <div class="carousel__dots" aria-hidden="true">
+              <span class="carousel__dot carousel__dot--active"></span>
+              <span class="carousel__dot"></span>
+              <span class="carousel__dot"></span>
               <span class="carousel__dot"></span>
               <span class="carousel__dot"></span>
             </div>
@@ -674,13 +1018,14 @@
 
           <div class="project-card__body">
             <div class="project-card__tags">
-              <span class="tag-badge">HTML</span>
+              <span class="tag-badge">HTML5</span>
+              <span class="tag-badge">CSS3</span>
               <span class="tag-badge">JavaScript</span>
-              <span class="tag-badge">Streaming UI</span>
+              <span class="tag-badge">GitHub Pages</span>
             </div>
-            <h3 class="project-card__title">TrailerPelis</h3>
+            <h3 class="project-card__title">Jueguitos Piola</h3>
             <p class="project-card__desc">
-              Portal interactivo para reproducción de tráileres cinematográficos desarrollado como proyecto de maquetación.
+              Hub personal de descarga directa de juegos para PC hosteado en GitHub Pages. Sin cuentas ni aplicaciones intermedias.
             </p>
             <div class="project-card__footer">
               <button class="btn btn--secondary">Ver detalles →</button>
@@ -709,7 +1054,7 @@
 
       <!-- Header de Sección -->
       <div class="contact-header-wrap">
-        <span class="section__label">03 / Contacto</span>
+        <span class="section__label">04 / Contacto</span>
         <h2 class="section__title">Trabajemos juntos</h2>
       </div>
 
@@ -739,7 +1084,7 @@
       <!-- Contenido y Acciones de Contacto (Layer 3) -->
       <div class="contact-content-box">
         <p class="contact-lead-text">
-          ¿Tenés una propuesta o querés colaborar? Estoy disponible para desarrollo <em class="text-serif text-emerald">full-stack</em>, <em class="text-serif text-purple">Inteligencia Artificial</em> y proyectos de <em class="text-serif text-cyan">código abierto</em>.
+          ¿Tenés una propuesta o querés colaborar? Estoy disponible para desarrollo full-stack, Inteligencia Artificial y proyectos de código abierto.
         </p>
 
         <!-- Tarjetas Bento de Contacto -->
@@ -761,16 +1106,16 @@
             </svg>
           </a>
 
-          <!-- Botón Reddit -->
-          <a href="https://www.reddit.com/user/Hugo_Ale_Olguin_" target="_blank" rel="noopener noreferrer" class="contact-card-btn contact-card-btn--reddit" id="link-reddit">
+          <!-- Botón LinkedIn -->
+          <a href="https://linkedin.com/in/hugoaleolguin" target="_blank" rel="noopener noreferrer" class="contact-card-btn contact-card-btn--linkedin" id="link-linkedin">
             <div class="contact-card-btn__icon-box">
               <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701z"/>
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
               </svg>
             </div>
             <div class="contact-card-btn__content">
-              <span class="contact-card-btn__platform">Reddit</span>
-              <span class="contact-card-btn__handle">u/Hugo_Ale_Olguin_</span>
+              <span class="contact-card-btn__platform">LinkedIn</span>
+              <span class="contact-card-btn__handle">in/hugoaleolguin</span>
             </div>
             <svg class="contact-card-btn__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <path d="M7 17L17 7M17 7H7M17 7V17" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

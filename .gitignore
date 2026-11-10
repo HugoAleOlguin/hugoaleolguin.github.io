@@ -5,3 +5,8 @@ graphify-out
 graphify-out/
 .graphify-out
 .graphify-out/
+
+# Archivos temporales de auditoría
+audit_repos.json
+audit_repos_complete.json
+deep_inspect.json

@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="es-AR" itemscope itemtype="https://schema.org/ProfilePage">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Currículum Vitae de Hugo Alejandro Olguín - Desarrollo de Software, Integraciones de Sistemas, APIs y Automatización con Inteligencia Artificial. Perfil técnico verificado y actualizado.">
+  <meta name="keywords" content="Hugo Alejandro Olguin, Desarrollador de Software, Desarrollo Web, Integracion de Servicios, APIs REST, Cloudflare TryCloudflare, Vercel API, SQLite, NSSM, Windows Services, LLaMA 3, Inteligencia Artificial, Automatizacion, Testing Productivo, San Rafael, Mendoza, Argentina">
+  <meta name="author" content="Hugo Alejandro Olguín">
+  <meta name="robots" content="index, follow">
+  <title>Hugo Alejandro Olguín - Currículum Vitae</title>
+
+  <!-- Metadatos estructurados JSON-LD legibles por motores de búsqueda, scrapers y sistemas de IA de reclutamiento -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Hugo Alejandro Olguín",
+    "jobTitle": "Desarrollador de Software e Integraciones",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Real del Padre, San Rafael",
+      "addressRegion": "Mendoza",
+      "addressCountry": "Argentina"
+    },
+    "email": "hugod.ies9012@gmail.com",
+    "telephone": "+542625645394",
+    "url": "https://hugoaleolguin.github.io/",
+    "sameAs": [
+      "https://github.com/HugoAleOlguin",
+      "https://hugoaleolguin.github.io/"
+    ],
+    "skills": [
+      "Desarrollo de Software",
+      "Integración de Sistemas y APIs",
+      "Automatización de Procesos",
+      "Desarrollo Asistido por Inteligencia Artificial",
+      "Cloudflare y Vercel",
+      "SQLite y Bases de Datos",
+      "HTML5, CSS3, JavaScript",
+      "NSSM y Servicios Windows en Segundo Plano",
+      "Atención al Cliente y Resolución de Problemas",
+      "Testing Manual y Verificación con Datos Reales"
+    ],
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "IES 9-012 San Rafael en Informática",
+      "program": "Tecnicatura Superior en Desarrollo de Software"
+    }
+  }
+  </script>
+
+  <style>
+    /* ==========================================================================
+       SISTEMA DE DISEÑO Y PALETA EDITORIAL EJECUTIVA
+       ========================================================================== */
+    :root {
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      
+      /* Tonos cromáticos modernos */
+      --navy-dark: #0f172a;       /* Slate 900: Títulos de alto contraste */
+      --navy-main: #1e3a8a;       /* Blue 900: Barra lateral institucional */
+      --blue-accent: #2563eb;     /* Blue 600: Acentos visuales y enlaces */
+      --blue-highlight: #3b82f6;  /* Blue 500: Indicadores de sección */
+      --blue-subtle: #eff6ff;     /* Blue 50: Fondos suaves */
+      
+      --text-main: #1e293b;       /* Slate 800: Texto de lectura óptima */
+      --text-muted: #475569;      /* Slate 600: Descripciones y fechas */
+      --text-subtle: #64748b;     /* Slate 500: Metadatos secundarios */
+      
+      --border-subtle: #e2e8f0;   /* Slate 200: Separadores sutiles */
+      --border-card: #cbd5e1;     /* Slate 300: Bordes de tarjetas */
+      --bg-card: #f8fafc;         /* Slate 50: Tarjetas de habilidades */
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 13.1px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background-color: #f1f5f9;
+    }
+
+    body {
+      font-family: var(--font-family);
+      color: var(--text-main);
+      line-height: 1.42;
+      background-color: #f1f5f9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 12px;
+    }
+
+    /* ==========================================================================
+       HOJA A4 CON BARRA AZUL COMPLETA QUE CUBRE DE ARRIBA A ABAJO ABSOLUTO
+       ========================================================================== */
+    .page {
+      width: 210mm;
+      height: 297mm;
+      min-height: 297mm;
+      max-height: 297mm;
+      padding: 9.5mm 14mm 9.5mm 15mm;
+      background: #ffffff;
+      box-shadow: 0 8px 26px rgba(15, 23, 42, 0.08);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      border-left: 8mm solid var(--navy-main); /* Barra azul que cubre el 100% de la altura */
+    }
+
+    /* Barra flotante de acciones para pantalla */
+    .screen-actions {
+      width: 210mm;
+      margin-bottom: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--navy-main);
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    }
+
+    .btn-print {
+      background: #ffffff;
+      color: var(--navy-main);
+      border: none;
+      padding: 7px 16px;
+      font-weight: 700;
+      border-radius: 4px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.86rem;
+      transition: all 0.2s ease;
+    }
+
+    .btn-print:hover {
+      background: #e2e8f0;
+      transform: translateY(-1px);
+    }
+
+    /* ==========================================================================
+       ENCABEZADO EDITORIAL
+       ========================================================================== */
+    header {
+      border-bottom: 1.5px solid var(--border-subtle);
+      padding-bottom: 6px;
+      margin-bottom: 7px;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 3px;
+    }
+
+    h1 {
+      font-size: 1.78rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: var(--navy-dark);
+      line-height: 1.1;
+    }
+
+    .job-title {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--blue-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .contact-container {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-style: normal;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+    }
+
+    .contact-item a {
+      color: var(--blue-accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .contact-item a:hover {
+      text-decoration: underline;
+    }
+
+    .icon {
+      width: 12.5px;
+      height: 12.5px;
+      flex-shrink: 0;
+      fill: currentColor;
+      color: var(--blue-accent);
+    }
+
+    /* ==========================================================================
+       SECCIONES Y JERARQUÍA (ALTA LEGIBILIDAD HUMANA Y ATS)
+       ========================================================================== */
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 6.5px;
+    }
+
+    section {
+      width: 100%;
+    }
+
+    h2 {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--navy-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1.2px solid var(--border-subtle);
+      padding-bottom: 2px;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    h2::before {
+      content: "";
+      display: inline-block;
+      width: 3.5px;
+      height: 11px;
+      background-color: var(--blue-highlight);
+      border-radius: 2px;
+    }
+
+    p {
+      font-size: 0.815rem;
+      line-height: 1.39;
+      color: var(--text-main);
+      text-align: left;
+      margin-bottom: 2px;
+    }
+
+    /* ==========================================================================
+       BLOQUES DE EXPERIENCIA Y PROYECTOS
+       ========================================================================== */
+    .entry-item {
+      margin-bottom: 4px;
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1.5px;
+    }
+
+    .entry-title {
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--navy-dark);
+    }
+
+    .entry-company {
+      font-weight: 700;
+      color: var(--blue-accent);
+    }
+
+    .entry-badge {
+      font-size: 0.74rem;
+      color: var(--text-subtle);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .entry-desc {
+      font-size: 0.815rem;
+      line-height: 1.38;
+      color: var(--text-main);
+      text-align: left;
+      margin-bottom: 2px;
+    }
+
+    ul.clean-list {
+      list-style-type: disc;
+      padding-left: 15px;
+      margin: 1.5px 0;
+    }
+
+    ul.clean-list li {
+      font-size: 0.815rem;
+      line-height: 1.38;
+      color: var(--text-main);
+      margin-bottom: 2px;
+      text-align: left;
+    }
+
+    ul.clean-list li strong {
+      color: var(--navy-dark);
+    }
+
+    .project-links {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 1.5px;
+    }
+
+    .project-links a {
+      color: var(--blue-accent);
+      text-decoration: none;
+      font-weight: 600;
+      margin-right: 14px;
+    }
+
+    .project-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* ==========================================================================
+       GRILLAS: HABILIDADES TÉCNICAS Y BLOQUES FINALES
+       ========================================================================== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3.5px 14px;
+      margin-top: 1.5px;
+    }
+
+    .skill-category {
+      font-size: 0.805rem;
+      line-height: 1.35;
+      background: var(--bg-card);
+      padding: 4px 8px;
+      border-radius: 4px;
+      border-left: 3px solid var(--blue-accent);
+    }
+
+    .skill-label {
+      font-weight: 700;
+      color: var(--navy-dark);
+      display: inline-block;
+      margin-right: 4px;
+    }
+
+    .skill-content {
+      color: var(--text-main);
+    }
+
+    .two-col-section {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 14px;
+    }
+
+    /* ==========================================================================
+       REGLAS ESTRICTAS DE IMPRESIÓN Y EXPORTACIÓN PDF
+       ========================================================================== */
+    @page {
+      size: A4 portrait;
+      margin: 0; /* Margen CERO absoluto: la barra azul llega al filo superior e inferior */
+    }
+
+    @media print {
+      html, body {
+        background-color: #ffffff !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 210mm !important;
+        height: 297mm !important;
+      }
+
+      .screen-actions {
+        display: none !important;
+      }
+
+      .page {
+        width: 210mm !important;
+        height: 297mm !important;
+        min-height: 297mm !important;
+        max-height: 297mm !important;
+        box-sizing: border-box !important;
+        box-shadow: none !important;
+        padding: 9.5mm 14mm 9.5mm 15mm !important; /* El contenido respeta márgenes elegantes */
+        overflow: hidden !important;
+        border-left: 8mm solid var(--navy-main) !important; /* Cubre del milímetro 0 al 297 sin cortes */
+      }
+
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      h1, h2, h3 {
+        break-after: avoid;
+        page-break-after: avoid;
+      }
+
+      .entry-item, section, .skill-category {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      a {
+        color: inherit !important;
+        text-decoration: none !important;
+      }
+
+      .project-links a, .contact-item a {
+        color: var(--blue-accent) !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra de utilidades en pantalla -->
+  <aside class="screen-actions" aria-label="Acciones de impresión">
+    <span><strong>Diseño A4 Ejecutivo:</strong> Barra izquierda completa de borde a borde y optimización ATS/IA limpia.</span>
+    <button type="button" class="btn-print" onclick="window.print()">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg>
+      Imprimir / Guardar en PDF
+    </button>
+  </aside>
+
+  <div class="page">
+    <!-- ENCABEZADO PRINCIPAL -->
+    <header>
+      <div class="header-top">
+        <h1>Hugo Alejandro Olguín</h1>
+        <span class="job-title">Desarrollo de Software e Integraciones</span>
+      </div>
+
+      <!-- DATOS DE CONTACTO (ATS y Human Friendly) -->
+      <address class="contact-container">
+        <div class="contact-row">
+          <span class="contact-item">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span>Real del Padre, San Rafael, Mendoza, Argentina</span>
+          </span>
+          <span class="contact-item">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            <span>Correo:</span>
+            <a href="mailto:hugod.ies9012@gmail.com">hugod.ies9012@gmail.com</a>
+          </span>
+          <span class="contact-item">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            <span>Teléfono:</span>
+            <a href="tel:+542625645394">+54 2625 645394</a>
+          </span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-item">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            <span>GitHub:</span>
+            <a href="https://github.com/HugoAleOlguin" target="_blank" rel="noopener noreferrer">github.com/HugoAleOlguin</a>
+          </span>
+          <span class="contact-item">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+            <span>Portfolio:</span>
+            <a href="https://hugoaleolguin.github.io/" target="_blank" rel="noopener noreferrer">hugoaleolguin.github.io</a>
+          </span>
+        </div>
+      </address>
+    </header>
+
+    <main>
+      <!-- PERFIL PROFESIONAL -->
+      <section aria-labelledby="perfil-heading">
+        <h2 id="perfil-heading">Perfil profesional</h2>
+        <p>
+          Estudiante de tercer año de la Tecnicatura Superior en Desarrollo de Software, con interés en el desarrollo asistido por inteligencia artificial, la integración de servicios y el mantenimiento de aplicaciones web. Cuento con experiencia práctica configurando, automatizando y probando soluciones tecnológicas mediante proyectos reales. Me interesa seguir desarrollando mis habilidades técnicas, colaborar con equipos de trabajo y resolver problemas de manera organizada, con atención a las pruebas y al funcionamiento continuo de las soluciones implementadas.
+        </p>
+      </section>
+
+      <!-- EXPERIENCIA PRÁCTICA -->
+      <section aria-labelledby="exp-heading">
+        <h2 id="exp-heading">Experiencia práctica</h2>
+        <article class="entry-item">
+          <div class="entry-header">
+            <div>
+              <span class="entry-title">Pasantía en Tecnología e Integración</span> — <span class="entry-company">La Yunta Supermercados</span>
+            </div>
+            <span class="entry-badge">13/07/2026 – 04/09/2026 (170 horas)</span>
+          </div>
+          <ul class="clean-list">
+            <li><strong>Integración y conectividad segura:</strong> Integré un servicio local con una aplicación web en Vercel mediante un túnel Cloudflare (TryCloudflare), automatizando la sincronización dinámica de su URL a través de la API de Vercel.</li>
+            <li><strong>Automatización y continuidad operativa:</strong> Configuré la ejecución del proceso como servicio en segundo plano de Windows mediante NSSM, garantizando tolerancia a reinicios y alta disponibilidad en puestos de cobro.</li>
+            <li><strong>Implementación con IA y validación:</strong> Implementé y verifiqué la solución con asistencia de herramientas de IA y datos reales; la integración continúa en uso activo y estable por el personal del supermercado.</li>
+            <li><strong>Soporte operativo:</strong> Realicé mantenimiento web, soporte técnico en cajas registradoras y carga sistemática de stock.</li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- PROYECTOS DESTACADOS -->
+      <section aria-labelledby="proyectos-heading">
+        <h2 id="proyectos-heading">Proyectos destacados</h2>
+        
+        <!-- Proyecto 1: TalentIA -->
+        <article class="entry-item">
+          <div class="entry-header">
+            <div>
+              <span class="entry-title">TalentIA</span> — <span class="entry-company">Hackathon Mendoza 2026</span>
+            </div>
+            <span class="entry-badge">Desarrollo intensivo en 24 horas</span>
+          </div>
+          <p class="entry-desc">
+            Plataforma web de entrevistas laborales personalizadas creada durante una hackathon de 24 horas. Integré la API de LLaMA 3 para dinamizar el flujo de entrevistas mediante IA, resolviendo desafíos de desarrollo web y tiempos de respuesta bajo alta exigencia temporal.
+          </p>
+        </article>
+
+        <!-- Proyecto 2: El Tato Software -->
+        <article class="entry-item">
+          <div class="entry-header">
+            <div>
+              <span class="entry-title">El Tato Software</span> — <span class="entry-company">Gestión Comercial e Impresión Remota</span>
+            </div>
+            <span class="entry-badge">En producción comercial continua</span>
+          </div>
+          <p class="entry-desc">
+            Sistema integral para negocio familiar que enlaza aplicación móvil, web y servidor central (Vercel, Cloudflare y SQLite). Permite consultar precios, calcular márgenes e IVA, y analizar comprobantes de proveedores asistido por IA.
+          </p>
+          <ul class="clean-list">
+            <li><strong>App de impresión remota sin cables:</strong> Desarrollé una segunda aplicación complementaria para impresión remota que permite enviar a imprimir cualquier documento o comprobante a la impresora del hogar desde cualquier dispositivo y red externa, sin requerir cables ni compartir la misma red local.</li>
+            <li><strong>Atención al cliente y contexto de uso (2021 – Presente):</strong> Participo en la atención directa a clientes en el comercio, aportando experiencia práctica en comunicación, empatía con las necesidades del usuario final y resolución de consultas operativas, manteniendo mi foco central en el desarrollo tecnológico.</li>
+          </ul>
+        </article>
+
+        <!-- Proyecto 3: Desarrollos Web -->
+        <article class="entry-item">
+          <div class="entry-header">
+            <div>
+              <span class="entry-title">Desarrollos Web y Prácticas Técnicas</span>
+            </div>
+            <span class="entry-badge">Repositorios y portfolio público</span>
+          </div>
+          <p class="entry-desc">
+            Prácticas de desarrollo frontend, diseño de interfaces accesibles, automatización y mantenimiento de proyectos web en continua evolución.
+          </p>
+          <div class="project-links">
+            <span>Repositorios: <a href="https://github.com/HugoAleOlguin" target="_blank" rel="noopener noreferrer">github.com/HugoAleOlguin</a></span>
+            <span>Portfolio: <a href="https://hugoaleolguin.github.io/" target="_blank" rel="noopener noreferrer">hugoaleolguin.github.io</a></span>
+          </div>
+        </article>
+      </section>
+
+      <!-- FORMACIÓN ACADÉMICA -->
+      <section aria-labelledby="edu-heading">
+        <h2 id="edu-heading">Formación académica</h2>
+        <article class="entry-item">
+          <div class="entry-header">
+            <div>
+              <span class="entry-title">Tecnicatura Superior en Desarrollo de Software</span> — <span class="entry-company">IES 9-012 San Rafael</span>
+            </div>
+            <span class="entry-badge">2024 – Actualidad (Cursando 3.ᵉʳ año)</span>
+          </div>
+          <p class="entry-desc">
+            <strong>Áreas de formación:</strong> Programación y algoritmos, Bases de datos y SQL, Desarrollo web, Modelado de sistemas, Calidad de software y pruebas, Gestión de proyectos.
+          </p>
+        </article>
+      </section>
+
+      <!-- COMPETENCIAS TÉCNICAS -->
+      <section aria-labelledby="skills-heading">
+        <h2 id="skills-heading">Competencias técnicas</h2>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <span class="skill-label">Integración y automatización:</span>
+            <span class="skill-content">Servicios locales y web, APIs REST, túneles Cloudflare (TryCloudflare), procesos Windows con NSSM, asistencia de IA.</span>
+          </div>
+          <div class="skill-category">
+            <span class="skill-label">Herramientas y despliegue:</span>
+            <span class="skill-content">Git, GitHub, Vercel, Cloudflare, API de Vercel, SQLite, NSSM, entornos Windows y terminal CLI.</span>
+          </div>
+          <div class="skill-category">
+            <span class="skill-label">Desarrollo web:</span>
+            <span class="skill-content">HTML semántico, CSS responsivo / print layout, JavaScript básico / en formación continua.</span>
+          </div>
+          <div class="skill-category">
+            <span class="skill-label">Testing y calidad:</span>
+            <span class="skill-content">Pruebas manuales en entornos productivos, verificación de datos reales, depuración y diseño de contexto para IA.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- COMPETENCIAS PERSONALES E IDIOMAS -->
+      <section aria-labelledby="personal-heading">
+        <div class="two-col-section">
+          <div>
+            <h2 id="personal-heading">Competencias personales</h2>
+            <p class="entry-desc">
+              Análisis y resolución estructurada de problemas, organización metódica, aprendizaje continuo, apertura al feedback técnico y rigurosidad en la verificación de soluciones.
+            </p>
+          </div>
+          <div>
+            <h2 id="idiomas-heading">Idiomas</h2>
+            <p class="entry-desc">
+              <strong>Inglés:</strong> Nivel intermedio de lectura y comprensión técnica (lectura fluida de documentación oficial, APIs y especificaciones).
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

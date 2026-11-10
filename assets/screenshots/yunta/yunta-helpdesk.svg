@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f1d"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="waGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#25D366"/>
+      <stop offset="100%" stop-color="#128C7E"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#bgGrad)"/>
+  
+  <!-- Subtle Grid Lines -->
+  <g stroke="rgba(255,255,255,0.04)" stroke-width="1">
+    <line x1="0" y1="90" x2="800" y2="90"/>
+    <line x1="0" y1="180" x2="800" y2="180"/>
+    <line x1="0" y1="270" x2="800" y2="270"/>
+    <line x1="0" y1="360" x2="800" y2="360"/>
+    <line x1="160" y1="0" x2="160" y2="450"/>
+    <line x1="320" y1="0" x2="320" y2="450"/>
+    <line x1="480" y1="0" x2="480" y2="450"/>
+    <line x1="640" y1="0" x2="640" y2="450"/>
+  </g>
+
+  <!-- Title Badge -->
+  <rect x="50" y="40" width="220" height="32" rx="16" fill="rgba(37,211,102,0.12)" stroke="rgba(37,211,102,0.3)" stroke-width="1"/>
+  <circle cx="68" cy="56" r="6" fill="#25D366"/>
+  <text x="84" y="60" fill="#25D366" font-family="-apple-system, system-ui, sans-serif" font-weight="700" font-size="12" letter-spacing="1">MESA DE AYUDA IT · LA YUNTA</text>
+
+  <text x="50" y="115" fill="#f8fafc" font-family="-apple-system, system-ui, sans-serif" font-weight="800" font-size="28" letter-spacing="-0.5">WHA-YUNTA-PRIME</text>
+  <text x="50" y="145" fill="#94a3b8" font-family="-apple-system, system-ui, sans-serif" font-weight="500" font-size="14">Plataforma Multiagente WhatsApp para Soporte Técnico a Sucursales</text>
+
+  <!-- Architecture Flow -->
+  <!-- Box 1: Sucursales -->
+  <g transform="translate(50, 185)">
+    <rect width="180" height="190" rx="12" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+    <rect x="15" y="15" width="36" height="36" rx="8" fill="rgba(37,211,102,0.15)"/>
+    <text x="25" y="38" font-size="18">🛒</text>
+    <text x="60" y="32" fill="#f8fafc" font-family="sans-serif" font-weight="700" font-size="13">Sucursales</text>
+    <text x="60" y="47" fill="#64748b" font-family="monospace" font-size="11">Cajas &amp; Locales</text>
+    <line x1="15" y1="65" x2="165" y2="65" stroke="rgba(255,255,255,0.08)"/>
+    <text x="15" y="88" fill="#94a3b8" font-family="sans-serif" font-size="11">• Bloqueo de Cajas POS</text>
+    <text x="15" y="110" fill="#94a3b8" font-family="sans-serif" font-size="11">• Impresoras Fiscales</text>
+    <text x="15" y="132" fill="#94a3b8" font-family="sans-serif" font-size="11">• Sincronización Precios</text>
+    <text x="15" y="154" fill="#94a3b8" font-family="sans-serif" font-size="11">• Pedidos AnyDesk</text>
+  </g>
+
+  <!-- Arrow 1 -->
+  <path d="M 235 280 L 290 280" stroke="#25D366" stroke-width="2" stroke-dasharray="4 4" fill="none"/>
+  <polygon points="290,275 300,280 290,285" fill="#25D366"/>
+
+  <!-- Box 2: Evolution API + Docker -->
+  <g transform="translate(305, 185)">
+    <rect width="190" height="190" rx="12" fill="url(#cardGrad)" stroke="rgba(56,189,248,0.3)" stroke-width="1.5"/>
+    <rect x="15" y="15" width="36" height="36" rx="8" fill="rgba(56,189,248,0.15)"/>
+    <text x="25" y="38" font-size="18">⚡</text>
+    <text x="60" y="32" fill="#38bdf8" font-family="sans-serif" font-weight="700" font-size="13">Evolution API</text>
+    <text x="60" y="47" fill="#64748b" font-family="monospace" font-size="11">Gateway WhatsApp</text>
+    <line x1="15" y1="65" x2="175" y2="65" stroke="rgba(255,255,255,0.08)"/>
+    <text x="15" y="88" fill="#cbd5e1" font-family="monospace" font-size="11">Docker Compose</text>
+    <text x="15" y="110" fill="#94a3b8" font-family="sans-serif" font-size="11">• Sesión oficial QR</text>
+    <text x="15" y="132" fill="#94a3b8" font-family="sans-serif" font-size="11">• Webhooks en tiempo real</text>
+    <text x="15" y="154" fill="#94a3b8" font-family="sans-serif" font-size="11">• PostgreSQL + Redis</text>
+  </g>
+
+  <!-- Arrow 2 -->
+  <path d="M 500 280 L 555 280" stroke="#38bdf8" stroke-width="2" stroke-dasharray="4 4" fill="none"/>
+  <polygon points="555,275 565,280 555,285" fill="#38bdf8"/>
+
+  <!-- Box 3: Chatwoot Multiagente -->
+  <g transform="translate(570, 185)">
+    <rect width="180" height="190" rx="12" fill="url(#cardGrad)" stroke="rgba(168,85,247,0.3)" stroke-width="1.5"/>
+    <rect x="15" y="15" width="36" height="36" rx="8" fill="rgba(168,85,247,0.15)"/>
+    <text x="25" y="38" font-size="18">💬</text>
+    <text x="60" y="32" fill="#c084fc" font-family="sans-serif" font-weight="700" font-size="13">Chatwoot IT</text>
+    <text x="60" y="47" fill="#64748b" font-family="monospace" font-size="11">Consola Central</text>
+    <line x1="15" y1="65" x2="165" y2="65" stroke="rgba(255,255,255,0.08)"/>
+    <text x="15" y="88" fill="#94a3b8" font-family="sans-serif" font-size="11">• Atención simultánea</text>
+    <text x="15" y="110" fill="#94a3b8" font-family="sans-serif" font-size="11">• Notas privadas AnyDesk</text>
+    <text x="15" y="132" fill="#94a3b8" font-family="sans-serif" font-size="11">• Túnel Cloudflare</text>
+    <text x="15" y="154" fill="#94a3b8" font-family="sans-serif" font-size="11">• Acceso web y móvil</text>
+  </g>
+
+  <!-- Bottom Tech Pills -->
+  <g transform="translate(50, 400)">
+    <rect width="80" height="24" rx="12" fill="rgba(255,255,255,0.05)"/>
+    <text x="12" y="16" fill="#cbd5e1" font-family="monospace" font-size="11">Docker</text>
+
+    <rect x="90" width="85" height="24" rx="12" fill="rgba(255,255,255,0.05)"/>
+    <text x="102" y="16" fill="#cbd5e1" font-family="monospace" font-size="11">Chatwoot</text>
+
+    <rect x="185" width="105" height="24" rx="12" fill="rgba(255,255,255,0.05)"/>
+    <text x="197" y="16" fill="#cbd5e1" font-family="monospace" font-size="11">Evolution API</text>
+
+    <rect x="300" width="95" height="24" rx="12" fill="rgba(255,255,255,0.05)"/>
+    <text x="312" y="16" fill="#cbd5e1" font-family="monospace" font-size="11">PostgreSQL</text>
+
+    <rect x="405" width="130" height="24" rx="12" fill="rgba(255,255,255,0.05)"/>
+    <text x="417" y="16" fill="#cbd5e1" font-family="monospace" font-size="11">Cloudflare Tunnels</text>
+  </g>
+</svg>

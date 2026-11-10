@@ -1,15 +1,16 @@
-// Base de datos de proyectos enriquecida con galerías completas de imágenes
+// Base de datos de proyectos enriquecida con galerías completas de imágenes y métricas STAR
 var PROYECTOS_DATA = {
   scribd: {
-    title: "Scribd Downloader Premium",
-    badges: ["100+ GitHub Stars", "Browser Extension"],
-    desc: "Extensión para Chromium y Firefox que descarga documentos públicos de Scribd directamente como PDF de alta resolución, inyectando un panel flotante transparente nativo.",
+    title: "Scribd Downloader Premium (199 ⭐)",
+    badges: ["199 ⭐ GitHub Stars", "Browser Extension", "Open Source Flagship"],
+    desc: "Extensión multiplataforma (Chrome Manifest V3 y Firefox MV2) con más de 199 estrellas en GitHub que permite respaldar y descargar documentos de Scribd en PDF de alta fidelidad sin suscripción ni intermediarios.",
     features: [
-      "Inyección nativa de interfaz sobre la web oficial sin redirecciones.",
-      "Descarga instantánea a formato PDF de alta resolución.",
-      "100% de procesamiento cliente local sin servidores de terceros."
+      "Doble motor de extracción: Smart Stitching nativo de fragmentos del servidor y escaneo secundario asistido con Canvas.",
+      "Bypass directo de retos y validaciones de Cloudflare sin depender de servidores o APIs de terceros.",
+      "Reconstrucción y compresión de PDF vectorial directamente en la memoria del navegador del cliente con jsPDF.",
+      "Validación masiva internacional con más de 27 forks orgánicos y releases versionadas semánticamente (v2.9.0)."
     ],
-    tags: ["JavaScript", "Browser Extension", "Chrome API", "Firefox WebExt"],
+    tags: ["JavaScript", "Chrome Manifest V3", "Firefox MV2", "Canvas API", "PDF Generation", "Cloudflare Bypass"],
     slides: [
       "assets/screenshots/scribd/scribd (1).webp",
       "assets/screenshots/scribd/scribd (2).webp",
@@ -18,16 +19,92 @@ var PROYECTOS_DATA = {
     liveUrl: "",
     githubUrl: "https://github.com/HugoAleOlguin/Scribd-Downloader-Premium"
   },
-  talentia: {
-    title: "Talentia — Chatbot de Entrevistas con IA",
-    badges: ["Hackathon Mendoza 2026", "Creado en <24hs"],
-    desc: "Plataforma conversacional desarrollada durante el Hackathon Mendoza 2026 en menos de 24hs. Utiliza IA para simular entrevistas laborales adaptativas y generar reportes con feedback al finalizar.",
+  despensa: {
+    title: "El Tato — Precios, Stock & Impresión Remota",
+    badges: ["Código Privado", "En Producción 2026", "React 19 + SQLite WAL"],
+    desc: "Plataforma operativa integral para comercio minorista que centraliza facturación, arqueo diario de caja, control de stock, cálculo de márgenes con IVA y microservicio autónomo de impresión silenciosa.",
     features: [
-      "Simulación dinámica de entrevistas laborales en tiempo real impulsada por IA.",
-      "Generación de reportes de desempeño personalizados con puntos a mejorar.",
-      "Desarrollado y desplegado de punta a punta en Vercel en <24 horas."
+      "Verificador PWA y APK nativa con escaneo láser/cámara y fallback resiliente en 3 capas (<5ms latencia).",
+      "Microservicio en segundo plano para despacho silencioso de PDFs y remitos a impresora Epson EcoTank L3560 por Wi-Fi sin abrir cuadros de diálogo.",
+      "Evolución a React 19 + Express 5 + SQLite en modo WAL para persistencia relacional embebida de ultra-alta velocidad.",
+      "Cero dependencias de servicios pausables; sistema adoptado al 100% y en uso operativo diario en el mostrador del negocio."
     ],
-    tags: ["Inteligencia Artificial", "JavaScript", "Vercel", "TailwindCSS"],
+    tags: ["React 19", "Node.js", "Express 5", "SQLite", "PWA / APK", "Impresión Wi-Fi"],
+    slides: [
+      "assets/screenshots/eltato-precios/4.webp",
+      "assets/screenshots/eltato-precios/5.webp",
+      "assets/screenshots/eltato-precios/6.webp"
+    ],
+    liveUrl: "",
+    githubUrl: ""
+  },
+  whatpiola: {
+    title: "WhatsApp Web Ghost Client & Clon IA Autónomo ('Prime')",
+    badges: ["Código Privado", "Google Gemini 2.5", "Ghost Privacy"],
+    desc: "Cliente web desacoplado y bot autónomo con Inteligencia Artificial que replica su tono conversacional con pausas humanas, dashboard web de control en tiempo real y modo fantasma antivisto.",
+    features: [
+      "Dashboard web interactivo en tiempo real (localhost:3000) con switch visual [BOT ACTIVO / PAUSADO], monitor anti-ban y editor de tono.",
+      "Modo Fantasma (Ghost Privacy): visualización anónima de estados y lectura de mensajes sin emitir confirmación de doble tilde azul.",
+      "Motor de simulación humana con presencia 'Escribiendo...', retardo aleatorio de lectura (3-6s) y debounce de mensajes contiguos.",
+      "Conexión por WebSocket nativo con @whiskeysockets/baileys y síntesis de respuestas situacionales mediante Gemini 2.5 Flash."
+    ],
+    tags: ["TypeScript", "Google Gemini 2.5", "@whiskeysockets/baileys", "Express", "lowdb", "Ghost Privacy"],
+    slides: [
+      "assets/screenshots/whatpiola/1.webp",
+      "assets/screenshots/whatpiola/2.webp",
+      "assets/screenshots/whatpiola/3.webp"
+    ],
+    liveUrl: "",
+    githubUrl: ""
+  },
+  telegramdrive: {
+    title: "Telegram Drive — Almacenamiento Ilimitado en la Nube",
+    badges: ["v1.5.1 Publicada", "Rust + Tauri v2", "React 19"],
+    desc: "Aplicación de escritorio para Windows que transforma los Mensajes Guardados de Telegram en un disco rígido ilimitado, gratuito y privado con interfaz moderna tipo Google Drive.",
+    features: [
+      "Cero servidores intermediarios ni suscripciones: los archivos se almacenan cifrados en tu propia cuenta de Telegram.",
+      "Fragmentación en bloques con verificación criptográfica de integridad SHA-256 por cada chunk.",
+      "Arquitectura de alto rendimiento en Rust (Tauri v2) con interfaz reactiva moderna en React 19 y TypeScript.",
+      "Subida múltiple con progreso en tiempo real, búsqueda instantánea, clasificación por mes e instalador MSI compilado."
+    ],
+    tags: ["Rust", "Tauri v2", "React 19", "TypeScript", "Telegram MTProto API", "Criptografía SHA-256"],
+    slides: [
+      "assets/screenshots/telegramdrive/1.webp",
+      "assets/screenshots/telegramdrive/2.webp",
+      "assets/screenshots/telegramdrive/3.webp"
+    ],
+    liveUrl: "",
+    githubUrl: "https://github.com/HugoAleOlguin/Telegram-Drive"
+  },
+  dino: {
+    title: "Dino-Online-1v1 — Duelo Multijugador P2P en Tiempo Real",
+    badges: ["WebRTC P2P", "0ms Input Lag", "TypeScript"],
+    desc: "Reinvención multijugador competitiva del dinosaurio de Chrome para duelos online 1v1 y hasta 4 jugadores simultáneos con latencia cero mediante WebRTC directo.",
+    features: [
+      "Arquitectura Peer-to-Peer con PeerJS / WebRTC sin servidores de juego dedicados intermediarios.",
+      "Sincronización determinista de obstáculos mediante distribución de semilla pseudoaleatoria generadora compartida.",
+      "Blindaje anti-exploits: sanitización anti-XSS, validación estricta de senderId e inmunidad a paquetes maliciosos de kick.",
+      "Motor de física y renderizado a 60 FPS sobre HTML5 Canvas y TypeScript modular."
+    ],
+    tags: ["TypeScript", "Vite", "WebRTC / PeerJS", "HTML5 Canvas", "P2P Networking", "TailwindCSS"],
+    slides: [
+      "assets/screenshots/dino/7.webp",
+      "assets/screenshots/dino/8.webp"
+    ],
+    liveUrl: "",
+    githubUrl: "https://github.com/HugoAleOlguin/Dino-Online-1v1"
+  },
+  talentia: {
+    title: "TalentIA — Evaluador Técnico y Entrevistador con IA",
+    badges: ["Hackathon Mendoza 2026", "Creado en <24hs", "LLaMA 3 API"],
+    desc: "Plataforma interactiva concebida, desarrollada y desplegada en menos de 24 horas durante el Hackathon Mendoza 2026. Utiliza modelos LLaMA 3 para simular entrevistas técnicas situacionales y proveer feedback analítico integral.",
+    features: [
+      "Evaluador dinámico de respuestas situacionales y código con IA adaptativa.",
+      "Generación automática de rúbricas de desempeño y reporte descargable al finalizar.",
+      "Arquitectura de bajo costo y baja latencia desplegada de punta a punta en Vercel.",
+      "Creado en un sprint ininterrumpido de menos de 24 horas compitiendo a nivel provincial."
+    ],
+    tags: ["Inteligencia Artificial", "LLaMA 3 API", "JavaScript", "Vercel", "TailwindCSS"],
     slides: [
       "assets/screenshots/talentia/talentia-1.webp",
       "assets/screenshots/talentia/talentia-2.webp",
@@ -35,6 +112,24 @@ var PROYECTOS_DATA = {
     ],
     liveUrl: "https://my-talentia.vercel.app/talentia",
     githubUrl: ""
+  },
+  mano: {
+    title: "Mano Robótica Biónica & Visión Computacional",
+    badges: ["Hardware & IA", "OpenCV / MediaPipe", "Arduino (C++)"],
+    desc: "Sistema embebido de interacción humano-máquina que rastrea la cinemática gestual de la mano mediante visión artificial y la traduce a telemetría de control para un actuador robótico y síntesis sonora.",
+    features: [
+      "Seguimiento tridimensional de 21 puntos anatómicos con algoritmos de baja latencia en Python.",
+      "Comunicación serie bidireccional con microcontrolador Arduino en C++ para control de posición.",
+      "Modulación dinámica de frecuencias acústicas según la apertura y proximidad de los dedos.",
+      "Telemetría visual en vivo con interfaz de depuración matricial sobre el stream de video."
+    ],
+    tags: ["Python", "Arduino (C++)", "MediaPipe", "OpenCV", "Sistemas Embebidos", "PyAudio"],
+    slides: [
+      "assets/screenshots/mano/mano (1).webp",
+      "assets/screenshots/mano/mano (2).webp"
+    ],
+    liveUrl: "",
+    githubUrl: "https://github.com/HugoAleOlguin/Mano_Musical"
   },
   jueguitos: {
     title: "Jueguitos Piola",
@@ -56,31 +151,14 @@ var PROYECTOS_DATA = {
     liveUrl: "https://hugoaleolguin.github.io/jueguitos-piola/",
     githubUrl: "https://github.com/HugoAleOlguin/jueguitos-piola"
   },
-  mano: {
-    title: "Mano Musical (Computer Vision)",
-    badges: ["Python", "OpenCV"],
-    desc: "Sintetizador interactivo que mapea los puntos clave de la mano capturados por la webcam para producir tonos de audio dinámicos en tiempo real.",
-    features: [
-      "Reconocimiento de mano mediante MediaPipe con baja latencia.",
-      "Modulación de frecuencia sonora basada en la distancia de los dedos.",
-      "Interfaz gráfica de depuración en vivo con OpenCV."
-    ],
-    tags: ["Python", "MediaPipe", "OpenCV", "PyAudio"],
-    slides: [
-      "assets/screenshots/mano/mano (1).webp",
-      "assets/screenshots/mano/mano (2).webp"
-    ],
-    liveUrl: "",
-    githubUrl: "https://github.com/HugoAleOlguin/Mano_Musical"
-  },
   ruleta: {
     title: "Ruleta Rusa LAN (Networking)",
-    badges: ["Python", "Sockets"],
-    desc: "Juego multijugador para redes locales que implementa comunicación por sockets cliente-servidor para partidas síncronas entre múltiples dispositivos.",
+    badges: ["Python", "Sockets", "Concurrencia"],
+    desc: "Juego multijugador para redes locales que implementa comunicación por sockets cliente-servidor para partidas síncronas entre múltiples dispositivos con castigo de apagado forzado del sistema.",
     features: [
       "Arquitectura cliente-servidor multihilo en Python puro.",
       "Detección automática de salas en la red local (LAN).",
-      "Protocolo de mensajes liviano en formato JSON."
+      "Protocolo de mensajes liviano en formato JSON y cierre de sesión de Windows en caso de derrota."
     ],
     tags: ["Python", "Sockets", "Threading", "JSON"],
     slides: [
@@ -91,47 +169,9 @@ var PROYECTOS_DATA = {
     liveUrl: "",
     githubUrl: "https://github.com/HugoAleOlguin/Ruleta-Rusa-Lan"
   },
-  despensa: {
-    title: "Despensa Simple (El Tato)",
-    badges: ["CRUD App", "Vanilla JS"],
-    desc: "Sistema de gestión de inventario y punto de venta simplificado diseñado para pequeños comercios y despensas de barrio.",
-    features: [
-      "Control de stock con alertas de productos en nivel crítico.",
-      "Cálculo de ganancias y resumen de ventas diarias.",
-      "Persistencia de datos en almacenamiento local (LocalStorage)."
-    ],
-    tags: ["JavaScript", "HTML5", "CSS3", "LocalStorage"],
-    slides: [
-      "assets/screenshots/despensa/despensa (1).webp",
-      "assets/screenshots/despensa/despensa (2).webp",
-      "assets/screenshots/despensa/despensa (3).webp",
-      "assets/screenshots/despensa/despensa (4).webp"
-    ],
-    liveUrl: "",
-    githubUrl: "https://github.com/HugoAleOlguin/Despensa-Simple-El-Tato"
-  },
-  ortopedia: {
-    title: "Sitio Ortopedia Backup",
-    badges: ["En vivo", "Web Corporativa"],
-    desc: "Sitio web comercial para la presentación de productos ortopédicos, atención al cliente y ubicación de sucursal.",
-    features: [
-      "Diseño limpio enfocado en la usabilidad de adultos mayores.",
-      "Catálogo interactivo con imágenes y especificaciones técnicas.",
-      "Integración de mapa dinámico y botón de contacto por WhatsApp."
-    ],
-    tags: ["HTML5", "CSS3", "JavaScript", "Google Maps API"],
-    slides: [
-      "assets/screenshots/ortopedia/ortopedia (1).webp",
-      "assets/screenshots/ortopedia/ortopedia (2).webp",
-      "assets/screenshots/ortopedia/ortopedia (3).webp",
-      "assets/screenshots/ortopedia/ortopedia (4).webp"
-    ],
-    liveUrl: "https://hugoaleolguin.github.io/Sitio-Otopedia-Backup/",
-    githubUrl: "https://github.com/HugoAleOlguin/Sitio-Otopedia-Backup"
-  },
   clashbot: {
     title: "Py Clash Bot (Español)",
-    badges: ["Python", "Open Source"],
+    badges: ["Python", "Open Source", "Fork"],
     desc: "Fork open-source de py-clash-bot enfocado en traducir la interfaz gráfica y personalizar las rutinas de automatización para la comunidad hispanohablante.",
     features: [
       "Traducción integral al español de la interfaz gráfica y notificaciones.",
@@ -146,24 +186,6 @@ var PROYECTOS_DATA = {
     ],
     liveUrl: "",
     githubUrl: "https://github.com/HugoAleOlguin/py-clash-bot-spanish"
-  },
-  trailerpelis: {
-    title: "TrailerPelis",
-    badges: ["En vivo", "Streaming UI"],
-    desc: "Portal web de entretenimiento diseñado para la búsqueda y reproducción instantánea de tráileres de cine.",
-    features: [
-      "Interfaz oscura inspirada en servicios de streaming líderes.",
-      "Buscador dinámico de películas con autocompletado.",
-      "Reproductor de video de alta definición integrado."
-    ],
-    tags: ["HTML5", "CSS3", "JavaScript"],
-    slides: [
-      "assets/screenshots/trailerpelis/trailerpelis-1.webp",
-      "assets/screenshots/trailerpelis/trailerpelis-2.webp",
-      "assets/screenshots/trailerpelis/trailerpelis-3.webp"
-    ],
-    liveUrl: "https://luszczak.github.io/TrailerPelis/",
-    githubUrl: "https://github.com/HugoAleOlguin/TrailerPelis"
   }
 };
 
@@ -311,23 +333,29 @@ var MODAL_THEMES = {
     glow: 'rgba(16, 185, 129, 0.35)',
     slug: 'el-tato://pos-retail-system'
   },
-  ortopedia: {
+  whatpiola: {
+    accent: '#22c55e',
+    accentLight: '#4ade80',
+    glow: 'rgba(34, 197, 94, 0.35)',
+    slug: 'what-piola://autonomous-ghost-clon'
+  },
+  telegramdrive: {
+    accent: '#3b82f6',
+    accentLight: '#60a5fa',
+    glow: 'rgba(59, 130, 246, 0.35)',
+    slug: 'telegram-drive://desktop-cloud-storage'
+  },
+  dino: {
     accent: '#38bdf8',
     accentLight: '#7dd3fc',
     glow: 'rgba(56, 189, 248, 0.35)',
-    slug: 'ortopedia-backup://corporate-web'
+    slug: 'dino-1v1://webrtc-p2p-multiplayer'
   },
   clashbot: {
     accent: '#f43f5e',
     accentLight: '#fb7185',
     glow: 'rgba(244, 63, 94, 0.35)',
     slug: 'py-clash-bot://spanish-edition'
-  },
-  trailerpelis: {
-    accent: '#f43f5e',
-    accentLight: '#fb7185',
-    glow: 'rgba(244, 63, 94, 0.35)',
-    slug: 'trailer-pelis://stream-cinema'
   }
 };
 
