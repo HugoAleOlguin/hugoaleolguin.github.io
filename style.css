@@ -362,7 +362,7 @@ a:focus:not(:focus-visible) {
 
 /* ===== Layout Principal ===== */
 main {
-  width: min(1120px, 92%);
+  width: min(1240px, 94%);
   margin: 0 auto;
   position: relative;
   z-index: 2;
@@ -427,7 +427,7 @@ main {
 
 .hero__grid {
   display: grid;
-  grid-template-columns: 1.22fr 0.78fr;
+  grid-template-columns: 1.25fr 0.75fr;
   gap: clamp(32px, 5vw, 64px);
   align-items: center;
   width: 100%;
@@ -435,18 +435,18 @@ main {
 
 .hero__content {
   width: 100%;
-  max-width: 680px;
+  max-width: 760px;
 }
 
 /* Metadata Bar Superior (Desordenadamente ordenado / Editorial) */
 .hero__meta {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   flex-wrap: wrap;
-  margin-bottom: 22px;
+  margin-bottom: 24px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.80rem;
+  font-size: 0.88rem;
 }
 
 .hero__meta-location {
@@ -467,15 +467,16 @@ main {
 .hero__meta-stars {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   color: var(--accent-gold);
   font-weight: 600;
   text-decoration: none;
-  padding: 3px 10px;
+  padding: 4px 12px;
   border-radius: var(--radius-full);
   background: rgba(251, 191, 36, 0.08);
   border: 1px solid rgba(251, 191, 36, 0.25);
   transition: all 0.2s ease;
+  font-size: 0.82rem;
 }
 
 .hero__meta-stars:hover {
@@ -485,62 +486,80 @@ main {
 }
 
 .hero__meta-star-icon {
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   fill: currentColor;
 }
 
-/* Tipografía Principal: Legible, Firme y de Escala Equilibrada */
+/* Tipografía Principal: Mayor Presencia y Escala Monumental */
 .hero__title {
-  font-size: clamp(2.3rem, 3.6vw, 3.5rem);
+  font-size: clamp(2.8rem, 4.8vw, 4.4rem);
   font-weight: 800;
-  line-height: 1.1;
+  line-height: 1.06;
   letter-spacing: -0.035em;
   color: #f8fafc;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   text-wrap: balance;
 }
 
 .hero__role-badge {
   display: inline-block;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .hero__role-text {
   font-family: 'Inter', -apple-system, sans-serif;
-  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  font-size: clamp(1.12rem, 1.9vw, 1.38rem);
   font-weight: 600;
   color: var(--accent-light);
   letter-spacing: -0.015em;
 }
 
 .hero__subtitle {
-  font-size: clamp(1.02rem, 1.35vw, 1.15rem);
-  color: #94a3b8;
-  line-height: 1.7;
-  max-width: 54ch;
-  margin-bottom: 24px;
+  font-size: clamp(1.22rem, 1.85vw, 1.45rem);
+  color: #cbd5e1;
+  line-height: 1.62;
+  max-width: 52ch;
+  margin-bottom: 28px;
   font-weight: 400;
+  text-wrap: balance;
+}
+
+.hero__highlight {
+  font-weight: 600;
+  display: inline;
+}
+
+.hero__highlight--indigo {
+  color: #a5b4fc;
+}
+
+.hero__highlight--cyan {
+  color: #38bdf8;
+}
+
+.hero__highlight--emerald {
+  color: #34d399;
 }
 
 /* Micro-Tags de Stack */
 .hero__stack-chips {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   flex-wrap: wrap;
-  margin-bottom: 28px;
+  margin-bottom: 32px;
 }
 
 .stack-chip {
   display: inline-flex;
   align-items: center;
-  padding: 5px 12px;
+  padding: 6px 14px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.09);
-  border-radius: 6px;
+  border-radius: 7px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.78rem;
+  font-size: 0.84rem;
   font-weight: 500;
   color: #cbd5e1;
   transition: all 0.2s ease;
@@ -557,13 +576,13 @@ main {
 .hero__actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   flex-wrap: wrap;
 }
 
 .btn--compact {
-  padding: 10px 20px;
-  font-size: 0.88rem;
+  padding: 12px 24px;
+  font-size: 0.95rem;
   font-weight: 600;
   border-radius: var(--radius-sm);
   white-space: nowrap;
@@ -573,8 +592,8 @@ main {
 .hero__rubik-wrapper {
   position: relative;
   width: 100%;
-  max-width: 440px;
-  height: 440px;
+  max-width: 500px;
+  height: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -641,8 +660,8 @@ main {
     padding-top: 120px;
   }
   .hero__rubik-wrapper {
-    height: 320px;
-    max-width: 320px;
+    height: 380px;
+    max-width: 380px;
   }
 }
 
@@ -668,16 +687,17 @@ main {
 
   .hero__meta {
     justify-content: center;
+    font-size: 0.84rem;
   }
 
   .hero__title {
-    font-size: clamp(2.2rem, 8.5vw, 3.2rem);
+    font-size: clamp(2.4rem, 9.2vw, 3.6rem);
     margin-bottom: 14px;
   }
 
   .hero__subtitle {
-    font-size: clamp(0.96rem, 3.6vw, 1.08rem);
-    max-width: 42ch;
+    font-size: clamp(1.08rem, 4.2vw, 1.25rem);
+    max-width: 44ch;
     margin: 0 auto 24px;
   }
 
@@ -688,7 +708,12 @@ main {
 
   .hero__actions {
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
+  }
+
+  .btn--compact {
+    padding: 11px 22px;
+    font-size: 0.92rem;
   }
 
   .hero__rubik-wrapper {
@@ -848,14 +873,20 @@ main {
 
 .bento-focus-tag {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   font-weight: 600;
   color: #cbd5e1;
   background: #11141b;
   border: 1px solid #1c222e;
   border-radius: 6px;
-  padding: 4px 10px;
+  padding: 5px 11px;
   letter-spacing: 0.02em;
+}
+
+.bento-focus-tag--accent {
+  background: rgba(99, 102, 241, 0.12);
+  border-color: rgba(99, 102, 241, 0.35);
+  color: #a5b4fc;
 }
 
 /* Card 2: Métricas Clave (Sobresalientes) */
@@ -1043,26 +1074,27 @@ main {
 .bento-chip {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 6px 11px;
-  font-size: 0.81rem;
+  gap: 8px;
+  padding: 8px 13px;
+  font-size: 0.86rem;
   font-weight: 500;
-  color: #cbd5e1;
-  background: #13161c;
-  border: 1px solid #1f2532;
-  border-radius: 6px;
-  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+  color: #e2e8f0;
+  background: #11141b;
+  border: 1px solid #1c222e;
+  border-radius: 8px;
+  transition: all 0.2s ease;
 }
 
 .bento-chip:hover {
-  background: #171c24;
-  border-color: #2f384a;
+  background: #161c26;
+  border-color: #334155;
   color: #ffffff;
+  transform: translateY(-1px);
 }
 
 .bento-chip img {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   flex-shrink: 0;
   object-fit: contain;
   display: block;
@@ -1962,8 +1994,8 @@ main {
   filter: drop-shadow(0 25px 55px rgba(0, 0, 0, 0.95));
   pointer-events: none;
   user-select: none;
-  -webkit-mask-image: linear-gradient(to bottom, black 65%, transparent 98%);
-  mask-image: linear-gradient(to bottom, black 65%, transparent 98%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 72% at 50% 52%, black 46%, rgba(0, 0, 0, 0.75) 68%, transparent 96%);
+  mask-image: radial-gradient(ellipse 75% 72% at 50% 52%, black 46%, rgba(0, 0, 0, 0.75) 68%, transparent 96%);
 }
 
 .contact-avatar-fade {
@@ -1990,10 +2022,10 @@ main {
 /* Grilla Bento de Tarjetas de Contacto */
 .contact-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
   width: 100%;
-  max-width: 920px;
+  max-width: 980px;
   margin: 0 auto 40px;
 }
 
@@ -2066,6 +2098,7 @@ main {
   background: rgba(99, 102, 241, 0.04);
   cursor: pointer;
   width: 100%;
+  position: relative;
 }
 .contact-card-btn--email:hover {
   border-color: var(--accent-light);
@@ -2073,6 +2106,34 @@ main {
 }
 .contact-card-btn--email .contact-card-btn__icon-box svg {
   color: var(--accent-light);
+}
+
+.contact-card-btn--email .contact-card-btn__content {
+  overflow: visible;
+}
+
+.contact-card-btn--email .contact-card-btn__handle {
+  font-size: clamp(0.76rem, 1.05vw, 0.88rem);
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: clip;
+}
+
+.email-feedback-badge {
+  font-size: 0.72rem;
+  color: #34d399;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.2s;
+  padding: 3px 8px;
+  background: rgba(52, 211, 153, 0.16);
+  border-radius: 4px;
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
 }
 
 .contact-card-btn__content {
@@ -2634,9 +2695,9 @@ main {
 }
 
 .timeline-mod__desc {
-  font-size: 0.81rem;
-  color: #7b8798;
-  line-height: 1.5;
+  font-size: 0.83rem;
+  color: #94a3b8;
+  line-height: 1.55;
   margin: 0;
 }
 
@@ -2644,62 +2705,35 @@ main {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  padding-top: 4px;
+  padding-top: 6px;
   border-top: 1px solid #141820;
 }
 
 .timeline-chip {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 4px 10px;
-  font-size: 0.75rem;
+  gap: 7px;
+  padding: 5px 11px;
+  font-size: 0.8rem;
   font-weight: 500;
   color: #cbd5e1;
   background: #0f1217;
   border: 1px solid #1a1e27;
-  border-radius: 6px;
-  transition: border-color 0.18s ease, color 0.18s ease;
+  border-radius: 7px;
+  transition: all 0.18s ease;
 }
 
 .timeline-chip:hover {
   border-color: #2b3342;
   color: #ffffff;
+  transform: translateY(-1px);
 }
 
 .timeline-chip img {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   object-fit: contain;
   flex-shrink: 0;
-}
-
-/* Banner de Descarga de CV */
-.experience-cv-banner {
-  background: #0b0d11;
-  border: 1px dashed #222734;
-  border-radius: 12px;
-  padding: 22px 26px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.experience-cv-banner__title {
-  font-size: 0.98rem;
-  font-weight: 700;
-  color: #f8fafc;
-  margin: 0 0 4px 0;
-}
-
-.experience-cv-banner__desc {
-  font-size: 0.84rem;
-  color: #7b8798;
-  margin: 0;
-  max-width: 60ch;
-  line-height: 1.5;
 }
 
 @media (max-width: 880px) {
