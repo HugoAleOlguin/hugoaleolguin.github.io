@@ -230,6 +230,192 @@ function initMotionSystem() {
     titles.forEach(function (t) { obs.observe(t); });
   })();
 
+  /* ══════════════════════════════════════════════════════════════════
+   * 8. PARALLAX DE FONDO CON SCROLL
+   * ══════════════════════════════════════════════════════════════════ */
+  (function initBackgroundParallax() {
+    if (prefersReduced) return;
+    var bgSvg = document.querySelector('.topographic-waves-svg');
+    if (!bgSvg) return;
+
+    var rafPending = false;
+
+    function updateOnScroll() {
+      var scrollTop = window.scrollY || window.pageYOffset || 0;
+      var docHeight = Math.max(
+        document.documentElement.scrollHeight - window.innerHeight,
+        1
+      );
+      var progress = Math.min(Math.max(scrollTop / docHeight, 0), 1);
+      var maxShift = Math.max(bgSvg.offsetHeight - window.innerHeight, 0) * 0.75;
+      var shiftY = -(progress * maxShift);
+      bgSvg.style.transform = 'translate3d(0, ' + shiftY.toFixed(2) + 'px, 0)';
+      rafPending = false;
+    }
+
+    window.addEventListener('scroll', function () {
+      if (!rafPending) {
+        rafPending = true;
+        requestAnimationFrame(updateOnScroll);
+      }
+    }, { passive: true });
+
+    updateOnScroll();
+  })();
+
+  /* ══════════════════════════════════════════════════════════════════
+   * 9. DYNAMIC ISLAND (UI MORPHING EN HERO)
+   * ══════════════════════════════════════════════════════════════════ */
+  (function initDynamicIsland() {
+    var island = document.getElementById('dynamic-island');
+    var textEl = document.getElementById('dynamic-island-text');
+    if (!island || !textEl) return;
+
+    var states = [
+      { label: 'Disponible para proyectos', cls: '' },
+      { label: '200+ GitHub Stars', cls: 'dynamic-island--gold' },
+      { label: 'Copiar Email: hugod.ies9012@gmail.com', cls: 'dynamic-island--indigo', copy: 'hugod.ies9012@gmail.com' }
+    ];
+    var idx = 0;
+    var timer = null;
+
+    function setState(nextIdx) {
+      idx = nextIdx % states.length;
+      var st = states[idx];
+      island.classList.add('is-morphing');
+      setTimeout(function () {
+        textEl.textContent = st.label;
+        island.classList.remove('dynamic-island--gold', 'dynamic-island--indigo', 'dynamic-island--copied');
+        if (st.cls) island.classList.add(st.cls);
+        island.classList.remove('is-morphing');
+      }, 140);
+    }
+
+    island.addEventListener('click', function () {
+      var current = states[idx];
+      if (current.copy && navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(current.copy).then(function () {
+          textEl.textContent = '✓ ¡Email copiado!';
+          island.classList.add('dynamic-island--copied');
+          setTimeout(function () { setState(0); }, 1800);
+        });
+        return;
+      }
+      setState(idx + 1);
+    });
+
+    if (!prefersReduced) {
+      timer = setInterval(function () {
+        if (!island.matches(':hover')) setState(idx + 1);
+      }, 4200);
+      island.addEventListener('mouseenter', function () { clearInterval(timer); });
+      island.addEventListener('mouseleave', function () {
+        clearInterval(timer);
+        timer = setInterval(function () {
+          if (!island.matches(':hover')) setState(idx + 1);
+        }, 4200);
+      });
+    }
+  })();
+
+  /* ══════════════════════════════════════════════════════════════════
+   * 10. SPOTLIGHT + TILT 3D SUTIL EN TARJETAS (GPU, SIN LAG)
+   * ══════════════════════════════════════════════════════════════════ */
+  (function initCardSpotlightAndTilt() {
+    if (prefersReduced || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    var cards = document.querySelectorAll('.bento-card, .project-card');
+    if (!cards.length) return;
+
+    cards.forEach(function (card) {
+      var rafId = null;
+      var rect = null;
+
+      card.addEventListener('mouseenter', function () {
+        rect = card.getBoundingClientRect();
+      }, { passive: true });
+
+      card.addEventListener('mousemove', function (e) {
+        if (rafId) return;
+        rafId = requestAnimationFrame(function () {
+          if (!rect) rect = card.getBoundingClientRect();
+          var x = e.clientX - rect.left;
+          var y = e.clientY - rect.top;
+          card.style.setProperty('--mouse-x', x + 'px');
+          card.style.setProperty('--mouse-y', y + 'px');
+
+          var rx = ((y / rect.height) - 0.5) * -2.2;
+          var ry = ((x / rect.width) - 0.5) * 2.2;
+          card.style.transform = 'perspective(900px) rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg) translateY(-2px)';
+          rafId = null;
+        });
+      }, { passive: true });
+
+      card.addEventListener('mouseleave', function () {
+        if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+        rect = null;
+        card.style.transform = '';
+      }, { passive: true });
+    });
+  })();
+
+  /* ══════════════════════════════════════════════════════════════════
+   * 11. MORPHING DE ESTADO EN BOTONES (EMAIL & CV)
+   * ══════════════════════════════════════════════════════════════════ */
+  (function initButtonMorphing() {
+    var emailBtn = document.getElementById('link-email');
+    if (emailBtn) {
+      emailBtn.addEventListener('click', function () {
+        emailBtn.classList.add('is-morphed');
+        setTimeout(function () { emailBtn.classList.remove('is-morphed'); }, 2200);
+      });
+    }
+
+    var cvBtns = document.querySelectorAll('.btn--cv');
+    cvBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var span = btn.querySelector('span');
+        if (!span || btn.classList.contains('is-morphed')) return;
+        var orig = span.textContent;
+        btn.classList.add('is-morphed');
+        span.textContent = '✓ Descargando...';
+        setTimeout(function () {
+          btn.classList.remove('is-morphed');
+          span.textContent = orig;
+        }, 1800);
+      });
+    });
+  })();
+
+  /* ══════════════════════════════════════════════════════════════════
+   * 12. STAGGER REVEAL EN CHIPS Y MÓDULOS
+   * ══════════════════════════════════════════════════════════════════ */
+  (function initStaggerReveal() {
+    if (prefersReduced) return;
+    var groups = document.querySelectorAll('.bento-tech-chips, .timeline-modules, .timeline-entry__footer');
+    if (!groups.length) return;
+
+    groups.forEach(function (group) {
+      var items = group.children;
+      for (var i = 0; i < items.length; i++) {
+        items[i].classList.add('stagger-item');
+        items[i].style.setProperty('--stagger-i', i);
+      }
+    });
+
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var items = entry.target.children;
+        for (var i = 0; i < items.length; i++) {
+          items[i].classList.add('stagger-item--visible');
+        }
+        obs.unobserve(entry.target);
+      });
+    }, { threshold: 0.15 });
+
+    groups.forEach(function (g) { obs.observe(g); });
+  })();
+
 }
 
 if (document.readyState === 'loading') {

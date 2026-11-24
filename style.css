@@ -98,10 +98,10 @@ body {
 
 .topographic-waves-svg {
   position: absolute;
-  top: -5%;
+  top: -4%;
   left: -5%;
   width: 110%;
-  height: 110%;
+  height: 132%;
   object-fit: cover;
   opacity: 0.85;
   will-change: transform;
@@ -2766,4 +2766,119 @@ main {
   .timeline-entry {
     grid-template-columns: 1fr;
   }
+}
+
+/* ===== Dynamic Island (UI Morphing en Hero) ===== */
+.dynamic-island {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  border-radius: 9999px;
+  background: rgba(52, 211, 153, 0.08);
+  border: 1px solid rgba(52, 211, 153, 0.28);
+  color: var(--accent-emerald);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.42s cubic-bezier(0.34, 1.56, 0.64, 1);
+  white-space: nowrap;
+}
+
+.dynamic-island:hover {
+  transform: translateY(-1px) scale(1.02);
+  background: rgba(52, 211, 153, 0.14);
+}
+
+.dynamic-island__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 8px currentColor;
+  flex-shrink: 0;
+}
+
+.dynamic-island__text {
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.dynamic-island.is-morphing .dynamic-island__text {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.dynamic-island--gold {
+  background: rgba(251, 191, 36, 0.08);
+  border-color: rgba(251, 191, 36, 0.3);
+  color: var(--accent-gold);
+}
+
+.dynamic-island--indigo {
+  background: rgba(129, 140, 248, 0.1);
+  border-color: rgba(129, 140, 248, 0.35);
+  color: #a5b4fc;
+}
+
+.dynamic-island--copied {
+  background: rgba(52, 211, 153, 0.18) !important;
+  border-color: rgba(52, 211, 153, 0.55) !important;
+  color: #34d399 !important;
+}
+
+/* ===== Spotlight + Tilt 3D Sutil en Tarjetas ===== */
+.bento-card,
+.project-card {
+  position: relative;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.bento-card::before,
+.project-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    420px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(129, 140, 248, 0.09),
+    transparent 42%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.bento-card:hover::before,
+.project-card:hover::before {
+  opacity: 1;
+}
+
+/* ===== Morphing de Estado en Botones (Email & CV) ===== */
+.contact-card-btn--email.is-morphed {
+  border-color: rgba(52, 211, 153, 0.65) !important;
+  background: rgba(52, 211, 153, 0.08) !important;
+  transform: scale(0.985);
+}
+
+.btn--cv.is-morphed {
+  border-color: rgba(52, 211, 153, 0.6) !important;
+  color: #34d399 !important;
+  background: rgba(52, 211, 153, 0.1) !important;
+  transform: scale(0.97);
+}
+
+/* ===== Stagger Reveal en Chips y Módulos ===== */
+.stagger-item {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--stagger-i, 0) * 28ms);
+}
+
+.stagger-item.stagger-item--visible {
+  opacity: 1;
+  transform: translateY(0);
 }
